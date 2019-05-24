@@ -1,0 +1,99 @@
+{
+  "name": "pa-react-backend",
+  "version": "1.0.0",
+  "description": "Backend subscribe funcionality server for Personal adviser app",
+  "main": "server.ts",
+  "scripts": {
+    "start": "./node_modules/.bin/ts-node ./server.ts",
+    "start:dev": "nodemon --exec ./node_modules/.bin/ts-node -- ./server.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/PersonalAdviser/pa-react-backend.git"
+  },
+  "author": "NerminDelic@AnkoraINC",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/PersonalAdviser/pa-react-backend/issues"
+  },
+  "homepage": "https://gitlab.com/PersonalAdviser/pa-react-backend#readme",
+  "dependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/register": "^7.4.4",
+    "@bugsnag/js": "^6.2.0",
+    "@bugsnag/plugin-express": "^6.2.0",
+    "@feathersjs/express": "^1.3.1",
+    "@feathersjs/feathers": "^3.3.1",
+    "@feathersjs/socketio": "^3.2.9",
+    "@feathersjs/socketio-client": "^1.2.1",
+    "@types/bcrypt": "^3.0.0",
+    "@types/body-parser": "^1.17.0",
+    "@types/connect-mongo": "^0.0.42",
+    "@types/express": "^4.16.1",
+    "@types/express-session": "^1.15.12",
+    "@types/feathersjs__express": "^1.1.6",
+    "@types/feathersjs__feathers": "^3.1.4",
+    "@types/feathersjs__socketio": "^3.0.4",
+    "@types/feathersjs__socketio-client": "^1.0.2",
+    "@types/glob": "^7.1.1",
+    "@types/helmet": "^0.0.43",
+    "@types/joi": "^14.3.3",
+    "@types/jsonwebtoken": "^8.3.2",
+    "@types/lodash": "^4.14.132",
+    "@types/mongoose": "^5.5.1",
+    "@types/next": "^8.0.5",
+    "@types/node": "^12.0.2",
+    "@types/passport": "^1.0.0",
+    "@types/passport-jwt": "^3.0.1",
+    "@types/passport-local": "^1.0.33",
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "connect-mongo": "^2.0.3",
+    "dotenv": "^6.2.0",
+    "express": "^4.17.0",
+    "express-session": "^1.16.1",
+    "feathers-memory": "^3.0.2",
+    "helmet": "^3.18.0",
+    "joi": "^14.3.1",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.11",
+    "mongoose": "^5.5.11",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+    "prettier": "^1.17.1",
+    "ts-node": "^8.1.0",
+    "typescript": "^3.4.5"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^6.1.1",
+    "babel-plugin-module-resolver": "^3.2.0",
+    "babel-plugin-styled-components": "^1.10.0",
+    "husky": "^2.3.0",
+    "lint-staged": "^8.1.7",
+    "nodemon": "^1.19.0",
+    "pretty-quick": "^1.11.0",
+    "tsconfig-paths": "^3.8.0",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-eslint-rules": "^5.4.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "pretty-quick --staged",
+      "tslint -c ./tslint.json './**/*.ts*' --fix",
+      "git add"
+    ]
+  },
+  "engines": {
+    "node": "10.13.0"
+  }
+}

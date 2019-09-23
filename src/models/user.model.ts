@@ -1,5 +1,5 @@
-import bcrypt from 'bcrypt';
-import mongoose, { Document, Model, Schema } from 'mongoose';
+import bcrypt from "bcrypt";
+import mongoose, { Document, Model, Schema } from "mongoose";
 
 export interface IOAuthProfile {
   foo?: string;
@@ -7,7 +7,7 @@ export interface IOAuthProfile {
 
 export interface IProvider {
   id: string;
-  name: 'local' | 'google' | 'facebook';
+  name: "local" | "google" | "facebook";
 }
 export interface IUser extends Document {
   email?: string;
@@ -25,60 +25,62 @@ export interface IUser extends Document {
   // role: 'user' | 'admin';
 }
 
-export const USER_SAFE_FIELDS = ['_id', 'email', 'firstName', 'lastName'];
+export const USER_SAFE_FIELDS = ["_id", "email", "firstName", "lastName"];
 
-const userSchema: Schema = new Schema({
-  email: {
-    required: true,
-    unique: true,
-    type: String,
-  },
-  emailToken: {
-    type: String,
-  },
-  firstName: {
-    required: true,
-    type: String,
-  },
-  lastName: {
-    required: true,
-    type: String,
-  },
-  dateOfBirth: {
-    required: true,
-    type: Date,
-  },
-  phone: {
-    required: false,
-    type: String,
-  },
-  address: {
-    required: true,
-    type: String,
-  },
-  salt: {
-    type: String,
-  },
-  password: {
-    type: String,
-  },
-  emailConfirmed: {
-   type: Boolean,
-  },
-  passwordToken: {
-    type: String,
+const userSchema: Schema = new Schema(
+  {
+    email: {
+      required: true,
+      unique: true,
+      type: String
+    },
+    emailToken: {
+      type: String
+    },
+    firstName: {
+      required: true,
+      type: String
+    },
+    lastName: {
+      required: true,
+      type: String
+    },
+    dateOfBirth: {
+      required: true,
+      type: Date
+    },
+    phone: {
+      required: false,
+      type: String
+    },
+    address: {
+      required: true,
+      type: String
+    },
+    salt: {
+      type: String
+    },
+    password: {
+      type: String
+    },
+    emailConfirmed: {
+      type: Boolean
+    },
+    passwordToken: {
+      type: String
+    }
   },
   // role: {
   //   type: String,
   //   enum: ['admin', 'user'],
   //   default: 'user',
   // },
+  { timestamps: true }
+);
 
-});
-
-userSchema.pre<IUser>('save', async function preSave(next: () => void) {
+userSchema.pre<IUser>("save", async function preSave(next: () => void) {
   const saltRounds = 10;
-  if (this.password && this.isModified('password')) {
+  if (this.password && this.isModified("password")) {
     const salt = await bcrypt.genSalt(saltRounds);
     const hash = await bcrypt.hash(this.password, salt);
     this.password = hash;
@@ -94,19 +96,19 @@ userSchema.methods.validatePassword = async function(password: string) {
 };
 
 userSchema.methods.removeSensitiveData = function(): {
- firstName: string;
- lastName: string;
- _id: string;
+  firstName: string;
+  lastName: string;
+  _id: string;
 } {
- delete this.salt;
- delete this.password;
+  delete this.salt;
+  delete this.password;
 
- return this;
+  return this;
 };
 
 const User: Model<IUser> = mongoose.model<IUser, Model<IUser>>(
-  'user',
-  userSchema,
+  "user",
+  userSchema
 );
 
 export default User;

@@ -1,14 +1,14 @@
-import { generateError } from '../adapters/response';
-import s from '../constants/strings';
-import User, { IUser, USER_SAFE_FIELDS } from '../models/user.model';
 import { Request, Response } from '@feathersjs/express';
+import console = require('console');
 import dotenv from 'dotenv';
 import Joi from 'joi';
 import jwt from 'jsonwebtoken';
 import _ from 'lodash';
 import passport from 'passport';
+import { generateError } from '../adapters/response';
+import s from '../constants/strings';
+import User, { IUser, USER_SAFE_FIELDS } from '../models/user.model';
 import { JOISignup } from '../validators/auth';
-import console = require('console');
 
 dotenv.load();
 const generateJWT = (user: IUser): string => {
@@ -20,23 +20,20 @@ const generateJWT = (user: IUser): string => {
     process.env.SECRET_OR_KEY || 'test',
     {
       expiresIn: '7d',
-    }
+    },
   );
 };
-
 
 const login = (req: Request, res: Response, next: (error?: any) => void) => {
   passport.authenticate('local', (err, unsafeUser) => {
     if (err) {
-      console.log(err)
       return next(err);
     }
     if (!unsafeUser) {
       return res.status(403).send(generateError(s.AUTH.user_not_found));
     }
-    req.logIn(unsafeUser, error => {
+    req.logIn(unsafeUser, (error) => {
       if (error) {
-        console.log("ERROR", error)
         return next(error);
       }
       const user = _.pick(unsafeUser, USER_SAFE_FIELDS);
@@ -58,13 +55,12 @@ const signup = async (req: Request, res: Response) => {
     const user = await User.create(req.body);
     const safeUser = _.pick(user, USER_SAFE_FIELDS);
     const generatedJWT = generateJWT(user);
-    
+
     return res
       .header({ Authentication: `Bearer ${generatedJWT}` })
       .send(safeUser);
-   
+
   } catch (e) {
-    console.log("ERR", e)
     return res
       .status(401)
       .send(generateError(e));

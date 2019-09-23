@@ -1,7 +1,7 @@
 {
-  "name": "pa-react-backend",
+  "name": "cgn-mail-service",
   "version": "1.0.0",
-  "description": "Backend subscribe funcionality server for Personal adviser app",
+  "description": "Backend mail serveice for CGN app",
   "main": "server.ts",
   "scripts": {
     "start": "./node_modules/.bin/ts-node ./server.ts",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/PersonalAdviser/pa-react-backend.git"
+    "url": "https://gitlab.com/ankoraClients/cgn-mail-service.git"
   },
   "author": "NerminDelic@AnkoraINC",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/PersonalAdviser/pa-react-backend/issues"
+    "url": "https://gitlab.com/ankoraClients/cgn-mail-service/issues"
   },
-  "homepage": "https://gitlab.com/PersonalAdviser/pa-react-backend#readme",
+  "homepage": "https://gitlab.com/ankoraClients/cgn-mail-service#readme",
   "dependencies": {
     "@babel/core": "^7.4.5",
     "@babel/polyfill": "^7.4.4",

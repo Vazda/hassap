@@ -18,13 +18,14 @@ export interface IUser extends Document {
   lastName: string;
   dateOfBirth: string;
   password: string;
+  salt: string;
   validatePassword: (password: string) => boolean;
-  removeSensitiveData: ()=>any;
+  removeSensitiveData: () => any;
   address: string;
-  role: 'user' | 'admin' | 'worker';
+  // role: 'user' | 'admin';
 }
 
-export const USER_SAFE_FIELDS = ['_id', 'email', 'firstName', 'lastName', 'role'];
+export const USER_SAFE_FIELDS = ['_id', 'email', 'firstName', 'lastName'];
 
 const userSchema: Schema = new Schema({
   email: {
@@ -42,7 +43,7 @@ const userSchema: Schema = new Schema({
   lastName: {
     required: true,
     type: String,
-  }, 
+  },
   dateOfBirth: {
     required: true,
     type: Date,
@@ -67,15 +68,15 @@ const userSchema: Schema = new Schema({
   passwordToken: {
     type: String,
   },
-  role: {
-    type: String,
-    enum: ['admin', 'user'],
-    default: 'user'
-  },
- 
+  // role: {
+  //   type: String,
+  //   enum: ['admin', 'user'],
+  //   default: 'user',
+  // },
+
 });
 
-userSchema.pre('save', async function preSave(next: () => void) {
+userSchema.pre<IUser>('save', async function preSave(next: () => void) {
   const saltRounds = 10;
   if (this.password && this.isModified('password')) {
     const salt = await bcrypt.genSalt(saltRounds);

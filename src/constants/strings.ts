@@ -8,12 +8,11 @@ const s = {
     CLIENT: {
      client_not_found: 'Client not found!',
     },
-    
+
     ERRORS: {
       entry_exists: 'Entry already exists!',
       ein_missing: 'EIN code missing!',
     },
   };
- 
-  export default s;
- 
+
+export default s;

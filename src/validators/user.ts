@@ -10,5 +10,5 @@ export const JOIAddNewUser = Joi.object().keys({
     phone: Joi.string().required(),
     address: Joi.string().required(),
     dateOfBirth: Joi.string().required(),
-    role: Joi.string().required()
+    // role: Joi.string().required(),
   });

@@ -1,10 +1,9 @@
-import { generateError } from '../adapters/response';
-import { JOIAddNewUser } from './../validators/user';
 import { Request, Response } from 'express';
-import _ from 'lodash';
 import Joi from 'joi';
+import _ from 'lodash';
+import { generateError } from '../adapters/response';
 import User from '../models/user.model';
-
+import { JOIAddNewUser } from './../validators/user';
 
 const getAllUsers = async (req: Request, res: Response) => {
   try {
@@ -78,7 +77,7 @@ const userController = {
   getAllUsers,
   getUserById,
   updateUser,
-  deleteUser
+  deleteUser,
 
 };
 

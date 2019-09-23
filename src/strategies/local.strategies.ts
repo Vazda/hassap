@@ -1,8 +1,8 @@
-import s from '../constants/strings';
-import { generateError } from '../adapters/response';
-import User from '../models/user.model';
 import passport from 'passport';
 import { IVerifyOptions, Strategy as LocalStrategy } from 'passport-local';
+import { generateError } from '../adapters/response';
+import s from '../constants/strings';
+import User from '../models/user.model';
 
 type ICallback = (error: any, user?: any, options?: IVerifyOptions) => void;
 
@@ -27,8 +27,8 @@ const localStrategy = () => {
         } catch (error) {
           return done(generateError(error));
         }
-      }
-    )
+      },
+    ),
   );
 };
 

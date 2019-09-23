@@ -2,33 +2,32 @@ import {
     Router,
 } from 'express';
 import passport from 'passport';
-import subscription from '../controllers/subscription.controller';
+import ticket from '../controllers/ticket.controller';
 
 const router = Router();
 
 router.route('/')
     .get(
         passport.authenticate('jwt', { session: false }),
-        subscription.getAllSubscriptions
+        ticket.getAllTickets,
     )
     .post(
-        passport.authenticate('jwt', { session: false }),
-        subscription.addNewSubscription
+        // passport.authenticate('jwt', { session: false }),
+        ticket.addNewTicket,
     );
-    
-router.route('/:subscriptionId')
+
+router.route('/:ticketId')
     .get(
         passport.authenticate('jwt', { session: false }),
-        subscription.getSubscriptionById
+        ticket.getTicketById,
     )
     .put(
         passport.authenticate('jwt', { session: false }),
-        subscription.updateSubscription
+        ticket.updateTicket,
     )
     .delete(
         passport.authenticate('jwt', { session: false }),
-        subscription.deleteSubscription
+        ticket.deleteTicket,
     );
-
 
 export default router;

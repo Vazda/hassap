@@ -7,5 +7,5 @@ const controller = async (_: Request, res: Response) => {
 };
 
 export default {
-  controller
+  controller,
 };

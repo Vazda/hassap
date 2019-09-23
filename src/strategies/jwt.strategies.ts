@@ -1,8 +1,8 @@
-import { generateError } from '../adapters/response';
-import User from '../models/user.model';
 import dotenv from 'dotenv';
 import passport from 'passport';
 import { ExtractJwt, Strategy as JWTStrategy } from 'passport-jwt';
+import { generateError } from '../adapters/response';
+import User from '../models/user.model';
 
 dotenv.load();
 
@@ -31,8 +31,8 @@ const jwtStrategy = () => {
         } catch (e) {
           return done(generateError(e), false);
         }
-      }
-    )
+      },
+    ),
   );
 };
 

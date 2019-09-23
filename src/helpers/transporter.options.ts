@@ -1,29 +1,28 @@
 import nodemailer from 'nodemailer';
 import TEMPLATES, { IMailOption } from './mail.options';
 
-
 const config = {
-    service: "Gmail",
+    service: 'Gmail',
     auth: {
-      user: "vazda18@gmail.com",
-      pass: "nermin8800gtxvazdakimi"
-    }
-  }
+      user: 'vazda18@gmail.com',
+      pass: 'nermin8800gtxvazdakimi',
+    },
+  };
 
-  const provider = nodemailer.createTransport({
+const provider = nodemailer.createTransport({
     ...config,
   });
 
-  const mailer = {
+const mailer = {
       sendMail: async (data: { to: string, MAIL_OPTION: IMailOption }) => {
-          const { MAIL_OPTION, to} = data
+          const { MAIL_OPTION, to} = data;
           return await provider.sendMail({
               ...MAIL_OPTION,
-              to
-          })
-      }
-  }
+              to,
+          });
+      },
+  };
 
-  export const MAIL_OPTIONS = TEMPLATES
+export const MAIL_OPTIONS = TEMPLATES;
 
-  export default mailer;
+export default mailer;

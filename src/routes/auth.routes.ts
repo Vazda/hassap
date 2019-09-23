@@ -1,5 +1,5 @@
-import AuthController from '../controllers/auth.controller';
 import { Application, Router } from '@feathersjs/express';
+import AuthController from '../controllers/auth.controller';
 
 const router = Router();
 

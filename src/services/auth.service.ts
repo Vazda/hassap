@@ -1,10 +1,10 @@
-import  jwt  from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
+import _ from 'lodash';
+import passport from 'passport';
 import s from '../constants/strings';
 import User, { IUser, USER_SAFE_FIELDS } from '../models/user.model';
 import jwtStrategy from '../strategies/jwt.strategies';
 import localStrategy from '../strategies/local.strategies';
-import _ from 'lodash';
-import passport from 'passport';
 
 const SECRET_OR_KEY = process.env.SECRET_OR_KEY;
 export const passportInit = (): void => {
@@ -38,4 +38,4 @@ export const createToken = (user: { _id: string, email: string }): string => jwt
     email: user.email,
   },
   SECRET_OR_KEY,
-);  
+);

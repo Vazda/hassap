@@ -1,4 +1,4 @@
-import mongoose, { Document, Model, Schema } from "mongoose";
+import mongoose, { Document, Model, Schema } from 'mongoose';
 
 export interface ITicket extends Document {
   email?: string;
@@ -10,23 +10,23 @@ const TicketSchema: Schema = new Schema(
   {
     email: {
       required: true,
-      type: String
+      type: String,
     },
     firstName: {
       required: false,
-      type: String
+      type: String,
     },
     lastName: {
       required: false,
-      type: String
-    }
+      type: String,
+    },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const Ticket: Model<ITicket> = mongoose.model<ITicket, Model<ITicket>>(
-  "Ticket",
-  TicketSchema
+  'Ticket',
+  TicketSchema,
 );
 
 export default Ticket;

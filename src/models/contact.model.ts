@@ -1,4 +1,4 @@
-import mongoose, { Document, Model, Schema } from "mongoose";
+import mongoose, { Document, Model, Schema } from 'mongoose';
 
 export interface IContact extends Document {
   firstName: string;
@@ -12,31 +12,31 @@ const ContactSchema: Schema = new Schema(
   {
     firstName: {
       required: true,
-      type: String
+      type: String,
     },
     lastName: {
       required: true,
-      type: String
+      type: String,
     },
     phone: {
       required: true,
-      type: String
+      type: String,
     },
     email: {
       required: true,
-      type: String
+      type: String,
     },
     message: {
       required: true,
-      type: String
-    }
+      type: String,
+    },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const Contact: Model<IContact> = mongoose.model<IContact, Model<IContact>>(
-  "Contact",
-  ContactSchema
+  'Contact',
+  ContactSchema,
 );
 
 export default Contact;

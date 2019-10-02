@@ -1,4 +1,4 @@
-import mongoose, { Document, Model, Schema } from "mongoose";
+import mongoose, { Document, Model, Schema } from 'mongoose';
 
 export interface ITicket extends Document {
   company: string;
@@ -14,39 +14,39 @@ export interface ITicket extends Document {
 const TicketSchema: Schema = new Schema(
   {
     company: {
-      type: String
+      type: String,
     },
     firstName: {
       required: false,
-      type: String
+      type: String,
     },
     lastName: {
       required: false,
-      type: String
+      type: String,
     },
     email: {
       required: true,
-      type: String
+      type: String,
     },
     street: {
-      type: String
+      type: String,
     },
     postalCode: {
-      type: String
+      type: String,
     },
     phone: {
-      type: String
+      type: String,
     },
     fax: {
-      type: String
-    }
+      type: String,
+    },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const Ticket: Model<ITicket> = mongoose.model<ITicket, Model<ITicket>>(
-  "Ticket",
-  TicketSchema
+  'Ticket',
+  TicketSchema,
 );
 
 export default Ticket;

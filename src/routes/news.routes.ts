@@ -1,13 +1,18 @@
-import { Router } from "express";
-import passport from "passport";
-import news from "../controllers/news.controller";
+import { Router } from 'express';
+import passport from 'passport';
+import news from '../controllers/news.controller';
 
 const router = Router();
 
-router
-  .route("/")
-  .get(passport.authenticate("jwt", { session: false }), news.getAllNews)
-  .post(passport.authenticate("jwt", { session: false }), news.addNewNews);
+router.route('/')
+  .get(
+    passport.authenticate('jwt', { session: false }),
+    news.getAllNews,
+  )
+  .post(
+    passport.authenticate('jwt', { session: false }),
+    news.addNewNews,
+  );
 
 // router.route('/updateStatus/:id')
 //     .put(
@@ -15,10 +20,18 @@ router
 //         news.updateStatus,
 //     );
 
-router
-  .route("/:newsId")
-  .get(passport.authenticate("jwt", { session: false }), news.getNewsById)
-  .put(passport.authenticate("jwt", { session: false }), news.updateNews)
-  .delete(passport.authenticate("jwt", { session: false }), news.deleteNews);
+router.route('/:newsId')
+  .get(
+    passport.authenticate('jwt', { session: false }),
+    news.getNewsById,
+  )
+  .put(
+    passport.authenticate('jwt', { session: false }),
+    news.updateNews,
+  )
+  .delete(
+    passport.authenticate('jwt', { session: false }),
+    news.deleteNews,
+  );
 
 export default router;

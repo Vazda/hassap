@@ -1,4 +1,4 @@
-import mongoose, { Document, Model, Schema } from "mongoose";
+import mongoose, { Document, Model, Schema } from 'mongoose';
 
 export interface IImage extends Document {
   url?: string;
@@ -9,18 +9,18 @@ const ImageSchema: Schema = new Schema(
   {
     url: {
       type: String,
-      required: true
+      required: true,
     },
     description: {
-      type: String
-    }
+      type: String,
+    },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const Image: Model<IImage> = mongoose.model<IImage, Model<IImage>>(
-  "Image",
-  ImageSchema
+  'Image',
+  ImageSchema,
 );
 
 export default Image;

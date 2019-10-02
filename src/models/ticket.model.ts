@@ -1,32 +1,52 @@
-import mongoose, { Document, Model, Schema } from 'mongoose';
+import mongoose, { Document, Model, Schema } from "mongoose";
 
 export interface ITicket extends Document {
-  email?: string;
+  company: string;
   firstName?: string;
   lastName?: string;
+  email?: string;
+  street: string;
+  postalCode: string;
+  phone: string;
+  fax: string;
 }
 
 const TicketSchema: Schema = new Schema(
   {
-    email: {
-      required: true,
-      type: String,
+    company: {
+      type: String
     },
     firstName: {
       required: false,
-      type: String,
+      type: String
     },
     lastName: {
       required: false,
-      type: String,
+      type: String
     },
+    email: {
+      required: true,
+      type: String
+    },
+    street: {
+      type: String
+    },
+    postalCode: {
+      type: String
+    },
+    phone: {
+      type: String
+    },
+    fax: {
+      type: String
+    }
   },
-  { timestamps: true },
+  { timestamps: true }
 );
 
 const Ticket: Model<ITicket> = mongoose.model<ITicket, Model<ITicket>>(
-  'Ticket',
-  TicketSchema,
+  "Ticket",
+  TicketSchema
 );
 
 export default Ticket;

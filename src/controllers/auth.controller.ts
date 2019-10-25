@@ -1,6 +1,5 @@
 import { Request, Response } from '@feathersjs/express';
-import console = require('console');
-import dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
 import Joi from 'joi';
 import jwt from 'jsonwebtoken';
 import _ from 'lodash';

@@ -1,7 +1,7 @@
-import mongoose, { Document, Model, Schema } from "mongoose";
+import mongoose, { Document, Model, Schema } from 'mongoose';
 
 export interface ITicket extends Document {
-  package: "Business" | "Center" | "Lounge";
+  package: 'Business' | 'Center' | 'Lounge';
   monday: boolean;
   tuesday: boolean;
   wednesdey: boolean;
@@ -23,68 +23,68 @@ const TicketSchema: Schema = new Schema(
   {
     package: {
       type: String,
-      enum: ["Business", "Center", "Lounge"]
+      enum: ['Business', 'Center', 'Lounge'],
     },
     monday: {
       type: Boolean,
-      default: false
+      default: false,
     },
     tuesday: {
       type: Boolean,
-      default: false
+      default: false,
     },
     wednesdey: {
       type: Boolean,
-      default: false
+      default: false,
     },
     thursday: {
       type: Boolean,
-      default: false
+      default: false,
     },
     friday: {
       type: Boolean,
-      default: false
+      default: false,
     },
     saturday: {
       type: Boolean,
-      default: false
+      default: false,
     },
     sunday: {
       type: Boolean,
-      default: false
+      default: false,
     },
     company: {
-      type: String
+      type: String,
     },
     firstName: {
       required: false,
-      type: String
+      type: String,
     },
     lastName: {
       required: false,
-      type: String
+      type: String,
     },
     email: {
       required: true,
-      type: String
+      type: String,
     },
     street: {
-      type: String
+      type: String,
     },
     postalCode: {
-      type: String
+      type: String,
     },
     phone: {
-      type: String
+      type: String,
     },
     fax: {
-      type: String
-    }
+      type: String,
+    },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
-TicketSchema.pre<ITicket>("save", async function preSave(next: () => void) {
+TicketSchema.pre<ITicket>('save', async function preSave(next: () => void) {
   // if (this.password && this.isModified('password')) {
   //   const salt = await bcrypt.genSalt(saltRounds);
   //   const hash = await bcrypt.hash(this.password, salt);
@@ -96,8 +96,8 @@ TicketSchema.pre<ITicket>("save", async function preSave(next: () => void) {
 });
 
 const Ticket: Model<ITicket> = mongoose.model<ITicket, Model<ITicket>>(
-  "Ticket",
-  TicketSchema
+  'Ticket',
+  TicketSchema,
 );
 
 export default Ticket;

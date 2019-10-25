@@ -1,33 +1,33 @@
-import { Router } from "express";
+import { Router } from 'express';
 // import passport from 'passport';
-import newsletter from "../controllers/newsletter.controller";
+import newsletter from '../controllers/newsletter.controller';
 
 const router = Router();
 
 router
-  .route("/")
+  .route('/')
   .get(
     // passport.authenticate('jwt', { session: false }),
-    newsletter.getAllNewsletter
+    newsletter.getAllNewsletter,
   )
   .post(
     // passport.authenticate('jwt', { session: false }),
-    newsletter.addNewNewsletter
+    newsletter.addNewNewsletter,
   );
 
 router
-  .route("/:newsId")
+  .route('/:newsId')
   .get(
     // passport.authenticate('jwt', { session: false }),
-    newsletter.getNewsletterById
+    newsletter.getNewsletterById,
   )
   .put(
     // passport.authenticate('jwt', { session: false }),
-    newsletter.updateNewsletter
+    newsletter.updateNewsletter,
   )
   .delete(
     // passport.authenticate('jwt', { session: false }),
-    newsletter.deleteNewsletter
+    newsletter.deleteNewsletter,
   );
 
 export default router;

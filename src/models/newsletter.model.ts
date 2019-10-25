@@ -1,6 +1,6 @@
-import mongoose, { Document, Model, Schema } from "mongoose";
+import mongoose, { Document, Model, Schema } from 'mongoose';
 export interface INewsletter extends Document {
-  gender: "male" | "female";
+  gender: 'male' | 'female';
   firstName: string;
   lastName: string;
   email: string;
@@ -14,39 +14,39 @@ const NewsletterSchema: Schema = new Schema(
   {
     gender: {
       type: String,
-      enum: ["male", "female"]
+      enum: ['male', 'female'],
     },
     firstName: {
-      type: String
+      type: String,
     },
     lastName: {
-      type: String
+      type: String,
     },
     email: {
       required: true,
-      type: String
+      type: String,
     },
     confirmEmail: {
       required: true,
-      type: String
+      type: String,
     },
     AGB: {
-      type: String
+      type: String,
     },
     Tracking: {
-      type: String
+      type: String,
     },
     Datenschutz: {
-      type: String
-    }
+      type: String,
+    },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const Newsletter: Model<INewsletter> = mongoose.model<
   INewsletter,
   Model<INewsletter>
->("Newsletter", NewsletterSchema);
+>('Newsletter', NewsletterSchema);
 
 export default Newsletter;
 

@@ -1,5 +1,5 @@
-import mongoose, { Document, Model, Schema } from "mongoose";
-import { IImage } from "./image.model";
+import mongoose, { Document, Model, Schema } from 'mongoose';
+import { IImage } from './image.model';
 export interface INews extends Document {
   title: string;
   date: Date;
@@ -15,15 +15,15 @@ const NewsSchema: Schema = new Schema(
   {
     title: {
       required: true,
-      type: String
+      type: String,
     },
     date: {
       required: true,
-      type: Date
+      type: Date,
     },
     category: {
       required: true,
-      type: String
+      type: String,
     },
     // status: {
     //   required: true,
@@ -32,28 +32,28 @@ const NewsSchema: Schema = new Schema(
     // },
     saved: {
       type: Boolean,
-      default: false
+      default: false,
     },
     published: {
       type: Boolean,
-      default: false
+      default: false,
     },
 
     description: {
       // required: true,
-      type: String // JSON
+      type: String, // JSON
     },
     image: {
       // required: false,
-      type: String
-    }
+      type: String,
+    },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const News: Model<INews> = mongoose.model<INews, Model<INews>>(
-  "News",
-  NewsSchema
+  'News',
+  NewsSchema,
 );
 
 export default News;

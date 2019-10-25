@@ -1,8 +1,8 @@
-import { Request, Response } from "express";
-import _ from "lodash";
-import { generateError, generateResponse } from "../adapters/response";
-import transporter, { MAIL_OPTIONS } from "../helpers/transporter.options";
-import Newsletter from "../models/newsletter.model";
+import { Request, Response } from 'express';
+import _ from 'lodash';
+import { generateError, generateResponse } from '../adapters/response';
+import transporter, { MAIL_OPTIONS } from '../helpers/transporter.options';
+import Newsletter from '../models/newsletter.model';
 
 const getAllNewsletter = async (req: Request, res: Response) => {
   try {
@@ -11,7 +11,7 @@ const getAllNewsletter = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(404)
-      .send({ msg: generateError("Error fetching News"), error: e });
+      .send({ msg: generateError('Error fetching News'), error: e });
   }
 };
 
@@ -24,8 +24,8 @@ const addNewNewsletter = async (req: Request, res: Response) => {
     // 'AGB',
     // 'Tracking',
     // 'Datenschutz',
-    "email",
-    "confirmEmail"
+    'email',
+    'confirmEmail',
   ]);
   try {
     const newNewsletter = new Newsletter(newBody);
@@ -35,14 +35,14 @@ const addNewNewsletter = async (req: Request, res: Response) => {
     await newNewsletter.save();
     await transporter.sendMail({
       to: req.body.email,
-      MAIL_OPTION: MAIL_OPTIONS.NEW_NEWSLETTER_EMAIL(newNewsletter.email)
+      MAIL_OPTION: MAIL_OPTIONS.NEW_NEWSLETTER_EMAIL(newNewsletter.email),
     });
 
     return res.send(newNewsletter);
   } catch (e) {
     return res
       .status(404)
-      .send({ msg: generateError("Error saving Newsletter"), error: e });
+      .send({ msg: generateError('Error saving Newsletter'), error: e });
   }
 };
 
@@ -55,7 +55,7 @@ const getNewsletterById = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(404)
-      .send({ msg: generateError("Error fetching newsletters"), error: e });
+      .send({ msg: generateError('Error fetching newsletters'), error: e });
   }
 };
 
@@ -69,21 +69,21 @@ const updateNewsletter = async (req: Request, res: Response) => {
     // 'AGB',
     // 'Tracking',
     // 'Datenschutz',
-    "email",
-    "confirmEmail"
+    'email',
+    'confirmEmail',
   ]);
   try {
     const newsletter = await Newsletter.findOneAndUpdate(
       { _id: newsletterId },
       { $set: req.body },
-      { new: true }
+      { new: true },
     );
 
     return res.send(newsletter);
   } catch (e) {
     return res
       .status(500)
-      .send({ msg: generateError("Error updating Newsletter"), error: e });
+      .send({ msg: generateError('Error updating Newsletter'), error: e });
   }
 };
 
@@ -97,7 +97,7 @@ const deleteNewsletter = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(500)
-      .send({ msg: generateError("Error removing Newsletter"), error: e });
+      .send({ msg: generateError('Error removing Newsletter'), error: e });
   }
 };
 
@@ -106,7 +106,7 @@ const NewsletterController = {
   getAllNewsletter,
   getNewsletterById,
   deleteNewsletter,
-  updateNewsletter
+  updateNewsletter,
 };
 
 export default NewsletterController;

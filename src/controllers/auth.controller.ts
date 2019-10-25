@@ -1,4 +1,5 @@
 import { Request, Response } from '@feathersjs/express';
+// @ts-ignore
 import * as dotenv from 'dotenv';
 import Joi from 'joi';
 import jwt from 'jsonwebtoken';

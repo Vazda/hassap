@@ -5,21 +5,24 @@ export interface INewsletter extends Document {
   lastName: string;
   email: string;
   confirmEmail: string;
-  AGB: string;
-  Tracking: string;
-  Datenschutz: string;
+  AGB: boolean;
+  Tracking: boolean;
+  Datenschutz: boolean;
 }
 
 const NewsletterSchema: Schema = new Schema(
   {
     gender: {
+      required: false,
       type: String,
       enum: ['male', 'female'],
     },
     firstName: {
+      required: false,
       type: String,
     },
     lastName: {
+      required: false,
       type: String,
     },
     email: {
@@ -31,13 +34,16 @@ const NewsletterSchema: Schema = new Schema(
       type: String,
     },
     AGB: {
-      type: String,
+      required: false,
+      type: Boolean,
     },
     Tracking: {
-      type: String,
+      required: false,
+      type: Boolean,
     },
     Datenschutz: {
-      type: String,
+      required: false,
+      type: Boolean,
     },
   },
   { timestamps: true },

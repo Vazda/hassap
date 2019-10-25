@@ -17,26 +17,32 @@ const getAllNewsletter = async (req: Request, res: Response) => {
 
 const addNewNewsletter = async (req: Request, res: Response) => {
   const newBody = _.pick(req.body, [
-    // 'gender',
-    // 'firstName',
-    // 'lastName',
-    // 'email',
-    // 'AGB',
-    // 'Tracking',
-    // 'Datenschutz',
+    'gender',
+    'firstName',
+    'lastName',
     'email',
     'confirmEmail',
+    'AGB',
+    'Tracking',
+    'Datenschutz',
   ]);
   try {
     const newNewsletter = new Newsletter(newBody);
-    // if ( req.body.email === req.body.confirmEmail) {
-    //   throw Error('Email and Confirm Email are not same');
-    // }
+    if ( req.body.email !== req.body.confirmEmail) {
+      throw Error('Email and Confirm Email are not same');
+    }
     await newNewsletter.save();
-    await transporter.sendMail({
-      to: req.body.email,
-      MAIL_OPTION: MAIL_OPTIONS.NEW_NEWSLETTER_EMAIL(newNewsletter.email),
-    });
+    if (req.body.firstName) {
+      await transporter.sendMail({
+        to: req.body.email,
+        MAIL_OPTION: MAIL_OPTIONS.NEW_NEWSLETTER_NAME(newNewsletter.firstName),
+      });
+    } else {
+      await transporter.sendMail({
+        to: req.body.email,
+        MAIL_OPTION: MAIL_OPTIONS.NEW_NEWSLETTER_EMAIL(newNewsletter.email),
+      });
+    }
 
     return res.send(newNewsletter);
   } catch (e) {

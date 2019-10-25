@@ -8,7 +8,7 @@ const router = Router();
 
 router.route('/')
     .get(
-        passport.authenticate('jwt', { session: false }),
+        // passport.authenticate('jwt', { session: false }),
         ticket.getAllTickets,
     )
     .post(
@@ -18,15 +18,15 @@ router.route('/')
 
 router.route('/:ticketId')
     .get(
-        passport.authenticate('jwt', { session: false }),
+        // passport.authenticate('jwt', { session: false }),
         ticket.getTicketById,
     )
     .put(
-        passport.authenticate('jwt', { session: false }),
+        // passport.authenticate('jwt', { session: false }),
         ticket.updateTicket,
     )
     .delete(
-        passport.authenticate('jwt', { session: false }),
+        // passport.authenticate('jwt', { session: false }),
         ticket.deleteTicket,
     );
 

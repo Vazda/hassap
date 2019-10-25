@@ -17,10 +17,10 @@ const NewsSchema: Schema = new Schema(
       required: true,
       type: String,
     },
-    date: {
-      required: true,
-      type: Date,
-    },
+    // date: {
+    //   required: true,
+    //   type: Date,
+    // },
     category: {
       required: true,
       type: String,

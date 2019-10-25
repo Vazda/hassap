@@ -25,6 +25,7 @@ const addNewTicket = async (req: Request, res: Response) => {
     'friday',
     'saturday',
     'sunday',
+    'days',
     'company',
     'firstName',
     'lastName',

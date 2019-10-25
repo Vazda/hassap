@@ -23,8 +23,14 @@ router
 
 router
   .route('/:newsId')
-  .get(passport.authenticate('jwt', { session: false }), news.getNewsById)
-  .put(passport.authenticate('jwt', { session: false }), news.updateNews)
-  .delete(passport.authenticate('jwt', { session: false }), news.deleteNews);
+  .get(
+    // passport.authenticate('jwt', { session: false }),
+     news.getNewsById)
+  .put(
+    // passport.authenticate('jwt', { session: false }),
+     news.updateNews)
+  .delete(
+    // passport.authenticate('jwt', { session: false }),
+     news.deleteNews);
 
 export default router;

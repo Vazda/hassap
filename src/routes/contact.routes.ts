@@ -6,7 +6,7 @@ const router = Router();
 
 router.route('/')
   .get(
-    passport.authenticate('jwt', { session: false }),
+    // passport.authenticate('jwt', { session: false }),
     contact.getAllContacts,
   )
   .post(
@@ -16,15 +16,15 @@ router.route('/')
 
 router.route('/:contactId')
   .get(
-    passport.authenticate('jwt', { session: false }),
+    // passport.authenticate('jwt', { session: false }),
     contact.getContactById,
   )
   .put(
-    passport.authenticate('jwt', { session: false }),
+    // passport.authenticate('jwt', { session: false }),
     contact.updateContact,
   )
   .delete(
-    passport.authenticate('jwt', { session: false }),
+    // passport.authenticate('jwt', { session: false }),
     contact.deleteContact,
   );
 

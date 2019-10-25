@@ -33,6 +33,15 @@ const MAIL_OPTIONS = {
       Thank You
       The CGN Team`,
   }),
+  NEW_NEWSLETTER_NAME: (firstName: string) => ({
+    from: 'The CGN Team',
+    subject: `CGN Newsletter`,
+    text: `CGN Newsletter`,
+    html: `Dear ${firstName}.
+      CGN Newsletter TEMPLATE
+      Thank You
+      The CGN Team`,
+  }),
   NEW_CONTACT_NAME: (firstName: string) => ({
     from: 'The CGN Team',
     subject: `CGN Contact`,

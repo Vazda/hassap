@@ -12,15 +12,15 @@ router.route('/')
 
 router.route('/:userId')
     .get(
-        passport.authenticate('jwt', { session: false }),
+        // passport.authenticate('jwt', { session: false }),
         user.getUserById,
     )
     .put(
-        passport.authenticate('jwt', { session: false }),
+        // passport.authenticate('jwt', { session: false }),
         user.updateUser,
     )
     .delete(
-        passport.authenticate('jwt', { session: false }),
+        // passport.authenticate('jwt', { session: false }),
         user.deleteUser);
 
 export default router;

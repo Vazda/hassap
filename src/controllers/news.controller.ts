@@ -17,7 +17,7 @@ const getAllNews = async (req: Request, res: Response) => {
 const addNewNews = async (req: Request, res: Response) => {
   const newBody = _.pick(req.body, [
     'title',
-    'date',
+    // 'date',
     'category',
     // 'image',
     'description',
@@ -50,12 +50,8 @@ const updateNews = async (req: Request, res: Response) => {
   const { newsId } = req.params;
   const newBody = _.pick(req.body, [
     'title',
-    'date',
     'category',
-    'image',
     'description',
-    'saved',
-    'published',
   ]);
   try {
     const news = await News.findOneAndUpdate(

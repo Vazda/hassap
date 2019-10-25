@@ -16,7 +16,7 @@ router
   );
 
 router
-  .route('/:newsId')
+  .route('/:newsletterId')
   .get(
     // passport.authenticate('jwt', { session: false }),
     newsletter.getNewsletterById,

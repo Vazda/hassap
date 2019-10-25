@@ -1,13 +1,22 @@
 import nodemailer from 'nodemailer';
 import TEMPLATES, { IMailOption } from './mail.options';
 
+// const config = {
+//   host: 'smtp.mailgun.org',
+//   port: 587,
+//   secure: false, // upgrade later with STARTTLS
+//   auth: {
+//     user: 'postmaster@sandbox0bb61ff86fcb445da748fb3a17e68b30.mailgun.org',
+//     pass: '566e3f8b833463435362a537773031eb-b9c15f4c-014e82fd',
+//   },
+// };
 const config = {
-  host: 'smtp.mailgun.org',
+  host: 'gmail',
   port: 587,
   secure: false, // upgrade later with STARTTLS
   auth: {
-    user: 'postmaster@sandbox0bb61ff86fcb445da748fb3a17e68b30.mailgun.org',
-    pass: '566e3f8b833463435362a537773031eb-b9c15f4c-014e82fd',
+    user: 'vazda18@gmail.com',
+    pass: 'nermin8800gtxvazdakimi',
   },
 };
 

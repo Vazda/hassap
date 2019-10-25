@@ -7,7 +7,8 @@ export interface IMailOption {
 
 const MAIL_OPTIONS = {
   NEW_TICKET_NAME: (firstName: string) => ({
-    from: 'The CGN Team <no-reply@sandboxc77c3a9be90a494081dad1628d554337.mailgun.org>',
+    // from: 'The CGN Team <no-reply@sandboxc77c3a9be90a494081dad1628d554337.mailgun.org>',
+    from: 'The CGN Team',
     subject: `CGN Ticket`,
     text: `CGN Ticket`,
     html: `Dear ${firstName}.
@@ -16,7 +17,7 @@ const MAIL_OPTIONS = {
       The CGN Team`,
   }),
   NEW_TICKET_EMAIL: (email: string) => ({
-    from: 'The CGN Team <no-reply@sandboxc77c3a9be90a494081dad1628d554337.mailgun.org>',
+    from: 'The CGN Team',
     subject: `CGN Ticket`,
     text: `CGN Ticket`,
     html: `Dear ${email}.
@@ -25,7 +26,7 @@ const MAIL_OPTIONS = {
       The CGN Team`,
   }),
   NEW_NEWSLETTER_EMAIL: (email: string) => ({
-    from: 'The CGN Team <no-reply@sandboxc77c3a9be90a494081dad1628d554337.mailgun.org>',
+    from: 'The CGN Team',
     subject: `CGN Newsletter`,
     text: `CGN Newsletter`,
     html: `Dear ${email}.
@@ -34,7 +35,7 @@ const MAIL_OPTIONS = {
       The CGN Team`,
   }),
   NEW_NEWSLETTER_NAME: (firstName: string) => ({
-    from: 'The CGN Team <no-reply@sandboxc77c3a9be90a494081dad1628d554337.mailgun.org>',
+    from: 'The CGN Team',
     subject: `CGN Newsletter`,
     text: `CGN Newsletter`,
     html: `Dear ${firstName}.
@@ -43,7 +44,7 @@ const MAIL_OPTIONS = {
       The CGN Team`,
   }),
   NEW_CONTACT_NAME: (firstName: string) => ({
-    from: 'The CGN Team <no-reply@sandboxc77c3a9be90a494081dad1628d554337.mailgun.org>',
+    from: 'The CGN Team',
     subject: `CGN Contact`,
     text: `CGN Contact`,
     html: `Dear ${firstName}.
@@ -52,7 +53,7 @@ const MAIL_OPTIONS = {
       The CGN Team`,
   }),
   NEW_CONTACT_EMAIL: (email: string) => ({
-    from: 'The CGN Team <no-reply@sandboxc77c3a9be90a494081dad1628d554337.mailgun.org>',
+    from: 'The CGN Team',
     subject: `CGN Contact`,
     text: `CGN Contact`,
     html: `Dear ${email}.

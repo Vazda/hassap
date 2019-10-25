@@ -1,8 +1,8 @@
-import { Request, Response } from 'express';
-import _ from 'lodash';
-import { generateError } from '../adapters/response';
-import transporter, { MAIL_OPTIONS } from '../helpers/transporter.options';
-import Contact from '../models/contact.model';
+import { Request, Response } from "express";
+import _ from "lodash";
+import { generateError } from "../adapters/response";
+import transporter, { MAIL_OPTIONS } from "../helpers/transporter.options";
+import Contact from "../models/contact.model";
 
 const getAllContacts = async (req: Request, res: Response) => {
   try {
@@ -11,17 +11,17 @@ const getAllContacts = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(404)
-      .send({ msg: generateError('Error fetching Contacts'), error: e });
+      .send({ msg: generateError("Error fetching Contacts"), error: e });
   }
 };
 
 const addNewContact = async (req: Request, res: Response) => {
   const newBody = _.pick(req.body, [
-    'firstName',
-    'lastName',
-    'phone',
-    'email',
-    'message',
+    "firstName",
+    "lastName",
+    "phone",
+    "email",
+    "message"
   ]);
   try {
     const newContact = new Contact(newBody);
@@ -29,22 +29,21 @@ const addNewContact = async (req: Request, res: Response) => {
     if (req.body.firstName) {
       await transporter.sendMail({
         to: req.body.email,
-        MAIL_OPTION: MAIL_OPTIONS.NEW_CONTACT_NAME(newContact.firstName),
+        MAIL_OPTION: MAIL_OPTIONS.NEW_CONTACT_NAME(newContact.firstName)
       });
     } else {
       await transporter.sendMail({
         to: req.body.email,
-        MAIL_OPTION: MAIL_OPTIONS.NEW_CONTACT_EMAIL(newContact.email),
+        MAIL_OPTION: MAIL_OPTIONS.NEW_CONTACT_EMAIL(newContact.email)
       });
     }
     // tslint:disable-next-line:no-console
-    console.log('Mail sent to new contact');
+    console.log("Mail sent to new contact");
     return res.send(newContact);
   } catch (e) {
-    console.log(e);
     return res
       .status(500)
-      .send({ msg: generateError('Error saving Contact'), error: e });
+      .send({ msg: generateError("Error saving Contact"), error: e });
   }
 };
 
@@ -57,7 +56,7 @@ const getContactById = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(404)
-      .send({ msg: generateError('Error fetching contact'), error: e });
+      .send({ msg: generateError("Error fetching contact"), error: e });
   }
 };
 
@@ -68,14 +67,14 @@ const updateContact = async (req: Request, res: Response) => {
     const contact = await Contact.findOneAndUpdate(
       { _id: contactId },
       { $set: req.body },
-      { new: true },
+      { new: true }
     );
 
     return res.send(contact);
   } catch (e) {
     return res
       .status(500)
-      .send({ msg: generateError('Error updating Contact'), error: e });
+      .send({ msg: generateError("Error updating Contact"), error: e });
   }
 };
 
@@ -89,7 +88,7 @@ const deleteContact = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(500)
-      .send({ msg: generateError('Error removing Contact'), error: e });
+      .send({ msg: generateError("Error removing Contact"), error: e });
   }
 };
 
@@ -98,7 +97,7 @@ const ContactController = {
   getAllContacts,
   getContactById,
   deleteContact,
-  updateContact,
+  updateContact
 };
 
 export default ContactController;

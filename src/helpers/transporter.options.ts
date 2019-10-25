@@ -11,9 +11,7 @@ import TEMPLATES, { IMailOption } from './mail.options';
 //   },
 // };
 const config = {
-  host: 'gmail',
-  port: 587,
-  secure: false, // upgrade later with STARTTLS
+  service: 'Gmail',
   auth: {
     user: 'vazda18@gmail.com',
     pass: 'nermin8800gtxvazdakimi',

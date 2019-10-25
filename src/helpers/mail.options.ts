@@ -8,7 +8,7 @@ export interface IMailOption {
 const MAIL_OPTIONS = {
   NEW_TICKET_NAME: (firstName: string) => ({
     // from: 'The CGN Team <no-reply@sandboxc77c3a9be90a494081dad1628d554337.mailgun.org>',
-    from: 'The CGN Team',
+    from: 'The CGN Team <vazda18@gmail.com>',
     subject: `CGN Ticket`,
     text: `CGN Ticket`,
     html: `Dear ${firstName}.

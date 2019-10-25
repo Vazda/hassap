@@ -41,8 +41,9 @@ const addNewContact = async (req: Request, res: Response) => {
     console.log('Mail sent to new contact');
     return res.send(newContact);
   } catch (e) {
+    console.log(e);
     return res
-      .status(404)
+      .status(500)
       .send({ msg: generateError('Error saving Contact'), error: e });
   }
 };

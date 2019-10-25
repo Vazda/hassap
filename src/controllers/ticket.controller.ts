@@ -17,6 +17,14 @@ const getAllTickets = async (req: Request, res: Response) => {
 
 const addNewTicket = async (req: Request, res: Response) => {
   const newBody = _.pick(req.body, [
+    'package',
+    'monday',
+    'tuesday',
+    'wednesday',
+    'thursday',
+    'friday',
+    'saturday',
+    'sunday',
     'company',
     'firstName',
     'lastName',

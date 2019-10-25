@@ -4,7 +4,7 @@ export interface ITicket extends Document {
   package: 'Business' | 'Center' | 'Lounge';
   monday: boolean;
   tuesday: boolean;
-  wednesdey: boolean;
+  wednesday: boolean;
   thursday: boolean;
   friday: boolean;
   saturday: boolean;
@@ -33,7 +33,7 @@ const TicketSchema: Schema = new Schema(
       type: Boolean,
       default: false,
     },
-    wednesdey: {
+    wednesday: {
       type: Boolean,
       default: false,
     },
@@ -85,12 +85,25 @@ const TicketSchema: Schema = new Schema(
 );
 
 TicketSchema.pre<ITicket>('save', async function preSave(next: () => void) {
-  // if (this.password && this.isModified('password')) {
-  //   const salt = await bcrypt.genSalt(saltRounds);
-  //   const hash = await bcrypt.hash(this.password, salt);
-  //   this.password = hash;
-  //   this.salt = salt;
-  // }
+
+  if (this.package === 'Center') {
+    this.monday = true;
+    this.tuesday = true;
+    this.wednesday = true;
+    this.thursday = true;
+    this.friday = true;
+    this.saturday = true;
+    this.sunday = true;
+  }
+  if (this.package === 'Lounge') {
+    this.monday = true;
+    this.tuesday = true;
+    this.wednesday = true;
+    this.thursday = true;
+    this.friday = true;
+    this.saturday = true;
+    this.sunday = true;
+  }
 
   next();
 });

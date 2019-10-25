@@ -20,7 +20,7 @@ const addNewNews = async (req: Request, res: Response) => {
     'date',
     'category',
     // 'image',
-    // 'description',
+    'description',
   ]);
   try {
     const newNews = new News(newBody);

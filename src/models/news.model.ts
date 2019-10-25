@@ -40,7 +40,7 @@ const NewsSchema: Schema = new Schema(
     },
 
     description: {
-      // required: true,
+      required: true,
       type: String, // JSON
     },
     image: {

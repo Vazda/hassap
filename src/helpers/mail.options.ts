@@ -14,10 +14,10 @@ const MAIL_OPTIONS = {
     lastName: string,
     email: string,
     street: string,
-    fax: string
+    fax: string,
   ) => ({
     // from: 'The CGN Team <no-reply@sandboxc77c3a9be90a494081dad1628d554337.mailgun.org>',
-    from: "The CGN Team <vazda18@gmail.com>",
+    from: 'The CGN Team <vazda18@gmail.com>',
     subject: `CGN Ticket`,
     text: `CGN Ticket`,
     html: `BestellformularBoxen-Paket Centre-Court – COLOGNE PEN 2020
@@ -76,7 +76,7 @@ const MAIL_OPTIONS = {
         die Bestimmungen dieses Bestellformulars Vorrang.Datum,
         Stempel & Unterschrift des Kunden:
         COLOGNE OPEN GmbH & Co. KG | Heumarkt 20 | DE-50667 KölnGeschäftsführung: COLOGNE OPEN Verwaltungs GmbH
-        | vertreten durch: Geschäftsführer Oliver MuellerHandelsregister Köln HRA 33996 | Sitz der Gesellschaft: Köln`
+        | vertreten durch: Geschäftsführer Oliver MuellerHandelsregister Köln HRA 33996 | Sitz der Gesellschaft: Köln`,
   }),
   // NEW_TICKET_EMAIL: (email: string) => ({
   //   from: 'The CGN Team',
@@ -95,9 +95,9 @@ const MAIL_OPTIONS = {
     lastName: string,
     email: string,
     street: string,
-    fax: string
+    fax: string,
   ) => ({
-    from: "The CGN Team",
+    from: 'The CGN Team',
     subject: `CGN Ticket`,
     text: `CGN Ticket`,
     html: `BestellformularLounge Partner-Paket – COLOGNE OPEN 2020
@@ -156,7 +156,7 @@ const MAIL_OPTIONS = {
               Datum, Stempel & Unterschrift des Kunden: ____________________________________________
               COLOGNE OPEN GmbH & Co. KG | Heumarkt 20 | DE-50667 KölnGeschäftsführung: COLOGNE OPEN
               Verwaltungs GmbH | vertreten durch: Geschäftsführer Oliver MuellerHandelsregister Köln
-              HRA 33996 | Sitz der Gesellschaft: Köln`
+              HRA 33996 | Sitz der Gesellschaft: Köln`,
   }),
   NEW_TICKET_BUSINESS: (
     company: string,
@@ -173,9 +173,9 @@ const MAIL_OPTIONS = {
     thursday: string,
     friday: string,
     saturday: string,
-    sunday: string
+    sunday: string,
   ) => ({
-    from: "The CGN Team",
+    from: 'The CGN Team',
     subject: `CGN Ticket`,
     text: `CGN Ticket`,
     html: `BestellformularBusiness Seats – COLOGNE OPEN 2020
@@ -218,44 +218,44 @@ BestellformularBusiness Seats – COLOGNE OPEN 2020Datum,
 Stempel & Unterschrift des Kunden: ____________________________________________
 COLOGNE OPEN GmbH & Co. KG | Heumarkt 20 | DE-50667 KölnGeschäftsführung:
 COLOGNE OPEN Verwaltungs GmbH | vertreten durch: Geschäftsführer Oliver MuellerHandelsregister
- Köln HRA 33996 | Sitz der Gesellschaft: Köln`
+ Köln HRA 33996 | Sitz der Gesellschaft: Köln`,
   }),
   NEW_NEWSLETTER_EMAIL: (email: string) => ({
-    from: "The CGN Team",
+    from: 'The CGN Team',
     subject: `CGN Newsletter`,
     text: `CGN Newsletter`,
     html: `Dear ${email}.
       CGN Newsletter TEMPLATE
       Thank You
-      The CGN Team`
+      The CGN Team`,
   }),
   NEW_NEWSLETTER_NAME: (firstName: string) => ({
-    from: "The CGN Team",
+    from: 'The CGN Team',
     subject: `CGN Newsletter`,
     text: `CGN Newsletter`,
     html: `Dear ${firstName}.
       CGN Newsletter TEMPLATE
       Thank You
-      The CGN Team`
+      The CGN Team`,
   }),
   NEW_CONTACT_NAME: (firstName: string) => ({
-    from: "The CGN Team",
+    from: 'The CGN Team',
     subject: `CGN Contact`,
     text: `CGN Contact`,
     html: `Dear ${firstName}.
       CGN Team received your form.
       Thank You
-      The CGN Team`
+      The CGN Team`,
   }),
   NEW_CONTACT_EMAIL: (email: string) => ({
-    from: "The CGN Team",
+    from: 'The CGN Team',
     subject: `CGN Contact`,
     text: `CGN Contact`,
     html: `Dear ${email}.
       CGN Team received your form.
       Thank You
-      The CGN Team`
-  })
+      The CGN Team`,
+  }),
 };
 
 export default MAIL_OPTIONS;

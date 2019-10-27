@@ -1,18 +1,18 @@
-import { Router } from "express";
-import passport from "passport";
-import news from "../controllers/news.controller";
+import { Router } from 'express';
+import passport from 'passport';
+import news from '../controllers/news.controller';
 
 const router = Router();
 
 router
-  .route("/")
+  .route('/')
   .get(
     // passport.authenticate('jwt', { session: false }),
-    news.getAllNews
+    news.getAllNews,
   )
   .post(
     // passport.authenticate('jwt', { session: false }),
-    news.addNewNews
+    news.addNewNews,
   );
 
 // router.route('/updateStatus/:id')
@@ -20,29 +20,29 @@ router
 //         passport.authenticate('jwt', { session: false }),
 //         news.updateStatus,
 //     );
-router.route("/saved").get(
+router.route('/saved').get(
   // passport.authenticate('jwt', { session: false }),
-  news.getAllSavedNews
+  news.getAllSavedNews,
 );
 
-router.route("/published").get(
+router.route('/published').get(
   // passport.authenticate('jwt', { session: false }),
-  news.getAllPublishedNews
+  news.getAllPublishedNews,
 );
 
 router
-  .route("/:newsId")
+  .route('/:newsId')
   .get(
     // passport.authenticate('jwt', { session: false }),
-    news.getNewsById
+    news.getNewsById,
   )
   .put(
     // passport.authenticate('jwt', { session: false }),
-    news.updateNews
+    news.updateNews,
   )
   .delete(
     // passport.authenticate('jwt', { session: false }),
-    news.deleteNews
+    news.deleteNews,
   );
 
 export default router;

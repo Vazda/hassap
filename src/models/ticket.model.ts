@@ -9,6 +9,7 @@ export interface ITicket extends Document {
   friday: boolean;
   saturday: boolean;
   sunday: boolean;
+  numberOfPackages: number;
   company: string;
   firstName?: string;
   lastName?: string;
@@ -53,6 +54,10 @@ const TicketSchema: Schema = new Schema(
     sunday: {
       type: Boolean,
       default: false,
+    },
+    numberOfPackages: {
+      required: false,
+      type: Number,
     },
     company: {
       type: String,

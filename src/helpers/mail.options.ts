@@ -15,6 +15,7 @@ const MAIL_OPTIONS = {
     email: string,
     street: string,
     fax: string,
+    numberOfPackages: number,
     createdAt: string,
   ) => ({
     // from: 'The CGN Team <no-reply@sandboxc77c3a9be90a494081dad1628d554337.mailgun.org>',
@@ -120,7 +121,7 @@ const MAIL_OPTIONS = {
                 margin-bottom:10px;padding:0;text-align:left">Hiermit bestellt der Kunde (siehe Ziffer 3)
                  bei der COLOGNE OPEN GmbH & Co. KG</p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;
                  font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;
-                 margin-bottom:10px;padding:0;padding-left:10px;text-align:left">_____ „Boxen-Paket(e) Center Court“*
+    margin-bottom:10px;padding:0;padding-left:10px;text-align:left">${numberOfPackages} Boxen-Paket(e) Center Court“*
                   zum Preis von € 10.500.- (zzgl. 19% MwSt.) / Turnier</p><p style="Margin:0;Margin-bottom:10px;color:
                   #0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:
                   0;margin-bottom:10px;padding:0;padding-left:10px;text-align:left">*ein Boxen-Paket Center Court
@@ -233,6 +234,7 @@ const MAIL_OPTIONS = {
     email: string,
     street: string,
     fax: string,
+    numberOfPackages: number,
     createdAt: string,
   ) => ({
     from: 'The CGN Team',
@@ -332,7 +334,7 @@ align="center" class="float-center">Lounge Partner-Paket – COLOGNE PEN 2020</h
         font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">Hiermit
          bestellt der Kunde (siehe Ziffer 3) bei der COLOGNE OPEN GmbH & Co. KG</p><p style="Margin:0;Margin-bottom:
          10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;
-         margin:0;margin-bottom:10px;padding:0;padding-left:10px;text-align:left">_____ „Lounge Partner-Paket(e)*“
+margin:0;margin-bottom:10px;padding:0;padding-left:10px;text-align:left">${numberOfPackages} Lounge Partner-Paket(e)*“
           zum Preis von € 24.360.- (zzgl. 19% MwSt.) / Turnier</p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;
           font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-bottom
           :10px;padding:0;padding-left:10px;text-align:left">*ein Lounge Partner-Paket beinhaltet folgende Leistungen

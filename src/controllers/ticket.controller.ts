@@ -26,6 +26,7 @@ const addNewTicket = async (req: Request, res: Response) => {
     'friday',
     'saturday',
     'sunday',
+    'numberOfPackages',
     'days',
     'company',
     'firstName',
@@ -74,6 +75,7 @@ const addNewTicket = async (req: Request, res: Response) => {
           newTicket.email,
           newTicket.street,
           newTicket.fax,
+          newTicket.numberOfPackages,
           moment(newTicket.createdAt).locale('de').format('DD MMMM YYYY'),
         ),
       });
@@ -89,6 +91,7 @@ const addNewTicket = async (req: Request, res: Response) => {
           newTicket.email,
           newTicket.street,
           newTicket.fax,
+          newTicket.numberOfPackages,
           moment(newTicket.createdAt).locale('de').format('DD MMMM YYYY'),
         ),
       });

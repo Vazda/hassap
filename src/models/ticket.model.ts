@@ -17,6 +17,7 @@ export interface ITicket extends Document {
   postalCode: string;
   phone: string;
   fax: string;
+  createdAt?: string;
 }
 
 const TicketSchema: Schema = new Schema(

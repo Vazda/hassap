@@ -15,6 +15,7 @@ const MAIL_OPTIONS = {
     email: string,
     street: string,
     fax: string,
+    createdAt: string,
   ) => ({
     // from: 'The CGN Team <no-reply@sandboxc77c3a9be90a494081dad1628d554337.mailgun.org>',
     from: 'The CGN Team <vazda18@gmail.com>',
@@ -165,65 +166,54 @@ const MAIL_OPTIONS = {
                                 bitte an die oben genannte Telefonnummer.</p><hr><h6 style="Margin:0;Margin-bottom:10px;
                                 color:inherit;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:700;
                                 line-height:1.3;margin:0;margin-bottom:10px;padding:0;padding-top:30px;text-align:
-                                left;word-wrap:normal">3. KUNDE, RECHNUNGS- / LIEFERANSCHRIFT</h6><table class="row"
-                                 style="border-collapse:collapse;border-spacing:0;display:table;padding:0;position:
-                                 relative;text-align:left;vertical-align:top;width:100%"><tbody><tr style="padding:0;
-                                 text-align:left;vertical-align:top"><th class="small-12 large-6 columns first" style
-                                 ="Margin:0 auto;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;
-                                 font-weight:400;line-height:1.3;margin:0 auto;padding:0;padding-bottom:16px;padding-
-                                 left:0!important;padding-right:0!important;text-align:left;width:50%"><table style="
-                                 border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:
-                                 top;width:100%"><tr style="padding:0;text-align:left;vertical-align:top"><th style=
-                                 "Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-
-                                 weight:400;line-height:1.3;margin:0;padding:0;text-align:left"><p style="Margin:0;
-                                 Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:
-                                 14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-
-                              align:left">Firma:${company}</p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-
-                                 family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;
-                        margin:0;margin-bottom:10px;padding:0;text-align:left">Name:${firstName}</p><p style="Margin:0;
-                                 Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:
-                                 14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-
-                          align:left">Vorname:${lastName}</p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-
-                                 family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;
-                          margin:0;margin-bottom:10px;padding:0;text-align:left">Straße:${street}</p></th></tr></table>
-                                 </th><th class="small-12 large-6 columns last" style="Margin:0 auto;color:#0a0a0a;
-                                 font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:
-                                 1.3;margin:0 auto;padding:0;padding-bottom:16px;padding-left:0!important;padding-
-                                 right:0!important;text-align:left;width:50%"><table style="border-collapse:collapse;
-                                 border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%"><tr style=
-                                 "padding:0;text-align:left;vertical-align:top"><th style="Margin:0;color:#0a0a0a;
-                                 font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:
-                                 1.3;margin:0;padding:0;text-align:left"><p style="Margin:0;Margin-bottom:10px;color
-                                 :#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;
-                          line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">PLZ, Ort:${postalCode}
-                                 </p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,
-                                 Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin
-                                 -bottom:10px;padding:0;text-align:left">Telefon:${phone}</p><p style="Margin:0;Margin-
-                                 bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;
-                                 font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:
-                            left">E-Mail:${email}</p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:
-                                 Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:
-                                 0;margin-bottom:10px;padding:0;text-align:left">Fax:${fax}</p></th></tr></table></th></
-                                 tr></tbody></table><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family
-                                 :Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin
-                                 :0;margin-bottom:10px;padding:0;text-align:left">Mit meiner Unterschrift bestätige
-                                  ich die Bestellung der aufgelisteten Business-Seat-Tickets und die Richtigkeit
-                                   der vorstehenden Angaben. Außerdem akzeptiere ich die Allgemeinen Ticket-
-                                   Geschäftsbedingungen (ATGB). Bei Widersprüchen zwischen den vorgenannten ATGBs
-                                    und den Bestimmungen dieses Bestellformulars haben die Bestimmungen dieses
-                                     Bestellformulars Vorrang.</p><p style="Margin:0;Margin-bottom:10px;color:
-                                     #0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight
-                                     :400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-                                     Datum, Stempel & Unterschrift des Kunden:</p><p style="Margin:0;Margin-bottom
-                                     :10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;
-                                     font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text
-                                     -align:left">____________________________________________</p></th></tr></
-                                     table></th></tr></tbody></table></td></tr></tbody></table></center></td><
-                                     /tr></table><!-- prevent Gmail on iOS font size manipulation --><div style
-                                     ="display:none;white-space:nowrap;font:15px courier;line-height:0">&nbsp;
-                                      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div></body></html>`,
+                                left;word-wrap:normal">3. KUNDE, RECHNUNGS- / LIEFERANSCHRIFT</h6>
+                          <table class="row" style="border-collapse:collapse;border-spacing:0;display:table;padding
+                               :0;position:relative;text-align:left;vertical-align:top;width:100%"><tbody><tr style="
+                          padding:0;text-align:left;vertical-align:top"><th class="small-12 large-6 columns first"
+                                style="Margin:0 auto;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px
+                               ;font-weight:400;line-height:1.3;margin:0 auto;padding:0;padding-bottom:16px;padding-left
+                              :0!important;padding-right:0!important;text-align:left;width:50%"><table style="border-
+                             collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:
+                             100%"><tr style="padding:0;text-align:left;vertical-align:top"><th style="Margin:0;color
+                          :#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height
+                          :1.3;margin:0;padding:0;text-align:left"><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;
+                  font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;
+              margin-bottom:10px;padding:0;text-align:left">Firma: ${company}</p><p style="Margin:0;Margin-bottom:10px;
+              color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:
+      1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">Name: ${firstName}</p><p style="Margin:0;Margin-bottom
+           :10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:
+    1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">Vorname: ${lastName}</p><p style="Margin:0;Margin-bottom
+      :10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:
+      1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">Straße: ${street}</p></th></tr></table></th><th class
+    ="small-12 large-6 columns last" style="Margin:0 auto;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif
+    ;font-size:14px;font-weight:400;line-height:1.3;margin:0 auto;padding:0;padding-bottom:16px;padding-left
+   :0!important;padding-right:0!important;text-align:left;width:50%"><table style="border-collapse:collapse
+    ;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%"><tr style="padding:0;text-align:
+    left;vertical-align:top"><th style="Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:
+    14px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left"><p style="Margin:0;Margin-bottom:10
+       px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin
+:0;margin-bottom:10px;padding:0;text-align:left">PLZ, Ort: ${postalCode}</p><p style="Margin:0;Margin-bottom:10px;color:
+      #0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin
+  -bottom:10px;padding:0;text-align:left">Telefon: ${phone}</p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-
+  family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;
+     padding:0;text-align:left">E-Mail: ${email}</p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:
+   Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;
+    padding:0;text-align:left">Fax: ${fax}</p></th></tr></table></th></tr></tbody></table><p style="Margin:0;Margin
+    -bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line
+   -height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">Mit meiner Unterschrift bestätige
+   ich die Bestellung der aufgelisteten Business-Seat-Tickets und die Richtigkeit der vorstehenden Angaben
+  . Außerdem akzeptiere ich die Allgemeinen Ticket-Geschäftsbedingungen (ATGB). Bei Widersprüchen zwischen
+   den vorgenannten ATGBs und den Bestimmungen dieses Bestellformulars haben die Bestimmungen dieses
+   Bestellformulars Vorrang.</p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica
+   ,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;
+   text-align:left">Datum, Stempel & Unterschrift des Kunden:</p><p style="Margin:0;Margin-bottom:10px;
+   color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;
+  margin:0;margin-bottom:10px;padding:0;text-align:left">${createdAt}, ____________________________________________
+  </p></th></tr></table></th></tr></tbody></table></td></tr></tbody></table></center></td></tr></table>
+   <!-- prevent Gmail on iOS font size manipulation --><div style="display:none;white-space:nowrap;font:
+  15px courier;line-height:0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div></body></html>`,
   }),
   // NEW_TICKET_EMAIL: (email: string) => ({
   //   from: 'The CGN Team',
@@ -243,6 +233,7 @@ const MAIL_OPTIONS = {
     email: string,
     street: string,
     fax: string,
+    createdAt: string,
   ) => ({
     from: 'The CGN Team',
     subject: `CGN Lounge Ticket`,
@@ -294,37 +285,41 @@ const MAIL_OPTIONS = {
     :1.3;margin:0;margin-bottom:10px;padding:0;text-align:center;word-wrap:normal" align="center" class="float-center">
     Bestellformular</h2><h4 style="Margin:0;Margin-bottom:10px;color:inherit;font-family:Helvetica,Arial,sans-serif;font
     -size:22px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:center;word-wrap:normal"
-     align="center" class="float-center">Lounge Partner-Paket – COLOGNE PEN 2020</h4></center></th><th class="expander"
-      style="Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1
-      .3;margin:0;padding:0!important;text-align:left;visibility:hidden;width:0"></th></tr></table></th></tr></tbody>
-      </table><hr style="margin:10px 10px"><table class="row" style="border-collapse:collapse;border-spacing:0;display
-      :table;padding:0;position:relative;text-align:left;vertical-align:top;width:100%"><tbody><tr style="padding:0;
-      text-align:left;vertical-align:top"><th class="small-12 large-6 columns first" style="Margin:0 auto;color:
-      #0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0 auto;
-      padding:0;padding-bottom:16px;padding-left:16px;padding-right:8px;text-align:left;width:274px"><table style="
-      border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%"><tr style=
-      "padding:0;text-align:left;vertical-align:top"><th style="Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,
-      sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left"><p style="
-      Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:
-      400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">COLOGNE OPEN GmbH & Co. KG</p><p
-       style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font
-       -weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">Heumarkt 20</p><p style=
-       "Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:
-       400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">DE-50667 Köln</p></th></tr></table>
-       </th><th class="small-12 large-6 columns last" style="Margin:0 auto;color:#0a0a0a;font-family:Helvetica,Arial
-       ,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0 auto;padding:0;padding-bottom:16px;padding
-       -left:8px;padding-right:16px;text-align:left;width:274px"><table style="border-collapse:collapse;border-spacing:
-       0;padding:0;text-align:left;vertical-align:top;width:100%"><tr style="padding:0;text-align:left;vertical-align:
-       top"><th style="Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;
-       line-height:1.3;margin:0;padding:0;text-align:left"><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-
-       family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;
-       padding:0;text-align:left">Telefon: +49 (0) 2208 – 921451 - 0</p><p style="Margin:0;Margin-bottom:10px;color:
-       #fff;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-
-       bottom:10px;padding:0;text-align:left">-</p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:
-       Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:
-       0;text-align:left">E-Mail: network@cgnopen.com</p></th></tr></table></th></tr></tbody></table><hr style="
-       margin:10px 10px"><table class="row" style="border-collapse:collapse;border-spacing:0;display:table;padding:
-       0;position:relative;text-align:left;vertical-align:top;width:100%"><tbody><tr style="padding:0;text-align:
+align="center" class="float-center">Lounge Partner-Paket – COLOGNE PEN 2020</h4></center></th><th class="expander"
+ style="Margin:0;color:#0a0a0a;font-family:
+     Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;padding:0!important;
+     text-align:left;visibility:hidden;width:0"></th></tr></table></th></tr></tbody></table><hr style="
+     margin:10px 10px"><table class="row" style="border-collapse:collapse;border-spacing:0;display:table;
+     padding:0;position:relative;text-align:left;vertical-align:top;width:100%"><tbody><tr style="padding:0;
+     text-align:left;vertical-align:top"><th class="small-12 large-6 columns first" style="Margin:0 auto;
+     color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;
+     margin:0 auto;padding:0;padding-bottom:16px;padding-left:16px;padding-right:8px;text-align:left;width:
+     274px"><table style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:
+     top;width:100%"><tr style="padding:0;text-align:left;vertical-align:top"><th style="Margin:0;color:
+     #0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;
+     padding:0;text-align:left"><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,
+     Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;
+     text-align:left">COLOGNE OPEN GmbH & Co. KG</p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;
+     font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;
+     margin-bottom:10px;padding:0;text-align:left">Heumarkt 20</p><p style="Margin:0;Margin-bottom:10px;
+     color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;
+     margin:0;margin-bottom:10px;padding:0;text-align:left">DE-50667 Köln</p></th></tr></table></th>
+     <th class="small-12 large-6 columns last" style="Margin:0 auto;color:#0a0a0a;font-family:Helvetica,
+     Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0 auto;padding:0;padding-bottom:
+     16px;padding-left:8px;padding-right:16px;text-align:left;width:274px"><table style="border-collapse:
+     collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%"><tr style="padding:0;
+     text-align:left;vertical-align:top"><th style="Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,
+     sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left">
+     <p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;
+     font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;
+     text-align:left">Telefon: +49 (0) 2208 – 921451 - 0</p><p style="Margin:0;Margin-bottom:10px;
+     color:#fff;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:
+     1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">-</p><p style="Margin:0;Margin-bottom:
+     10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:
+     1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">E-Mail: network@cgnopen.com</p></th></tr>
+     </table></th></tr></tbody></table><hr style="margin:10px 10px"><table class="row" style="border-collapse:
+     collapse;border-spacing:0;display:table;padding:0;position:relative;text-align:left;vertical-align:
+     top;width:100%"><tbody><tr style="padding:0;text-align:
        left;vertical-align:top"><th class="small-12 large-12 columns first last" style="Margin:0 auto;color:#0a0a0a;
        font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0 auto;padding:
        0;padding-bottom:16px;padding-left:16px;padding-right:16px;padding-top:30px;text-align:left;width:564px">
@@ -383,61 +378,54 @@ const MAIL_OPTIONS = {
                               sich bitte an die oben genannte Telefonnummer.</p><hr><h6 style="Margin:0;Margin-bottom
                               :10px;color:inherit;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:
                               700;line-height:1.3;margin:0;margin-bottom:10px;padding:0;padding-top:30px;text-align:
-                              left;word-wrap:normal">3. KUNDE, RECHNUNGS- / LIEFERANSCHRIFT</h6><table class="row"
-                               style="border-collapse:collapse;border-spacing:0;display:table;padding:0;position:
-                               relative;text-align:left;vertical-align:top;width:100%"><tbody><tr style="padding:0;
-                               text-align:left;vertical-align:top"><th class="small-12 large-6 columns first" style
-                               ="Margin:0 auto;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;
-                               font-weight:400;line-height:1.3;margin:0 auto;padding:0;padding-bottom:16px;padding-
-                               left:0!important;padding-right:0!important;text-align:left;width:50%"><table style="
-                               border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:
-                               top;width:100%"><tr style="padding:0;text-align:left;vertical-align:top"><th style="
-                               Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-
-                               weight:400;line-height:1.3;margin:0;padding:0;text-align:left"><p style="Margin:0;
-                               Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:
-                               14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:
-                            left">Firma:${company}</p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:
-                               Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0
-                          ;margin-bottom:10px;padding:0;text-align:left">Name:${firstName}</p><p style="Margin:0;Margin-
-                               bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font
-                               -weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-                        Vorname:${lastName}</p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:
-                        Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin
-                        -bottom:10px;padding:0;text-align:left">Straße:${street}</p></th></tr></table></th><th
-                         class="small-12 large-6 columns last" style="Margin:0 auto;color:#0a0a0a;font-family:
-                         Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0
-                          auto;padding:0;padding-bottom:16px;padding-left:0!important;padding-right:0!important;
-                          text-align:left;width:50%"><table style="border-collapse:collapse;border-spacing:0;padding
-                          :0;text-align:left;vertical-align:top;width:100%"><tr style="padding:0;text-align:left;
-                          vertical-align:top"><th style="Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,sans
-                          -serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left"
-                          ><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif
-                          ;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text
-                          -align:left">PLZ, Ort:${postalCode}</p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;
-                          font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:
-                  0;margin-bottom:10px;padding:0;text-align:left">Telefon:${phone}</p><p style="Margin:0;Margin-bottom:
-                          10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;
-                    line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">E-Mail:${email}</p><p style="
-                          Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:
-                          14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-                          Fax:${fax}</p></th></tr></table></th></tr></tbody></table><p style="Margin:0;Margin-bottom:
-                          10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;
-                          line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">Mit meiner
-                           Unterschrift bestätige ich die Bestellung der aufgelisteten Business-Seat-Tickets und die
-                            Richtigkeit der vorstehenden Angaben. Außerdem akzeptiere ich die Allgemeinen Ticket-
-                            Geschäftsbedingungen (ATGB). Bei Widersprüchen zwischen den vorgenannten ATGBs und den
-                             Bestimmungen dieses Bestellformulars haben die Bestimmungen dieses Bestellformulars Vorrang
-                             .</p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans
-                             -serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:
-                             0;text-align:left">Datum, Stempel & Unterschrift des Kunden:</p><p style="Margin:0;Margin-
-                             bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight
-                             :400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-                        ____________________________________________</p></th></tr></table></th></tr></tbody></table>
-            </td></tr></tbody></table></center></td></tr></table><!-- prevent Gmail on iOS font size
-            manipulation --><div style="display:none;white-space:nowrap;font:15px courier;line-height:0">&nbsp; &nbsp;
-             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
-              </body></html>`,
+                              left;word-wrap:normal">3. KUNDE, RECHNUNGS- / LIEFERANSCHRIFT</h6>
+                              <table class="row" style="border-collapse:collapse;border-spacing:0;display:table;padding
+                             :0;position:relative;text-align:left;vertical-align:top;width:100%"><tbody><tr style="
+                               padding:0;text-align:left;vertical-align:top"><th class="small-12 large-6 columns first"
+                              style="Margin:0 auto;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px
+                             ;font-weight:400;line-height:1.3;margin:0 auto;padding:0;padding-bottom:16px;padding-left
+                            :0!important;padding-right:0!important;text-align:left;width:50%"><table style="border-
+                           collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:
+                           100%"><tr style="padding:0;text-align:left;vertical-align:top"><th style="Margin:0;color
+                        :#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height
+                        :1.3;margin:0;padding:0;text-align:left"><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;
+                        font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;
+              margin-bottom:10px;padding:0;text-align:left">Firma: ${company}</p><p style="Margin:0;Margin-bottom:10px;
+                        color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:
+      1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">Name: ${firstName}</p><p style="Margin:0;Margin-bottom
+        :10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:
+    1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">Vorname: ${lastName}</p><p style="Margin:0;Margin-bottom
+          :10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:
+        1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">Straße: ${street}</p></th></tr></table></th><th class
+            ="small-12 large-6 columns last" style="Margin:0 auto;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif
+             ;font-size:14px;font-weight:400;line-height:1.3;margin:0 auto;padding:0;padding-bottom:16px;padding-left
+              :0!important;padding-right:0!important;text-align:left;width:50%"><table style="border-collapse:collapse
+             ;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%"><tr style="padding:0;text-align:
+            left;vertical-align:top"><th style="Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:
+            14px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left"><p style="Margin:0;Margin-bottom:10
+           px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin
+:0;margin-bottom:10px;padding:0;text-align:left">PLZ, Ort: ${postalCode}</p><p style="Margin:0;Margin-bottom:10px;color:
+    #0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin
+  -bottom:10px;padding:0;text-align:left">Telefon: ${phone}</p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-
+   family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;
+         padding:0;text-align:left">E-Mail: ${email}</p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:
+            Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;
+      padding:0;text-align:left">Fax: ${fax}</p></th></tr></table></th></tr></tbody></table><p style="Margin:0;Margin
+     -bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line
+     -height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">Mit meiner Unterschrift bestätige
+    ich die Bestellung der aufgelisteten Business-Seat-Tickets und die Richtigkeit der vorstehenden Angaben
+    . Außerdem akzeptiere ich die Allgemeinen Ticket-Geschäftsbedingungen (ATGB). Bei Widersprüchen zwischen
+    den vorgenannten ATGBs und den Bestimmungen dieses Bestellformulars haben die Bestimmungen dieses
+    Bestellformulars Vorrang.</p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica
+   ,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;
+   text-align:left">Datum, Stempel & Unterschrift des Kunden:</p><p style="Margin:0;Margin-bottom:10px;
+   color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;
+    margin:0;margin-bottom:10px;padding:0;text-align:left">${createdAt}, ____________________________________________
+    </p></th></tr></table></th></tr></tbody></table></td></tr></tbody></table></center></td></tr></table>
+    <!-- prevent Gmail on iOS font size manipulation --><div style="display:none;white-space:nowrap;font:
+    15px courier;line-height:0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div></body></html>`,
   }),
   NEW_TICKET_BUSINESS: (
     company: string,
@@ -455,6 +443,7 @@ const MAIL_OPTIONS = {
     friday: string,
     saturday: string,
     sunday: string,
+    createdAt: string,
   ) => ({
     from: 'The CGN Team',
     subject: `CGN Business Ticket`,
@@ -509,35 +498,39 @@ const MAIL_OPTIONS = {
       inherit;font-family:Helvetica,Arial,sans-serif;font-size:22px;font-weight:400;line-height:1.3;margin:0;margin
       -bottom:10px;padding:0;text-align:center;word-wrap:normal" align="center" class="float-center"> Business Seats
       – COLOGNE PEN 2020</h4></center></th><th class="expander" style="Margin:0;color:#0a0a0a;font-family:
-      Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;padding:0!important;text-
-      align:left;visibility:hidden;width:0"></th></tr></table></th></tr></tbody></table><hr style="margin:10px 10px">
-      <table class="row" style="border-collapse:collapse;border-spacing:0;display:table;padding:0;position:relative;
-      text-align:left;vertical-align:top;width:100%"><tbody><tr style="padding:0;text-align:left;vertical-align:top">
-      <th class="small-12 large-6 columns first" style="Margin:0 auto;color:#0a0a0a;font-family:Helvetica,Arial,sans-
-      serif;font-size:14px;font-weight:400;line-height:1.3;margin:0 auto;padding:0;padding-bottom:16px;padding-left:
-      16px;padding-right:8px;text-align:left;width:274px"><table style="border-collapse:collapse;border-spacing:0;
-      padding:0;text-align:left;vertical-align:top;width:100%"><tr style="padding:0;text-align:left;vertical-align:top">
-      <th style="Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-
-      height:1.3;margin:0;padding:0;text-align:left"><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family
-      :Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:
-      0;text-align:left">COLOGNE OPEN GmbH & Co. KG</p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family
-      :Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0
-      ;text-align:left">Heumarkt 20</p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial
-      ,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-      DE-50667 Köln</p></th></tr></table></th><th class="small-12 large-6 columns last" style="Margin:0 auto;color
-      :#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0 auto;
-      padding:0;padding-bottom:16px;padding-left:8px;padding-right:16px;text-align:left;width:274px"><table style="
-      border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%"><tr style
-      ="padding:0;text-align:left;vertical-align:top"><th style="Margin:0;color:#0a0a0a;font-family:Helvetica,Arial
-      ,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left"><p style="Margin:
-      0;Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-
-      height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">Telefon: +49 (0) 2208 – 921451 - 0</p><p style=
-      "Margin:0;Margin-bottom:10px;color:#fff;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line
-      -height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">-</p><p style="Margin:0;Margin-bottom:10px;
-      color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;
-      margin-bottom:10px;padding:0;text-align:left">E-Mail: network@cgnopen.com</p></th></tr></table></th></tr>
-      </tbody></table><hr style="margin:10px 10px"><table class="row" style="border-collapse:collapse;border-spacing:
-      0;display:table;padding:0;position:relative;text-align:left;vertical-align:top;width:100%"><tbody><tr style="
+               Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;padding:0!important;
+               text-align:left;visibility:hidden;width:0"></th></tr></table></th></tr></tbody></table><hr style="
+               margin:10px 10px"><table class="row" style="border-collapse:collapse;border-spacing:0;display:table;
+               padding:0;position:relative;text-align:left;vertical-align:top;width:100%"><tbody><tr style="padding:0;
+               text-align:left;vertical-align:top"><th class="small-12 large-6 columns first" style="Margin:0 auto;
+               color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;
+               margin:0 auto;padding:0;padding-bottom:16px;padding-left:16px;padding-right:8px;text-align:left;width:
+               274px"><table style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:
+               top;width:100%"><tr style="padding:0;text-align:left;vertical-align:top"><th style="Margin:0;color:
+               #0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;
+               padding:0;text-align:left"><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,
+               Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;
+               text-align:left">COLOGNE OPEN GmbH & Co. KG</p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;
+               font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;
+               margin-bottom:10px;padding:0;text-align:left">Heumarkt 20</p><p style="Margin:0;Margin-bottom:10px;
+               color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;
+               margin:0;margin-bottom:10px;padding:0;text-align:left">DE-50667 Köln</p></th></tr></table></th>
+               <th class="small-12 large-6 columns last" style="Margin:0 auto;color:#0a0a0a;font-family:Helvetica,
+               Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0 auto;padding:0;padding-bottom:
+               16px;padding-left:8px;padding-right:16px;text-align:left;width:274px"><table style="border-collapse:
+               collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%"><tr style="padding:0;
+               text-align:left;vertical-align:top"><th style="Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,
+               sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left">
+               <p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;
+               font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;
+               text-align:left">Telefon: +49 (0) 2208 – 921451 - 0</p><p style="Margin:0;Margin-bottom:10px;
+               color:#fff;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:
+               1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">-</p><p style="Margin:0;Margin-bottom:
+               10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:
+               1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">E-Mail: network@cgnopen.com</p></th></tr>
+               </table></th></tr></tbody></table><hr style="margin:10px 10px"><table class="row" style="border-collapse:
+               collapse;border-spacing:0;display:table;padding:0;position:relative;text-align:left;vertical-align:
+               top;width:100%"><tbody><tr style="
       padding:0;text-align:left;vertical-align:top"><th class="small-12 large-12 columns first last" style="Margin:0
        auto;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;
        margin:0 auto;padding:0;padding-bottom:16px;padding-left:16px;padding-right:16px;padding-top:30px;text-align:
@@ -561,12 +554,13 @@ const MAIL_OPTIONS = {
           10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height
           :1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">Für folgende Tage (genaue Anzahl der Pakete
              pro jeweiligem Tag bitte eintragen):</p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-
-             family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:700;line-height:1.3;margin:0;margin-
-             bottom:10px;padding:0;text-align:left">Montag ${monday}, Dienstag ${tuesday}, Mittwoch ${wednesday},
-              Donnerstag ${thursday}, Freitag ${friday}, Samstag ${saturday}, Sonntag ${sunday}
+  family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:700;line-height:1.3;margin:0;margin-bottom:10px;padding:
+  0;text-align:left">${monday ? '<b><u>Montag<u/></b>' : ''}  ${tuesday ? '<b><u>Dienstag<u/></b>' : ''}  ${wednesday ?
+  '<b><u>Mittwoch<u/></b>' : ''}  ${thursday ? '<b><u>Donnerstag<u/></b>' : ''}  ${friday ? '<b><u>Freitag<u/></b>' :
+   ''}  ${saturday ? '<b><u>Samstag<u/></b>' : ''}  ${sunday ? '<b><u>Sonntag<u/></b>' : ''}
              </p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,
             sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text
-            -align:left">Bitte senden Sie uns das ausgefüllte und unterschriebene Bestellformular als
+                              -align:left">Bitte senden Sie uns das ausgefüllte und unterschriebene Bestellformular als
              eingescanntesDokument per E-Mail an die oben genannte E-Mail Adresse zurück. Die Bestätigungerfolgt
               durch Rücksendung der Auftragsbestätigung per E-Mail an die durch den Kunden in Ziffer 3
                angegebene E-Mail Adresse.</p><h6 style="Margin:0;Margin-bottom:10px;color:inherit;font-family:
@@ -587,57 +581,57 @@ const MAIL_OPTIONS = {
                    an den Kunden versendet. Sollte noch kein Zahlungseingang erfolgt sein, oder die Versendung
                     aus Zeitgründen nicht mehr möglich sein, werden die Business-Seat Tickets zur Abholung an
               der Hinterlegungskasse des Turniergeländes am gewählten Veranstaltungstag hinterlegt. Für
-               Rückfragen wenden Sie sich bitte an die oben genannte Telefonnummer.</p><hr><h6 style="
-              Margin:0;Margin-bottom:10px;color:inherit;font-family:Helvetica,Arial,sans-serif;font-
-              size:16px;font-weight:700;line-height:1.3;margin:0;margin-bottom:10px;padding:0;padding
-              -top:30px;text-align:left;word-wrap:normal">3. KUNDE, RECHNUNGS- / LIEFERANSCHRIFT</h6>
-             <table class="row" style="border-collapse:collapse;border-spacing:0;display:table;padding
-            :0;position:relative;text-align:left;vertical-align:top;width:100%"><tbody><tr style="
-              padding:0;text-align:left;vertical-align:top"><th class="small-12 large-6 columns first"
-             style="Margin:0 auto;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px
-            ;font-weight:400;line-height:1.3;margin:0 auto;padding:0;padding-bottom:16px;padding-left
-           :0!important;padding-right:0!important;text-align:left;width:50%"><table style="border-
-          collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:
-          100%"><tr style="padding:0;text-align:left;vertical-align:top"><th style="Margin:0;color
-       :#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height
-       :1.3;margin:0;padding:0;text-align:left"><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;
-       font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;
-       margin-bottom:10px;padding:0;text-align:left">Firma:${company}</p><p style="Margin:0;Margin-bottom:10px;
-       color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:
-       1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">Name:${firstName}</p><p style="Margin:0;Margin-bottom
-       :10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:
-  1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">Vorname:${lastName}</p><p style="Margin:0;Margin-bottom
-       :10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:
-       1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">Straße:${street}</p></th></tr></table></th><th class
-       ="small-12 large-6 columns last" style="Margin:0 auto;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif
-       ;font-size:14px;font-weight:400;line-height:1.3;margin:0 auto;padding:0;padding-bottom:16px;padding-left
-       :0!important;padding-right:0!important;text-align:left;width:50%"><table style="border-collapse:collapse
-       ;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%"><tr style="padding:0;text-align:
-       left;vertical-align:top"><th style="Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:
-       14px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left"><p style="Margin:0;Margin-bottom:10
-       px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin
-:0;margin-bottom:10px;padding:0;text-align:left">PLZ, Ort:${postalCode}</p><p style="Margin:0;Margin-bottom:10px;color:
-       #0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin
-  -bottom:10px;padding:0;text-align:left">Telefon:${phone}</p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-
-       family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;
-       padding:0;text-align:left">E-Mail:${email}</p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:
-       Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;
-       padding:0;text-align:left">Fax:${fax}</p></th></tr></table></th></tr></tbody></table><p style="Margin:0;Margin
-       -bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line
-       -height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">Mit meiner Unterschrift bestätige
-        ich die Bestellung der aufgelisteten Business-Seat-Tickets und die Richtigkeit der vorstehenden Angaben
-        . Außerdem akzeptiere ich die Allgemeinen Ticket-Geschäftsbedingungen (ATGB). Bei Widersprüchen zwischen
-         den vorgenannten ATGBs und den Bestimmungen dieses Bestellformulars haben die Bestimmungen dieses
-          Bestellformulars Vorrang.</p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica
-          ,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;
-          text-align:left">Datum, Stempel & Unterschrift des Kunden:</p><p style="Margin:0;Margin-bottom:10px;
-          color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;
-          margin:0;margin-bottom:10px;padding:0;text-align:left">____________________________________________
-          </p></th></tr></table></th></tr></tbody></table></td></tr></tbody></table></center></td></tr></table>
-          <!-- prevent Gmail on iOS font size manipulation --><div style="display:none;white-space:nowrap;font:
-          15px courier;line-height:0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-           &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div></body></html>`,
+          Rückfragen wenden Sie sich bitte an die oben genannte Telefonnummer.</p><hr><h6 style="Margin:0;Margin-bottom
+               :10px;color:inherit;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:
+               700;line-height:1.3;margin:0;margin-bottom:10px;padding:0;padding-top:30px;text-align:
+               left;word-wrap:normal">3. KUNDE, RECHNUNGS- / LIEFERANSCHRIFT</h6>
+               <table class="row" style="border-collapse:collapse;border-spacing:0;display:table;padding
+              :0;position:relative;text-align:left;vertical-align:top;width:100%"><tbody><tr style="
+                padding:0;text-align:left;vertical-align:top"><th class="small-12 large-6 columns first"
+               style="Margin:0 auto;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px
+              ;font-weight:400;line-height:1.3;margin:0 auto;padding:0;padding-bottom:16px;padding-left
+             :0!important;padding-right:0!important;text-align:left;width:50%"><table style="border-
+            collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:
+            100%"><tr style="padding:0;text-align:left;vertical-align:top"><th style="Margin:0;color
+         :#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height
+         :1.3;margin:0;padding:0;text-align:left"><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;
+         font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;
+margin-bottom:10px;padding:0;text-align:left">Firma: ${company}</p><p style="Margin:0;Margin-bottom:10px;
+         color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:
+1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">Name: ${firstName}</p><p style="Margin:0;Margin-bottom
+:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:
+1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">Vorname: ${lastName}</p><p style="Margin:0;Margin-bottom
+:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:
+1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">Straße: ${street}</p></th></tr></table></th><th class
+="small-12 large-6 columns last" style="Margin:0 auto;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif
+;font-size:14px;font-weight:400;line-height:1.3;margin:0 auto;padding:0;padding-bottom:16px;padding-left
+:0!important;padding-right:0!important;text-align:left;width:50%"><table style="border-collapse:collapse
+;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%"><tr style="padding:0;text-align:
+left;vertical-align:top"><th style="Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:
+14px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left"><p style="Margin:0;Margin-bottom:10
+px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin
+:0;margin-bottom:10px;padding:0;text-align:left">PLZ, Ort: ${postalCode}</p><p style="Margin:0;Margin-bottom:10px;color:
+#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin
+-bottom:10px;padding:0;text-align:left">Telefon: ${phone}</p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-
+family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;
+padding:0;text-align:left">E-Mail: ${email}</p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:
+Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;
+padding:0;text-align:left">Fax: ${fax}</p></th></tr></table></th></tr></tbody></table><p style="Margin:0;Margin
+-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line
+-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">Mit meiner Unterschrift bestätige
+ich die Bestellung der aufgelisteten Business-Seat-Tickets und die Richtigkeit der vorstehenden Angaben
+. Außerdem akzeptiere ich die Allgemeinen Ticket-Geschäftsbedingungen (ATGB). Bei Widersprüchen zwischen
+den vorgenannten ATGBs und den Bestimmungen dieses Bestellformulars haben die Bestimmungen dieses
+Bestellformulars Vorrang.</p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica
+,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;
+text-align:left">Datum, Stempel & Unterschrift des Kunden:</p><p style="Margin:0;Margin-bottom:10px;
+color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;
+margin:0;margin-bottom:10px;padding:0;text-align:left">${createdAt}, ____________________________________________
+</p></th></tr></table></th></tr></tbody></table></td></tr></tbody></table></center></td></tr></table>
+<!-- prevent Gmail on iOS font size manipulation --><div style="display:none;white-space:nowrap;font:
+15px courier;line-height:0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div></body></html>`,
   }),
   NEW_NEWSLETTER_EMAIL: (email: string) => ({
     from: 'The CGN Team',

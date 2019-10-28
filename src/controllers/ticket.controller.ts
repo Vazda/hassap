@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import _ from 'lodash';
+import moment from 'moment';
 import { generateError } from '../adapters/response';
 import transporter, { MAIL_OPTIONS } from '../helpers/transporter.options';
 import Ticket from '../models/ticket.model';
@@ -38,6 +39,7 @@ const addNewTicket = async (req: Request, res: Response) => {
   try {
     const newTicket = new Ticket(newBody);
     await newTicket.save();
+
     if (req.body.package === 'Business') {
       await transporter.sendMail({
         to: req.body.email,
@@ -57,6 +59,7 @@ const addNewTicket = async (req: Request, res: Response) => {
           req.body.friday,
           req.body.saturday,
           req.body.sunday,
+          moment(newTicket.createdAt).locale('de').format('DD MMMM YYYY'),
         ),
       });
     } else if (req.body.package === 'Center') {
@@ -71,6 +74,7 @@ const addNewTicket = async (req: Request, res: Response) => {
           newTicket.email,
           newTicket.street,
           newTicket.fax,
+          moment(newTicket.createdAt).locale('de').format('DD MMMM YYYY'),
         ),
       });
     } else if (req.body.package === 'Lounge') {
@@ -85,6 +89,7 @@ const addNewTicket = async (req: Request, res: Response) => {
           newTicket.email,
           newTicket.street,
           newTicket.fax,
+          moment(newTicket.createdAt).locale('de').format('DD MMMM YYYY'),
         ),
       });
     }

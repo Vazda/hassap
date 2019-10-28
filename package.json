@@ -65,6 +65,7 @@
     "jsonwebtoken": "^8.5.1",
     "lint-staged": "^8.1.7",
     "lodash": "^4.17.11",
+    "moment": "^2.24.0",
     "mongoose": "^5.5.11",
     "nodemailer": "^6.2.1",
     "nodemon": "^1.19.0",

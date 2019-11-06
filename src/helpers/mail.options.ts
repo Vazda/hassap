@@ -121,7 +121,7 @@ const MAIL_OPTIONS = {
                 margin-bottom:10px;padding:0;text-align:left">Hiermit bestellt der Kunde (siehe Ziffer 3)
                  bei der COLOGNE OPEN GmbH & Co. KG</p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;
                  font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;
-    margin-bottom:10px;padding:0;padding-left:10px;text-align:left">${numberOfPackages} Boxen-Paket(e) Center Court“*
+    margin-bottom:10px;padding:0;padding-left:10px;text-align:left">${numberOfPackages} Boxen-Paket(e) Center Court
                   zum Preis von € 10.500.- (zzgl. 19% MwSt.) / Turnier</p><p style="Margin:0;Margin-bottom:10px;color:
                   #0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:
                   0;margin-bottom:10px;padding:0;padding-left:10px;text-align:left">*ein Boxen-Paket Center Court
@@ -334,7 +334,7 @@ align="center" class="float-center">Lounge Partner-Paket – COLOGNE PEN 2020</h
         font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">Hiermit
          bestellt der Kunde (siehe Ziffer 3) bei der COLOGNE OPEN GmbH & Co. KG</p><p style="Margin:0;Margin-bottom:
          10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;
-margin:0;margin-bottom:10px;padding:0;padding-left:10px;text-align:left">${numberOfPackages} Lounge Partner-Paket(e)*“
+margin:0;margin-bottom:10px;padding:0;padding-left:10px;text-align:left">${numberOfPackages} Lounge Partner-Paket(e)“
           zum Preis von € 24.360.- (zzgl. 19% MwSt.) / Turnier</p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;
           font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-bottom
           :10px;padding:0;padding-left:10px;text-align:left">*ein Lounge Partner-Paket beinhaltet folgende Leistungen
@@ -438,6 +438,7 @@ margin:0;margin-bottom:10px;padding:0;padding-left:10px;text-align:left">${numbe
     email: string,
     street: string,
     fax: string,
+    numberOfPackages: number,
     monday: string,
     tuesday: string,
     wednesday: string,
@@ -546,7 +547,7 @@ margin:0;margin-bottom:10px;padding:0;padding-left:10px;text-align:left">${numbe
        bottom:10px;padding:0;text-align:left">Hiermit bestellt der Kunde (siehe Ziffer 3) bei der COLOGNE OPEN
         GmbH & Co. KG</p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-
         serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;padding-left:
-        10px;text-align:left">_____ „Business-Seat Pakete á zwei Seats*“ zum Preis von € 390.- (zzgl. 19% MwSt.)
+  10px;text-align:left">${numberOfPackages} Business-Seat Pakete á zwei Seats“ zum Preis von € 390.- (zzgl. 19% MwSt.)
          / Tag</p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font
          -size:14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;padding-left:10px;text-
          align:left">*je zwei komfortable Sitzplätze am Center Court inkl. Zugänge zum Hospitality-Bereich, ein

@@ -57,6 +57,7 @@ const addNewTicket = async (req: Request, res: Response) => {
           newTicket.email,
           newTicket.street,
           newTicket.fax,
+          newTicket.numberOfPackages,
           req.body.monday,
           req.body.tuesday,
           req.body.wednesday,

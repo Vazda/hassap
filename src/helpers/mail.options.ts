@@ -16,10 +16,10 @@ const MAIL_OPTIONS = {
     street: string,
     fax: string,
     numberOfPackages: number,
-    createdAt: string
+    createdAt: string,
   ) => ({
     // from: 'The CGN Team <no-reply@sandboxc77c3a9be90a494081dad1628d554337.mailgun.org>',
-    from: "The CGN Team <vazda18@gmail.com>",
+    from: 'The CGN Team <vazda18@gmail.com>',
     subject: `CGN Center Ticket`,
     text: `CGN Ticket`,
     html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/
@@ -214,16 +214,16 @@ const MAIL_OPTIONS = {
    <!-- prevent Gmail on iOS font size manipulation --><div style="display:none;white-space:nowrap;font:
   15px courier;line-height:0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div></body></html>`
+                               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div></body></html>`,
   }),
   NEW_TICKET_USER: (email: string) => ({
-    from: "The CGN Team",
+    from: 'The CGN Team',
     subject: `CGN Ticket`,
     text: `CGN Ticket`,
     html: `Dear ${email}.
       Thank You for buying ticket for CGN tournament!
       We will contact you soon.
-      The CGN Team`
+      The CGN Team`,
   }),
   NEW_TICKET_LOUNGE: (
     company: string,
@@ -235,9 +235,9 @@ const MAIL_OPTIONS = {
     street: string,
     fax: string,
     numberOfPackages: number,
-    createdAt: string
+    createdAt: string,
   ) => ({
-    from: "The CGN Team",
+    from: 'The CGN Team',
     subject: `CGN Lounge Ticket`,
     text: `CGN Ticket`,
     html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1
@@ -427,7 +427,7 @@ margin:0;margin-bottom:10px;padding:0;padding-left:10px;text-align:left">${numbe
     <!-- prevent Gmail on iOS font size manipulation --><div style="display:none;white-space:nowrap;font:
     15px courier;line-height:0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div></body></html>`
+                             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div></body></html>`,
   }),
   NEW_TICKET_BUSINESS: (
     company: string,
@@ -445,9 +445,9 @@ margin:0;margin-bottom:10px;padding:0;padding-left:10px;text-align:left">${numbe
     friday: string,
     saturday: string,
     sunday: string,
-    createdAt: string
+    createdAt: string,
   ) => ({
-    from: "The CGN Team",
+    from: 'The CGN Team',
     subject: `CGN Business Ticket`,
     text: `CGN Ticket`,
     html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-
@@ -557,13 +557,13 @@ margin:0;margin-bottom:10px;padding:0;padding-left:10px;text-align:left">${numbe
           :1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">Für folgende Tage (genaue Anzahl der Pakete
              pro jeweiligem Tag bitte eintragen):</p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-
   family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:700;line-height:1.3;margin:0;margin-bottom:10px;padding:
-  0;text-align:left">${monday ? "<b><u>Montag<u/></b>" : ""}  ${
-      tuesday ? "<b><u>Dienstag<u/></b>" : ""
-    }  ${wednesday ? "<b><u>Mittwoch<u/></b>" : ""}  ${
-      thursday ? "<b><u>Donnerstag<u/></b>" : ""
-    }  ${friday ? "<b><u>Freitag<u/></b>" : ""}  ${
-      saturday ? "<b><u>Samstag<u/></b>" : ""
-    }  ${sunday ? "<b><u>Sonntag<u/></b>" : ""}
+  0;text-align:left">${monday ? '<b><u>Montag<u/></b>' : ''}  ${
+      tuesday ? '<b><u>Dienstag<u/></b>' : ''
+    }  ${wednesday ? '<b><u>Mittwoch<u/></b>' : ''}  ${
+      thursday ? '<b><u>Donnerstag<u/></b>' : ''
+    }  ${friday ? '<b><u>Freitag<u/></b>' : ''}  ${
+      saturday ? '<b><u>Samstag<u/></b>' : ''
+    }  ${sunday ? '<b><u>Sonntag<u/></b>' : ''}
              </p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,
             sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text
                               -align:left">Bitte senden Sie uns das ausgefüllte und unterschriebene Bestellformular als
@@ -637,44 +637,44 @@ margin:0;margin-bottom:10px;padding:0;text-align:left">${createdAt}, ___________
 <!-- prevent Gmail on iOS font size manipulation --><div style="display:none;white-space:nowrap;font:
 15px courier;line-height:0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div></body></html>`
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div></body></html>`,
   }),
   NEW_NEWSLETTER_EMAIL: (email: string) => ({
-    from: "The CGN Team",
+    from: 'The CGN Team',
     subject: `CGN Newsletter`,
     text: `CGN Newsletter`,
     html: `Dear ${email}.
       CGN Newsletter TEMPLATE
       Thank You
-      The CGN Team`
+      The CGN Team`,
   }),
   NEW_NEWSLETTER_NAME: (firstName: string) => ({
-    from: "The CGN Team",
+    from: 'The CGN Team',
     subject: `CGN Newsletter`,
     text: `CGN Newsletter`,
     html: `Dear ${firstName}.
       CGN Newsletter TEMPLATE
       Thank You
-      The CGN Team`
+      The CGN Team`,
   }),
   NEW_CONTACT_NAME: (firstName: string) => ({
-    from: "The CGN Team",
+    from: 'The CGN Team',
     subject: `CGN Contact`,
     text: `CGN Contact`,
     html: `Dear ${firstName}.
       CGN Team received your form.
       Thank You
-      The CGN Team`
+      The CGN Team`,
   }),
   NEW_CONTACT_EMAIL: (email: string) => ({
-    from: "The CGN Team",
+    from: 'The CGN Team',
     subject: `CGN Contact`,
     text: `CGN Contact`,
     html: `Dear ${email}.
       CGN Team received your form.
       Thank You
-      The CGN Team`
-  })
+      The CGN Team`,
+  }),
 };
 
 export default MAIL_OPTIONS;

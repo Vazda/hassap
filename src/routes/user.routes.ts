@@ -1,33 +1,33 @@
-import { Router } from "express";
-import passport from "passport";
-import user from "../controllers/user.controller";
-import middleware from "../middleware/middleware";
+import { Router } from 'express';
+import passport from 'passport';
+import user from '../controllers/user.controller';
+import middleware from '../middleware/middleware';
 
 const router = Router();
 
 router
-  .route("/")
+  .route('/')
   .get(user.getAllUsers)
   .post(user.addNewUser);
 
-router.route("/me").get(
-  passport.authenticate("jwt", { session: false }),
+router.route('/me').get(
+  passport.authenticate('jwt', { session: false }),
   // (req, res, next) => middleware(req, res, next, ['admin', 'user', 'worker']),
-  user.getMe
+  user.getMe,
 );
 router
-  .route("/:userId")
+  .route('/:userId')
   .get(
     // passport.authenticate('jwt', { session: false }),
-    user.getUserById
+    user.getUserById,
   )
   .put(
     // passport.authenticate('jwt', { session: false }),
-    user.updateUser
+    user.updateUser,
   )
   .delete(
     // passport.authenticate('jwt', { session: false }),
-    user.deleteUser
+    user.deleteUser,
   );
 
 export default router;

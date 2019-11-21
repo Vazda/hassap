@@ -22,10 +22,16 @@ export interface IUser extends Document {
   validatePassword: (password: string) => boolean;
   removeSensitiveData: () => any;
   address: string;
-  // role: 'user' | 'admin';
+  role: 'user' | 'admin';
 }
 
-export const USER_SAFE_FIELDS = ['_id', 'email', 'firstName', 'lastName'];
+export const USER_SAFE_FIELDS = [
+  '_id',
+  'email',
+  'firstName',
+  'lastName',
+  'role',
+];
 
 const userSchema: Schema = new Schema(
   {
@@ -69,12 +75,13 @@ const userSchema: Schema = new Schema(
     passwordToken: {
       type: String,
     },
+    role: {
+      type: String,
+      enum: ['admin', 'user'],
+      default: 'user',
+    },
   },
-  // role: {
-  //   type: String,
-  //   enum: ['admin', 'user'],
-  //   default: 'user',
-  // },
+
   { timestamps: true },
 );
 

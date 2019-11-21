@@ -1,3 +1,4 @@
+import { string } from 'joi';
 import mongoose, { Document, Model, Schema } from 'mongoose';
 import { IImage } from './image.model';
 export interface INews extends Document {
@@ -9,12 +10,20 @@ export interface INews extends Document {
   published: boolean;
   description: string;
   image: string;
+  firstName: string;
+  lastName: string;
 }
 
 const NewsSchema: Schema = new Schema(
   {
     title: {
       required: true,
+      type: String,
+    },
+    firstName: {
+      type: String,
+    },
+    lastName: {
       type: String,
     },
     // date: {

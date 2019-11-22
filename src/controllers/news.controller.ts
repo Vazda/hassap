@@ -47,8 +47,7 @@ const addNewNews = async (req: Request, res: Response) => {
     'category',
     // 'image',
     'description',
-    'firstName',
-    'lastName',
+    'createdBy',
   ]);
   try {
     const newNews = new News(newBody);

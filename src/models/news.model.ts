@@ -20,10 +20,7 @@ const NewsSchema: Schema = new Schema(
       required: true,
       type: String,
     },
-    firstName: {
-      type: String,
-    },
-    lastName: {
+    createdBy: {
       type: String,
     },
     // date: {

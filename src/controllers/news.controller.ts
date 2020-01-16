@@ -1,7 +1,7 @@
-import { Request, Response } from 'express';
-import _ from 'lodash';
-import { generateError, generateResponse } from '../adapters/response';
-import News from '../models/news.model';
+import { Request, Response } from "express";
+import _ from "lodash";
+import { generateError, generateResponse } from "../adapters/response";
+import News from "../models/news.model";
 
 const getAllNews = async (req: Request, res: Response) => {
   try {
@@ -10,44 +10,63 @@ const getAllNews = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(404)
-      .send({ msg: generateError('Error fetching News'), error: e });
+      .send({ msg: generateError("Error fetching News"), error: e });
+  }
+};
+
+const searchAllNews = async (req: Request, res: Response) => {
+  const { query } = req.params;
+
+  try {
+    const filteredNews = await News.find({
+      $or: [
+        { title: { $regex: query, $options: "i" } },
+        { description: { $regex: query, $options: "i" } }
+      ]
+    });
+
+    return res.send(filteredNews);
+  } catch (e) {
+    return res
+      .status(404)
+      .send({ msg: generateError("Error searching News"), error: e });
   }
 };
 
 const getAllSavedNews = async (req: Request, res: Response) => {
   try {
     const allSavedNews = await News.find({
-      saved: true,
+      saved: true
     });
     return res.send(allSavedNews);
   } catch (e) {
     return res
       .status(404)
-      .send({ msg: generateError('Error fetching Saved News'), error: e });
+      .send({ msg: generateError("Error fetching Saved News"), error: e });
   }
 };
 
 const getAllPublishedNews = async (req: Request, res: Response) => {
   try {
     const allPublishedNews = await News.find({
-      published: true,
+      published: true
     });
     return res.send(allPublishedNews);
   } catch (e) {
     return res
       .status(404)
-      .send({ msg: generateError('Error fetching Published News'), error: e });
+      .send({ msg: generateError("Error fetching Published News"), error: e });
   }
 };
 
 const addNewNews = async (req: Request, res: Response) => {
   const newBody = _.pick(req.body, [
-    'title',
+    "title",
     // 'date',
-    'category',
+    "category",
     // 'image',
-    'description',
-    'createdBy',
+    "description",
+    "createdBy"
   ]);
   try {
     const newNews = new News(newBody);
@@ -56,7 +75,7 @@ const addNewNews = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(404)
-      .send({ msg: generateError('Error saving News'), error: e });
+      .send({ msg: generateError("Error saving News"), error: e });
   }
 };
 
@@ -69,25 +88,25 @@ const getNewsById = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(404)
-      .send({ msg: generateError('Error fetching news'), error: e });
+      .send({ msg: generateError("Error fetching news"), error: e });
   }
 };
 
 const updateNews = async (req: Request, res: Response) => {
   const { newsId } = req.params;
-  const newBody = _.pick(req.body, ['title', 'category', 'description']);
+  const newBody = _.pick(req.body, ["title", "category", "description"]);
   try {
     const news = await News.findOneAndUpdate(
       { _id: newsId },
       { $set: req.body },
-      { new: true },
+      { new: true }
     );
 
     return res.send(news);
   } catch (e) {
     return res
       .status(500)
-      .send({ msg: generateError('Error updating News'), error: e });
+      .send({ msg: generateError("Error updating News"), error: e });
   }
 };
 
@@ -101,7 +120,7 @@ const deleteNews = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(500)
-      .send({ msg: generateError('Error removing News'), error: e });
+      .send({ msg: generateError("Error removing News"), error: e });
   }
 };
 
@@ -113,6 +132,7 @@ const NewsController = {
   getNewsById,
   deleteNews,
   updateNews,
+  searchAllNews
 };
 
 export default NewsController;

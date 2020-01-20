@@ -44,11 +44,7 @@ const addNewTicket = async (req: Request, res: Response) => {
     if (req.body.package === 'Business') {
       await transporter.sendMail({
         to: req.body.email,
-        MAIL_OPTION: MAIL_OPTIONS.NEW_TICKET_USER(newTicket.email),
-      });
-      await transporter.sendMail({
-        to: req.body.email,
-        MAIL_OPTION: MAIL_OPTIONS.NEW_TICKET_BUSINESS(
+        MAIL_OPTION: MAIL_OPTIONS.TICKETS_REGISTRATION_BUSSINES(
           newTicket.company,
           newTicket.postalCode,
           newTicket.firstName,
@@ -70,14 +66,17 @@ const addNewTicket = async (req: Request, res: Response) => {
             .format('DD MMMM YYYY'),
         ),
       });
+      await transporter.sendMail({
+        to: req.body.email,
+        MAIL_OPTION: MAIL_OPTIONS.VIP_TICKETS(
+          newTicket.firstName,
+          newTicket.lastName,
+        ),
+      });
     } else if (req.body.package === 'Center') {
       await transporter.sendMail({
         to: req.body.email,
-        MAIL_OPTION: MAIL_OPTIONS.NEW_TICKET_USER(newTicket.email),
-      });
-      await transporter.sendMail({
-        to: req.body.email,
-        MAIL_OPTION: MAIL_OPTIONS.NEW_TICKET_CENTER(
+        MAIL_OPTION: MAIL_OPTIONS.TICKETS_REGISTRATION_CENTER(
           newTicket.company,
           newTicket.postalCode,
           newTicket.firstName,
@@ -92,14 +91,17 @@ const addNewTicket = async (req: Request, res: Response) => {
             .format('DD MMMM YYYY'),
         ),
       });
+      await transporter.sendMail({
+        to: req.body.email,
+        MAIL_OPTION: MAIL_OPTIONS.VIP_TICKETS(
+          newTicket.firstName,
+          newTicket.lastName,
+        ),
+      });
     } else if (req.body.package === 'Lounge') {
       await transporter.sendMail({
         to: req.body.email,
-        MAIL_OPTION: MAIL_OPTIONS.NEW_TICKET_USER(newTicket.email),
-      });
-      await transporter.sendMail({
-        to: req.body.email,
-        MAIL_OPTION: MAIL_OPTIONS.NEW_TICKET_LOUNGE(
+        MAIL_OPTION: MAIL_OPTIONS.TICKETS_REGISTRATION_LOUNGE(
           newTicket.company,
           newTicket.postalCode,
           newTicket.firstName,
@@ -112,6 +114,13 @@ const addNewTicket = async (req: Request, res: Response) => {
           moment(newTicket.createdAt)
             .locale('de')
             .format('DD MMMM YYYY'),
+        ),
+      });
+      await transporter.sendMail({
+        to: req.body.email,
+        MAIL_OPTION: MAIL_OPTIONS.VIP_TICKETS(
+          newTicket.firstName,
+          newTicket.lastName,
         ),
       });
     }

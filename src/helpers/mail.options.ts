@@ -8,7 +8,7 @@ export interface IMailOption {
 const MAIL_OPTIONS = {
   VIP_TICKETS: (firstName: string, lastName: string) => ({
     // from: 'The CGN Team <no-reply@sandboxc77c3a9be90a494081dad1628d554337.mailgun.org>',
-    from: 'The CGN Team <vazda18@gmail.com>',
+    from: "The CGN Team <vazda18@gmail.com>",
     subject: `VIP-Karten Bestelleingang`,
     text: `CGN Ticket`,
     html: `${firstName} ${lastName},
@@ -22,7 +22,7 @@ const MAIL_OPTIONS = {
       mit  atemberaubenden  Ballwechseln  und spannenden  Matches.  Doch  nicht  nur  auf  dem Court stehen die COLOGNE OPEN
       für Extraklasse, sondern auch daneben: Lassen Sie sich von unserem exklusiven Gourmet-Catering verwöhnen, erleben Sie
       „Kölsches Tennistainment“ im Büdchendorf und genießen Sie dabei Tennis der Weltklasse!
-      `,
+      `
   }),
   TICKETS_REGISTRATION_LOUNGE: (
     company: string,
@@ -34,9 +34,9 @@ const MAIL_OPTIONS = {
     street: string,
     fax: string,
     numberOfPackages: number,
-    createdAt: string,
+    createdAt: string
   ) => ({
-    from: 'The CGN Team',
+    from: "The CGN Team",
     subject: `Ticket Registration Lounge`,
     text: `CGN Ticket`,
     html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1
@@ -103,7 +103,7 @@ margin:0;margin-bottom:10px;padding:0;text-align:left">${numberOfPackages} Loung
     <!-- prevent Gmail on iOS font size manipulation --><div style="display:none;white-space:nowrap;font:
     15px courier;line-height:0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div></body></html>`,
+                             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div></body></html>`
   }),
   TICKETS_REGISTRATION_CENTER: (
     email: string,
@@ -115,9 +115,9 @@ margin:0;margin-bottom:10px;padding:0;text-align:left">${numberOfPackages} Loung
     street: string,
     fax: string,
     numberOfPackages: number,
-    createdAt: string,
+    createdAt: string
   ) => ({
-    from: 'The CGN Team',
+    from: "The CGN Team",
     subject: `Ticket Registration Center`,
     text: `CGN Ticket`,
     html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1
@@ -184,7 +184,7 @@ margin:0;margin-bottom:10px;padding:0;text-align:left">${numberOfPackages} Cente
     <!-- prevent Gmail on iOS font size manipulation --><div style="display:none;white-space:nowrap;font:
     15px courier;line-height:0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div></body></html>`,
+                             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div></body></html>`
   }),
   TICKETS_REGISTRATION_BUSSINES: (
     company: string,
@@ -203,9 +203,9 @@ margin:0;margin-bottom:10px;padding:0;text-align:left">${numberOfPackages} Cente
     friday: string,
     saturday: string,
     sunday: string,
-    createdAt: string,
+    createdAt: string
   ) => ({
-    from: 'The CGN Team',
+    from: "The CGN Team",
     subject: `Ticket Registration Business`,
     text: `CGN Ticket`,
     html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-
@@ -272,13 +272,13 @@ padding:0;text-align:left">Fax: ${fax}</p></th></tr></table></th></tr></tbody></
           :1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">Für folgende Tage:
           </p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-
   family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:700;line-height:1.3;margin:0;margin-bottom:10px;padding:
-  0;text-align:left">${monday ? '<b><u>Montag<u/></b>' : ''}  ${
-      tuesday ? '<b><u>Dienstag<u/></b>' : ''
-    }  ${wednesday ? '<b><u>Mittwoch<u/></b>' : ''}  ${
-      thursday ? '<b><u>Donnerstag<u/></b>' : ''
-    }  ${friday ? '<b><u>Freitag<u/></b>' : ''}  ${
-      saturday ? '<b><u>Samstag<u/></b>' : ''
-    }  ${sunday ? '<b><u>Sonntag<u/></b>' : ''}
+  0;text-align:left">${monday ? "<b><u>Montag<u/></b>" : ""}  ${
+      tuesday ? "<b><u>Dienstag<u/></b>" : ""
+    }  ${wednesday ? "<b><u>Mittwoch<u/></b>" : ""}  ${
+      thursday ? "<b><u>Donnerstag<u/></b>" : ""
+    }  ${friday ? "<b><u>Freitag<u/></b>" : ""}  ${
+      saturday ? "<b><u>Samstag<u/></b>" : ""
+    }  ${sunday ? "<b><u>Sonntag<u/></b>" : ""}
 <p style="Margin:0;Margin-bottom:10px;
 color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;
 margin:0;margin-bottom:10px;padding:0;text-align:left">${createdAt}
@@ -286,16 +286,13 @@ margin:0;margin-bottom:10px;padding:0;text-align:left">${createdAt}
 <!-- prevent Gmail on iOS font size manipulation --><div style="display:none;white-space:nowrap;font:
 15px courier;line-height:0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div></body></html>`,
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div></body></html>`
   }),
   NEW_NEWSLETTER_EMAIL: (email: string) => ({
-    from: 'The CGN Team',
+    from: "The CGN Team",
     subject: `Newsletter Bestellung:`,
     text: `CGN Newsletter`,
-    html: `Dear ${email},
-      <br>
-      <br>
-      herzlich Willkommen bei den COLOGNE OPEN!
+    html: `Herzlich Willkommen bei den COLOGNE OPEN!
       <br>
       <br>
       Wir freuen uns, über Ihr Interesse an unserem Turnier. Durch die Newsletter-Anmeldung werden Sie ab jetzt mit allen
@@ -306,16 +303,13 @@ margin:0;margin-bottom:10px;padding:0;text-align:left">${createdAt}
       Sie wollen nicht nur News zum Turnier, sondern die internationale Weltelite des Damentennis hautnah erleben?  Dann
       schauen  Sie  gerne  in  unserem  Ticketshop  vorbei.  Mit  unserer  Ticket-Pre-Registration haben  Sie  sogar  die
       Möglichkeit,  sich  bereits  exklusiv  vor  dem  offiziellen  Ticketverkauf  und  damit  vorallen anderen, Tickets für
-      ein Top5-Outdoor-Turnier der WTA-Tour in Europa, die COLOGNE OPEN, zu sichern.`,
+      ein Top5-Outdoor-Turnier der WTA-Tour in Europa, die COLOGNE OPEN, zu sichern.`
   }),
   NEW_NEWSLETTER_NAME: (firstName: string) => ({
-    from: 'The CGN Team',
+    from: "The CGN Team",
     subject: `Newsletter Bestellung:`,
     text: `CGN Newsletter`,
-    html: `Dear ${firstName},
-      <br>
-      <br>
-      herzlich Willkommen bei den COLOGNE OPEN!
+    html: `Herzlich Willkommen bei den COLOGNE OPEN!
       <br>
       <br>
       Wir freuen uns, über Ihr Interesse an unserem Turnier. Durch die Newsletter-Anmeldung werden Sie ab jetzt mit
@@ -326,13 +320,13 @@ margin:0;margin-bottom:10px;padding:0;text-align:left">${createdAt}
       Sie wollen nicht nur News zum Turnier, sondern die internationale Weltelite des Damentennis hautnah erleben?  Dann
       schauen  Sie  gerne  in  unserem  Ticketshop  vorbei.  Mit  unserer  Ticket-Pre-Registration haben  Sie  sogar  die
       Möglichkeit,  sich  bereits  exklusiv  vor  dem  offiziellen  Ticketverkauf  und  damit  vorallen anderen, Tickets
-      für ein Top5-Outdoor-Turnier der WTA-Tour in Europa, die COLOGNE OPEN, zu sichern. `,
+      für ein Top5-Outdoor-Turnier der WTA-Tour in Europa, die COLOGNE OPEN, zu sichern. `
   }),
-  NEW_CONTACT_NAME: (firstName: string) => ({
-    from: 'The CGN Team',
+  NEW_CONTACT: (firstName: string, lastName: string) => ({
+    from: "The CGN Team",
     subject: `Anfrage über Kontaktformular`,
     text: `CGN Contact`,
-    html: `Dear ${firstName},
+    html: `Hallo ${firstName} ${lastName},
       <br>
       <br>
       vielen  Dank  für  Ihre  Nachricht  und  Ihr  Interesse  an  den  COLOGNE  OPEN.  Wir  werden  Ihre  Anfrage
@@ -341,13 +335,28 @@ margin:0;margin-bottom:10px;padding:0;text-align:left">${createdAt}
       <br>
       Interesse  an  Tickets?  Dann  schauen  Sie  doch  in  der Zwischenzeit  schon  mal hier  (TICKETLINK EINFÜGEN)
       in  unserem  Ticketshop  vorbei.  Seien  Sie  dabei,  wenn  die  internationale  Weltelite  des Damentennis unter
-      dem Motto Dom-Satz-Sieg in der Domstadt aufschlägt und erleben Sie echte Asse hautnah!   `,
+      dem Motto Dom-Satz-Sieg in der Domstadt aufschlägt und erleben Sie echte Asse hautnah!   `
   }),
-  NEW_CONTACT_EMAIL: (email: string) => ({
-    from: 'The CGN Team',
+  NEW_CONTACT_NAME: (firstName: string) => ({
+    from: "The CGN Team",
     subject: `Anfrage über Kontaktformular`,
     text: `CGN Contact`,
-    html: `Dear ${email}.
+    html: `Hallo ${firstName},
+      <br>
+      <br>
+      vielen  Dank  für  Ihre  Nachricht  und  Ihr  Interesse  an  den  COLOGNE  OPEN.  Wir  werden  Ihre  Anfrage
+       schnellstmöglich beantworten.
+      <br>
+      <br>
+      Interesse  an  Tickets?  Dann  schauen  Sie  doch  in  der Zwischenzeit  schon  mal hier  (TICKETLINK EINFÜGEN)
+      in  unserem  Ticketshop  vorbei.  Seien  Sie  dabei,  wenn  die  internationale  Weltelite  des Damentennis unter
+      dem Motto Dom-Satz-Sieg in der Domstadt aufschlägt und erleben Sie echte Asse hautnah!   `
+  }),
+  NEW_CONTACT_EMAIL: (email: string) => ({
+    from: "The CGN Team",
+    subject: `Anfrage über Kontaktformular`,
+    text: `CGN Contact`,
+    html: `Hallo ${email}.
       <br>
       <br>
       vielen  Dank  für  Ihre  Nachricht  und  Ihr  Interesse  an  den  COLOGNE  OPEN.  Wir  werden  Ihre
@@ -356,8 +365,8 @@ margin:0;margin-bottom:10px;padding:0;text-align:left">${createdAt}
       <br>
       Interesse  an  Tickets?  Dann  schauen  Sie  doch  in  der Zwischenzeit  schon  mal hier  (TICKETLINK EINFÜGEN)
       in  unserem  Ticketshop  vorbei.  Seien  Sie  dabei,  wenn  die  internationale  Weltelite  des Damentennis unter
-      dem Motto Dom-Satz-Sieg in der Domstadt aufschlägt und erleben Sie echte Asse hautnah!  `,
-  }),
+      dem Motto Dom-Satz-Sieg in der Domstadt aufschlägt und erleben Sie echte Asse hautnah!  `
+  })
 };
 
 export default MAIL_OPTIONS;

@@ -1,11 +1,9 @@
-import { string } from 'joi';
-import mongoose, { Document, Model, Schema } from 'mongoose';
-import { IImage } from './image.model';
+import mongoose, { Document, Model, Schema } from "mongoose";
+
 export interface INews extends Document {
   title: string;
   date: Date;
   category: string;
-  // status?: 'saved' | 'published';
   saved: boolean;
   published: boolean;
   description: string;
@@ -18,60 +16,37 @@ const NewsSchema: Schema = new Schema(
   {
     title: {
       required: true,
-      type: String,
+      type: String
     },
     createdBy: {
-      type: String,
+      type: String
     },
-    // date: {
-    //   required: true,
-    //   type: Date,
-    // },
     category: {
       required: true,
-      type: String,
+      type: String
     },
-    // status: {
-    //   required: true,
-    //   type: String,
-    //   default: '',
-    // },
     saved: {
       type: Boolean,
-      default: false,
+      default: false
     },
     published: {
       type: Boolean,
-      default: false,
+      default: false
     },
-
     description: {
       required: true,
-      type: String, // JSON
+      type: String
     },
     image: {
-      // required: false,
-      type: String,
-    },
+      type: String
+    }
   },
-  { timestamps: true },
+  { timestamps: true }
 );
 
 const News: Model<INews> = mongoose.model<INews, Model<INews>>(
-  'News',
-  NewsSchema,
+  "News",
+  NewsSchema
 );
 
 export default News;
-
-// NEWSSSSS
-
-// datum,
-// title,
-// desc HTML,
-// image,
-// category,
-// status: SAVED, OBJAVLJEN
-
-// DASH SVI,
-// LANDING PAGE SAMO OBJAVLJENI,

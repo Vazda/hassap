@@ -8,7 +8,7 @@ export interface IMailOption {
 const MAIL_OPTIONS = {
   VIP_TICKETS: (firstName: string, lastName: string) => ({
     // from: 'The CGN Team <no-reply@sandboxc77c3a9be90a494081dad1628d554337.mailgun.org>',
-    from: 'The CGN Team <vazda18@gmail.com>',
+    from: "The CGN Team <vazda18@gmail.com>",
     subject: `VIP-Karten Bestelleingang`,
     text: `CGN Ticket`,
     html: `<!DOCTYPE html>
@@ -23,28 +23,29 @@ body {
 }
 
 .background {
-  background-image: url("/assets/cover-image.png")
+  background-image: url("https://i.imgur.com/PnDzu3t.png")
 }
 </style>
 </head>
 <body>
-<div class="background" style="width:100%;height:167px;background-color:black;"></div>
+<div class="background" style="width:100%;height:167px;"></div>
 <div style="width:207px;height:98px;position:absolute;top:117px;left:54vh;background-color:white;box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.16);">
-<img style="width:71px;height:68px;margin-top:15px;margin-right:30px;" src="/assets/wta.png" alt="Avatar">
-<img style="width:69px;height:68px;margin-top: 15px;" src="/assets/cgn.png" alt="Avatar">
+<img style="width:71px;height:68px;margin-top:15px;margin-right:30px;" src="../assets/wta.png" alt="Avatar">
+<img style="width:69px;height:68px;margin-top: 15px;" src="../assets/cgn.png" alt="Avatar">
 </div>
-<img src="/assets/cover-image.png" alt="Avatar" style="width:207px;height:98px;position:absolute;top:117px;left:54vh;">
+
+<img src="https://i.imgur.com/PnDzu3t.png" alt="Avatar" style="width:207px;height:98px;position:absolute;top:117px;left:54vh;">
 <div style="margin-left:35px;margin-right:35px;margin-top:100px;height:40vh;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#eeeeee">
 <p style="font-size:17px;font-weight:900;font-style:italic;line-height:1.24;text-align:left;">vielen Dank für Ihr Interesse an unserem WTA International Rheinland. Wir haben Ihre Bestellung erhalten und werden diese schnellstmöglich bearbeiten. </p>
 <p style="font-size:15px;line-height:1.33;text-align:left;">Als Top5-Outdoor-Turnier der WTA-Tour in Europa versprechen die COLOGNE OPEN internationales Spitzentennis mit atemberaubenden Ballwechseln und spannenden Matches. Doch nicht nur auf dem Court stehen die COLOGNE OPEN für Extraklasse, sondern auch daneben: Lassen Sie sich von unserem exklusiven Gourmet-Catering verwöhnen, erleben Sie „Kölsches Tennistainment“ im Büdchendorf und genießen Sie dabei Tennis der Weltklasse! </p>
 </div>
 <div style="position:absolute;bottom:110px;margin-left:54vh;">
-<img src="/assets/twitter.svg" alt="Avatar" style="width:33px;height:33px;border-radius:30px;margin-right:19px;">
-<img src="/assets/twitter.svg" alt="Avatar" style="width:33px;height:33px;border-radius:30px;margin-right:19px;">
-<img src="/assets/twitter.svg" alt="Avatar" style="width:33px;height:33px;border-radius:30px;">
+<img src="../assets/twitter.svg" alt="Avatar" style="width:33px;height:33px;border-radius:30px;margin-right:19px;">
+<img src="../assets/twitter.svg" alt="Avatar" style="width:33px;height:33px;border-radius:30px;margin-right:19px;">
+<img src="../assets/twitter.svg" alt="Avatar" style="width:33px;height:33px;border-radius:30px;">
 </div>
 <div style="width:100%;height:41.5px;background-color:#eeeeee;position:absolute;bottom:41.5px;">
-<img src="/assets/impressum.svg" alt="Avatar" style="width:17px;height:20px;margin-right:10px;margin-top:13px;">
+<img src="../assets/impressum.svg" alt="Avatar" style="width:17px;height:20px;margin-right:10px;margin-top:13px;">
 <a href="http://cologne-open.herokuapp.com/impressum" style="color:black;font-size:15px;text-decoration:none;line-height:1.07;">Impressum und Datenschutz</a>
 </div>
 <div style="width:100%;height:41.5px;background-color:#eeeeee;position:absolute;bottom:0px;text-align:center">
@@ -54,7 +55,7 @@ body {
 </html>
 
 
-      `,
+      `
   }),
   TICKETS_REGISTRATION_LOUNGE: (
     company: string,
@@ -66,9 +67,9 @@ body {
     street: string,
     fax: string,
     numberOfPackages: number,
-    createdAt: string,
+    createdAt: string
   ) => ({
-    from: 'The CGN Team',
+    from: "The CGN Team",
     subject: `Ticket Registration Lounge`,
     text: `CGN Ticket`,
     html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1
@@ -135,7 +136,7 @@ margin:0;margin-bottom:10px;padding:0;text-align:left">${numberOfPackages} Loung
     <!-- prevent Gmail on iOS font size manipulation --><div style="display:none;white-space:nowrap;font:
     15px courier;line-height:0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div></body></html>`,
+                             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div></body></html>`
   }),
   TICKETS_REGISTRATION_CENTER: (
     email: string,
@@ -147,9 +148,9 @@ margin:0;margin-bottom:10px;padding:0;text-align:left">${numberOfPackages} Loung
     street: string,
     fax: string,
     numberOfPackages: number,
-    createdAt: string,
+    createdAt: string
   ) => ({
-    from: 'The CGN Team',
+    from: "The CGN Team",
     subject: `Ticket Registration Center`,
     text: `CGN Ticket`,
     html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1
@@ -216,7 +217,7 @@ margin:0;margin-bottom:10px;padding:0;text-align:left">${numberOfPackages} Cente
     <!-- prevent Gmail on iOS font size manipulation --><div style="display:none;white-space:nowrap;font:
     15px courier;line-height:0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div></body></html>`,
+                             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div></body></html>`
   }),
   TICKETS_REGISTRATION_BUSSINES: (
     company: string,
@@ -235,9 +236,9 @@ margin:0;margin-bottom:10px;padding:0;text-align:left">${numberOfPackages} Cente
     friday: string,
     saturday: string,
     sunday: string,
-    createdAt: string,
+    createdAt: string
   ) => ({
-    from: 'The CGN Team',
+    from: "The CGN Team",
     subject: `Ticket Registration Business`,
     text: `CGN Ticket`,
     html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-
@@ -304,13 +305,13 @@ padding:0;text-align:left">Fax: ${fax}</p></th></tr></table></th></tr></tbody></
           :1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">Für folgende Tage:
           </p><p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-
   family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:700;line-height:1.3;margin:0;margin-bottom:10px;padding:
-  0;text-align:left">${monday ? '<b><u>Montag<u/></b>' : ''}  ${
-      tuesday ? '<b><u>Dienstag<u/></b>' : ''
-    }  ${wednesday ? '<b><u>Mittwoch<u/></b>' : ''}  ${
-      thursday ? '<b><u>Donnerstag<u/></b>' : ''
-    }  ${friday ? '<b><u>Freitag<u/></b>' : ''}  ${
-      saturday ? '<b><u>Samstag<u/></b>' : ''
-    }  ${sunday ? '<b><u>Sonntag<u/></b>' : ''}
+  0;text-align:left">${monday ? "<b><u>Montag<u/></b>" : ""}  ${
+      tuesday ? "<b><u>Dienstag<u/></b>" : ""
+    }  ${wednesday ? "<b><u>Mittwoch<u/></b>" : ""}  ${
+      thursday ? "<b><u>Donnerstag<u/></b>" : ""
+    }  ${friday ? "<b><u>Freitag<u/></b>" : ""}  ${
+      saturday ? "<b><u>Samstag<u/></b>" : ""
+    }  ${sunday ? "<b><u>Sonntag<u/></b>" : ""}
 <p style="Margin:0;Margin-bottom:10px;
 color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;
 margin:0;margin-bottom:10px;padding:0;text-align:left">${createdAt}
@@ -318,10 +319,10 @@ margin:0;margin-bottom:10px;padding:0;text-align:left">${createdAt}
 <!-- prevent Gmail on iOS font size manipulation --><div style="display:none;white-space:nowrap;font:
 15px courier;line-height:0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div></body></html>`,
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div></body></html>`
   }),
   NEW_NEWSLETTER_EMAIL: (email: string) => ({
-    from: 'The CGN Team',
+    from: "The CGN Team",
     subject: `Newsletter Bestellung:`,
     text: `CGN Newsletter`,
     html: `<!DOCTYPE html>
@@ -364,10 +365,10 @@ Sie wollen nicht nur News zum Turnier, sondern die internationale Weltelite des 
 <p style="color:black;font-size:15px;text-decoration:none;line-height:1.07;">@ 2020 cgnopen. All rights reserved.</p>
 </div>
 </body>
-</html>`,
+</html>`
   }),
   NEW_NEWSLETTER_NAME: (firstName: string) => ({
-    from: 'The CGN Team',
+    from: "The CGN Team",
     subject: `Newsletter Bestellung:`,
     text: `CGN Newsletter`,
     html: `<!DOCTYPE html>
@@ -410,10 +411,10 @@ Sie wollen nicht nur News zum Turnier, sondern die internationale Weltelite des 
 <p style="color:black;font-size:15px;text-decoration:none;line-height:1.07;">@ 2020 cgnopen. All rights reserved.</p>
 </div>
 </body>
-</html>`,
+</html>`
   }),
   NEW_CONTACT: (firstName: string, lastName: string) => ({
-    from: 'The CGN Team',
+    from: "The CGN Team",
     subject: `Anfrage über Kontaktformular`,
     text: `CGN Contact`,
     html: `<!DOCTYPE html>
@@ -452,10 +453,10 @@ body {
 <p style="color:black;font-size:15px;text-decoration:none;line-height:1.07;">@ 2020 cgnopen. All rights reserved.</p>
 </div>
 </body>
-</html>`,
+</html>`
   }),
   NEW_CONTACT_NAME: (firstName: string) => ({
-    from: 'The CGN Team',
+    from: "The CGN Team",
     subject: `Anfrage über Kontaktformular`,
     text: `CGN Contact`,
     html: `<!DOCTYPE html>
@@ -494,10 +495,10 @@ body {
 <p style="color:black;font-size:15px;text-decoration:none;line-height:1.07;">@ 2020 cgnopen. All rights reserved.</p>
 </div>
 </body>
-</html>`,
+</html>`
   }),
   NEW_CONTACT_EMAIL: (email: string) => ({
-    from: 'The CGN Team',
+    from: "The CGN Team",
     subject: `Anfrage über Kontaktformular`,
     text: `CGN Contact`,
     html: `<!DOCTYPE html>
@@ -536,8 +537,8 @@ body {
 <p style="color:black;font-size:15px;text-decoration:none;line-height:1.07;">@ 2020 cgnopen. All rights reserved.</p>
 </div>
 </body>
-</html>`,
-  }),
+</html>`
+  })
 };
 
 export default MAIL_OPTIONS;

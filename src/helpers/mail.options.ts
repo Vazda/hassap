@@ -30,22 +30,20 @@ body {
 <body>
 <div class="background" style="width:100%;height:167px;"></div>
 <div style="width:207px;height:98px;position:absolute;top:117px;left:54vh;background-color:white;box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.16);">
-<img style="width:71px;height:68px;margin-top:15px;margin-right:30px;" src="../assets/wta.png" alt="Avatar">
-<img style="width:69px;height:68px;margin-top: 15px;" src="../assets/cgn.png" alt="Avatar">
+<img style="width:71px;height:68px;margin-top:15px;margin-right:30px;" src="https://i.imgur.com/P3zDdep.png" alt="wta">
+<img style="width:69px;height:68px;margin-top: 15px;" src="https://i.imgur.com/EJRegRC.png" alt="cgn">
 </div>
-
-<img src="https://i.imgur.com/PnDzu3t.png" alt="Avatar" style="width:207px;height:98px;position:absolute;top:117px;left:54vh;">
 <div style="margin-left:35px;margin-right:35px;margin-top:100px;height:40vh;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#eeeeee">
 <p style="font-size:17px;font-weight:900;font-style:italic;line-height:1.24;text-align:left;">vielen Dank für Ihr Interesse an unserem WTA International Rheinland. Wir haben Ihre Bestellung erhalten und werden diese schnellstmöglich bearbeiten. </p>
 <p style="font-size:15px;line-height:1.33;text-align:left;">Als Top5-Outdoor-Turnier der WTA-Tour in Europa versprechen die COLOGNE OPEN internationales Spitzentennis mit atemberaubenden Ballwechseln und spannenden Matches. Doch nicht nur auf dem Court stehen die COLOGNE OPEN für Extraklasse, sondern auch daneben: Lassen Sie sich von unserem exklusiven Gourmet-Catering verwöhnen, erleben Sie „Kölsches Tennistainment“ im Büdchendorf und genießen Sie dabei Tennis der Weltklasse! </p>
 </div>
 <div style="position:absolute;bottom:110px;margin-left:54vh;">
-<img src="../assets/twitter.svg" alt="Avatar" style="width:33px;height:33px;border-radius:30px;margin-right:19px;">
-<img src="../assets/twitter.svg" alt="Avatar" style="width:33px;height:33px;border-radius:30px;margin-right:19px;">
-<img src="../assets/twitter.svg" alt="Avatar" style="width:33px;height:33px;border-radius:30px;">
+<img src="https://i.imgur.com/lqU1l6u.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;margin-right:19px;">
+<img src="https://i.imgur.com/lqU1l6u.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;margin-right:19px;">
+<img src="https://i.imgur.com/lqU1l6u.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;">
 </div>
 <div style="width:100%;height:41.5px;background-color:#eeeeee;position:absolute;bottom:41.5px;">
-<img src="../assets/impressum.svg" alt="Avatar" style="width:17px;height:20px;margin-right:10px;margin-top:13px;">
+<img src="https://i.imgur.com/6MQpeiL.png" alt="Avatar" style="width:17px;height:20px;margin-right:10px;margin-top:13px;">
 <a href="http://cologne-open.herokuapp.com/impressum" style="color:black;font-size:15px;text-decoration:none;line-height:1.07;">Impressum und Datenschutz</a>
 </div>
 <div style="width:100%;height:41.5px;background-color:#eeeeee;position:absolute;bottom:0px;text-align:center">
@@ -335,13 +333,17 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
 }
+
+.background {
+  background-image: url("https://i.imgur.com/PnDzu3t.png")
+}
 </style>
 </head>
 <body>
-<div style="width:100%;height:167px;background-color:black;"></div>
+<div class="background" style="width:100%;height:167px;"></div>
 <div style="width:207px;height:98px;position:absolute;top:117px;left:54vh;background-color:white;box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.16);">
-<img style="width:71px;height:68px;margin-top:15px;margin-right:30px;" src="https://www.w3schools.com/tryit/avatar.png" alt="Avatar">
-<img style="width:69px;height:68px;margin-top: 15px;" src="https://www.w3schools.com/tryit/avatar.png" alt="Avatar">
+<img style="width:71px;height:68px;margin-top:15px;margin-right:30px;" src="https://i.imgur.com/P3zDdep.png" alt="wta">
+<img style="width:69px;height:68px;margin-top: 15px;" src="https://i.imgur.com/EJRegRC.png" alt="cgn">
 </div>
 <div style="margin-left:35px;margin-right:35px;margin-top:100px;height:40vh;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#eeeeee">
 <h2 style="text-align:left;font-size:21px;font-style:italic;line-height:1.19;">herzlich Willkommen bei den
@@ -353,12 +355,12 @@ Sie wollen nicht nur News zum Turnier, sondern die internationale Weltelite des 
 </p>
 </div>
 <div style="position:absolute;bottom:110px;margin-left:54vh;">
-<img src="https://www.w3schools.com/tryit/avatar.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;margin-right:19px;">
-<img src="https://www.w3schools.com/tryit/avatar.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;margin-right:19px;">
-<img src="https://www.w3schools.com/tryit/avatar.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;">
+<img src="https://i.imgur.com/lqU1l6u.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;margin-right:19px;">
+<img src="https://i.imgur.com/lqU1l6u.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;margin-right:19px;">
+<img src="https://i.imgur.com/lqU1l6u.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;">
 </div>
 <div style="width:100%;height:41.5px;background-color:#eeeeee;position:absolute;bottom:41.5px;">
-<img src="https://www.w3schools.com/tryit/avatar.png" alt="Avatar" style="width:17px;height:20px;margin-right:10px;margin-top:13px;">
+<img src="https://i.imgur.com/6MQpeiL.png" alt="Avatar" style="width:17px;height:20px;margin-right:10px;margin-top:13px;">
 <a href="http://cologne-open.herokuapp.com/impressum" style="color:black;font-size:15px;text-decoration:none;line-height:1.07;">Impressum und Datenschutz</a>
 </div>
 <div style="width:100%;height:41.5px;background-color:#eeeeee;position:absolute;bottom:0px;text-align:center">
@@ -381,13 +383,17 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
 }
+
+.background {
+  background-image: url("https://i.imgur.com/PnDzu3t.png")
+}
 </style>
 </head>
 <body>
-<div style="width:100%;height:167px;background-color:black;"></div>
+<div class="background" style="width:100%;height:167px;"></div>
 <div style="width:207px;height:98px;position:absolute;top:117px;left:54vh;background-color:white;box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.16);">
-<img style="width:71px;height:68px;margin-top:15px;margin-right:30px;" src="https://www.w3schools.com/tryit/avatar.png" alt="Avatar">
-<img style="width:69px;height:68px;margin-top: 15px;" src="https://www.w3schools.com/tryit/avatar.png" alt="Avatar">
+<img style="width:71px;height:68px;margin-top:15px;margin-right:30px;" src="https://i.imgur.com/P3zDdep.png" alt="wta">
+<img style="width:69px;height:68px;margin-top: 15px;" src="https://i.imgur.com/EJRegRC.png" alt="cgn">
 </div>
 <div style="margin-left:35px;margin-right:35px;margin-top:100px;height:40vh;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#eeeeee">
 <h2 style="text-align:left;font-size:21px;font-style:italic;line-height:1.19;">herzlich Willkommen bei den
@@ -399,12 +405,12 @@ Sie wollen nicht nur News zum Turnier, sondern die internationale Weltelite des 
 </p>
 </div>
 <div style="position:absolute;bottom:110px;margin-left:54vh;">
-<img src="https://www.w3schools.com/tryit/avatar.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;margin-right:19px;">
-<img src="https://www.w3schools.com/tryit/avatar.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;margin-right:19px;">
-<img src="https://www.w3schools.com/tryit/avatar.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;">
+<img src="https://i.imgur.com/lqU1l6u.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;margin-right:19px;">
+<img src="https://i.imgur.com/lqU1l6u.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;margin-right:19px;">
+<img src="https://i.imgur.com/lqU1l6u.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;">
 </div>
 <div style="width:100%;height:41.5px;background-color:#eeeeee;position:absolute;bottom:41.5px;">
-<img src="https://www.w3schools.com/tryit/avatar.png" alt="Avatar" style="width:17px;height:20px;margin-right:10px;margin-top:13px;">
+<img src="https://i.imgur.com/6MQpeiL.png" alt="Avatar" style="width:17px;height:20px;margin-right:10px;margin-top:13px;">
 <a href="http://cologne-open.herokuapp.com/impressum" style="color:black;font-size:15px;text-decoration:none;line-height:1.07;">Impressum und Datenschutz</a>
 </div>
 <div style="width:100%;height:41.5px;background-color:#eeeeee;position:absolute;bottom:0px;text-align:center">
@@ -427,13 +433,17 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
 }
+
+.background {
+  background-image: url("https://i.imgur.com/PnDzu3t.png")
+}
 </style>
 </head>
 <body>
-<div style="width:100%;height:167px;background-color:black;"></div>
+<div class="background" style="width:100%;height:167px;"></div>
 <div style="width:207px;height:98px;position:absolute;top:117px;left:54vh;background-color:white;box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.16);">
-<img style="width:71px;height:68px;margin-top:15px;margin-right:30px;" src="https://www.w3schools.com/tryit/avatar.png" alt="Avatar">
-<img style="width:69px;height:68px;margin-top: 15px;" src="https://www.w3schools.com/tryit/avatar.png" alt="Avatar">
+<img style="width:71px;height:68px;margin-top:15px;margin-right:30px;" src="https://i.imgur.com/P3zDdep.png" alt="wta">
+<img style="width:69px;height:68px;margin-top: 15px;" src="https://i.imgur.com/EJRegRC.png" alt="cgn">
 </div>
 <div style="margin-left:35px;margin-right:35px;margin-top:100px;height:40vh;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#eeeeee">
 <h2 style="text-align:left;font-size:17px;font-style:italic;line-height:1.24;">vielen Dank für Ihre Nachricht und Ihr Interesse an unserem WTA International Rheinland. Wir werden Ihre Anfrage schnellstmöglich beantworten. </h2>
@@ -441,12 +451,12 @@ body {
 </p>
 </div>
 <div style="position:absolute;bottom:110px;margin-left:54vh;">
-<img src="https://www.w3schools.com/tryit/avatar.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;margin-right:19px;">
-<img src="https://www.w3schools.com/tryit/avatar.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;margin-right:19px;">
-<img src="https://www.w3schools.com/tryit/avatar.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;">
+<img src="https://i.imgur.com/lqU1l6u.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;margin-right:19px;">
+<img src="https://i.imgur.com/lqU1l6u.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;margin-right:19px;">
+<img src="https://i.imgur.com/lqU1l6u.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;">
 </div>
 <div style="width:100%;height:41.5px;background-color:#eeeeee;position:absolute;bottom:41.5px;">
-<img src="https://www.w3schools.com/tryit/avatar.png" alt="Avatar" style="width:17px;height:20px;margin-right:10px;margin-top:13px;">
+<img src="https://i.imgur.com/6MQpeiL.png" alt="Avatar" style="width:17px;height:20px;margin-right:10px;margin-top:13px;">
 <a href="http://cologne-open.herokuapp.com/impressum" style="color:black;font-size:15px;text-decoration:none;line-height:1.07;">Impressum und Datenschutz</a>
 </div>
 <div style="width:100%;height:41.5px;background-color:#eeeeee;position:absolute;bottom:0px;text-align:center">
@@ -469,13 +479,17 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
 }
+
+.background {
+  background-image: url("https://i.imgur.com/PnDzu3t.png")
+}
 </style>
 </head>
 <body>
-<div style="width:100%;height:167px;background-color:black;"></div>
+<div class="background" style="width:100%;height:167px;"></div>
 <div style="width:207px;height:98px;position:absolute;top:117px;left:54vh;background-color:white;box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.16);">
-<img style="width:71px;height:68px;margin-top:15px;margin-right:30px;" src="https://www.w3schools.com/tryit/avatar.png" alt="Avatar">
-<img style="width:69px;height:68px;margin-top: 15px;" src="https://www.w3schools.com/tryit/avatar.png" alt="Avatar">
+<img style="width:71px;height:68px;margin-top:15px;margin-right:30px;" src="https://i.imgur.com/P3zDdep.png" alt="wta">
+<img style="width:69px;height:68px;margin-top: 15px;" src="https://i.imgur.com/EJRegRC.png" alt="cgn">
 </div>
 <div style="margin-left:35px;margin-right:35px;margin-top:100px;height:40vh;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#eeeeee">
 <h2 style="text-align:left;font-size:17px;font-style:italic;line-height:1.24;">vielen Dank für Ihre Nachricht und Ihr Interesse an unserem WTA International Rheinland. Wir werden Ihre Anfrage schnellstmöglich beantworten. </h2>
@@ -483,12 +497,12 @@ body {
 </p>
 </div>
 <div style="position:absolute;bottom:110px;margin-left:54vh;">
-<img src="https://www.w3schools.com/tryit/avatar.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;margin-right:19px;">
-<img src="https://www.w3schools.com/tryit/avatar.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;margin-right:19px;">
-<img src="https://www.w3schools.com/tryit/avatar.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;">
+<img src="https://i.imgur.com/lqU1l6u.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;margin-right:19px;">
+<img src="https://i.imgur.com/lqU1l6u.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;margin-right:19px;">
+<img src="https://i.imgur.com/lqU1l6u.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;">
 </div>
 <div style="width:100%;height:41.5px;background-color:#eeeeee;position:absolute;bottom:41.5px;">
-<img src="https://www.w3schools.com/tryit/avatar.png" alt="Avatar" style="width:17px;height:20px;margin-right:10px;margin-top:13px;">
+<img src="https://i.imgur.com/6MQpeiL.png" alt="Avatar" style="width:17px;height:20px;margin-right:10px;margin-top:13px;">
 <a href="http://cologne-open.herokuapp.com/impressum" style="color:black;font-size:15px;text-decoration:none;line-height:1.07;">Impressum und Datenschutz</a>
 </div>
 <div style="width:100%;height:41.5px;background-color:#eeeeee;position:absolute;bottom:0px;text-align:center">
@@ -511,13 +525,17 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
 }
+
+.background {
+  background-image: url("https://i.imgur.com/PnDzu3t.png")
+}
 </style>
 </head>
 <body>
-<div style="width:100%;height:167px;background-color:black;"></div>
+<div class="background" style="width:100%;height:167px;"></div>
 <div style="width:207px;height:98px;position:absolute;top:117px;left:54vh;background-color:white;box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.16);">
-<img style="width:71px;height:68px;margin-top:15px;margin-right:30px;" src="https://www.w3schools.com/tryit/avatar.png" alt="Avatar">
-<img style="width:69px;height:68px;margin-top: 15px;" src="https://www.w3schools.com/tryit/avatar.png" alt="Avatar">
+<img style="width:71px;height:68px;margin-top:15px;margin-right:30px;" src="https://i.imgur.com/P3zDdep.png" alt="wta">
+<img style="width:69px;height:68px;margin-top: 15px;" src="https://i.imgur.com/EJRegRC.png" alt="cgn">
 </div>
 <div style="margin-left:35px;margin-right:35px;margin-top:100px;height:40vh;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#eeeeee">
 <h2 style="text-align:left;font-size:17px;font-style:italic;line-height:1.24;">vielen Dank für Ihre Nachricht und Ihr Interesse an unserem WTA International Rheinland. Wir werden Ihre Anfrage schnellstmöglich beantworten. </h2>
@@ -525,12 +543,12 @@ body {
 </p>
 </div>
 <div style="position:absolute;bottom:110px;margin-left:54vh;">
-<img src="https://www.w3schools.com/tryit/avatar.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;margin-right:19px;">
-<img src="https://www.w3schools.com/tryit/avatar.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;margin-right:19px;">
-<img src="https://www.w3schools.com/tryit/avatar.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;">
+<img src="https://i.imgur.com/lqU1l6u.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;margin-right:19px;">
+<img src="https://i.imgur.com/lqU1l6u.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;margin-right:19px;">
+<img src="https://i.imgur.com/lqU1l6u.png" alt="Avatar" style="width:33px;height:33px;border-radius:30px;">
 </div>
 <div style="width:100%;height:41.5px;background-color:#eeeeee;position:absolute;bottom:41.5px;">
-<img src="https://www.w3schools.com/tryit/avatar.png" alt="Avatar" style="width:17px;height:20px;margin-right:10px;margin-top:13px;">
+<img src="https://i.imgur.com/6MQpeiL.png" alt="Avatar" style="width:17px;height:20px;margin-right:10px;margin-top:13px;">
 <a href="http://cologne-open.herokuapp.com/impressum" style="color:black;font-size:15px;text-decoration:none;line-height:1.07;">Impressum und Datenschutz</a>
 </div>
 <div style="width:100%;height:41.5px;background-color:#eeeeee;position:absolute;bottom:0px;text-align:center">

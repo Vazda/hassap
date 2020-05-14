@@ -1,18 +1,18 @@
-import { Router } from "express";
-import passport from "passport";
-import player from "../controllers/player.controller";
+import { Router } from 'express';
+import passport from 'passport';
+import player from '../controllers/player.controller';
 
 const router = Router();
 
 router
-  .route("/")
+  .route('/')
   .get(player.getAllPlayers)
   .post(player.addNewPlayer);
 
-router.route("/search/:query").get(player.searchPlayers);
+router.route('/search/:query').get(player.searchPlayers);
 
 router
-  .route("/:playerId")
+  .route('/:playerId')
   .put(player.updatePlayer)
   .delete(player.deletePlayer);
 

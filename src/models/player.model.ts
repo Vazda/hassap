@@ -1,4 +1,4 @@
-import mongoose, { Document, Model, Schema } from "mongoose";
+import mongoose, { Document, Model, Schema } from 'mongoose';
 
 export interface IPlayer extends Document {
   _id: string;
@@ -16,42 +16,42 @@ const playerSchema: Schema = new Schema(
   {
     rank: {
       required: true,
-      type: String
+      type: String,
     },
     img: {
-      type: String
+      type: String,
     },
     firstName: {
       required: true,
-      type: String
+      type: String,
     },
     lastName: {
       required: true,
-      type: String
+      type: String,
     },
     country: {
-      type: String
+      type: String,
     },
     countryFlag: {
       required: false,
-      type: String
+      type: String,
     },
     team: {
       required: true,
-      type: String
+      type: String,
     },
     playerNo: {
       required: true,
-      type: String
-    }
+      type: String,
+    },
   },
 
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const Player: Model<IPlayer> = mongoose.model<IPlayer, Model<IPlayer>>(
-  "Player",
-  playerSchema
+  'Player',
+  playerSchema,
 );
 
 export default Player;

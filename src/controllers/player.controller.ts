@@ -1,8 +1,8 @@
-import { Request, Response } from "express";
-import _ from "lodash";
-import { generateError, generateResponse } from "../adapters/response";
+import { Request, Response } from 'express';
+import _ from 'lodash';
+import { generateError, generateResponse } from '../adapters/response';
 
-import Player from "../models/player.model";
+import Player from '../models/player.model';
 
 const getAllPlayers = async (req: Request, res: Response) => {
   try {
@@ -11,18 +11,18 @@ const getAllPlayers = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(404)
-      .send({ msg: generateError("Error fetching Players"), error: e });
+      .send({ msg: generateError('Error fetching Players'), error: e });
   }
 };
 
 const addNewPlayer = async (req: Request, res: Response) => {
   const newBody = _.pick(req.body, [
-    "firstName",
-    "rank",
-    "lastName",
-    "country",
-    "team",
-    "playerNo"
+    'firstName',
+    'rank',
+    'lastName',
+    'country',
+    'team',
+    'playerNo',
   ]);
 
   try {
@@ -32,7 +32,7 @@ const addNewPlayer = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(404)
-      .send({ msg: generateError("Error saving Player"), error: e });
+      .send({ msg: generateError('Error saving Player'), error: e });
   }
 };
 
@@ -43,14 +43,14 @@ const updatePlayer = async (req: Request, res: Response) => {
     const player = await Player.findOneAndUpdate(
       { _id: playerId },
       { $set: req.body },
-      { new: true }
+      { new: true },
     );
 
     return res.send(player);
   } catch (e) {
     return res
       .status(500)
-      .send({ msg: generateError("Error updating Player"), error: e });
+      .send({ msg: generateError('Error updating Player'), error: e });
   }
 };
 
@@ -64,7 +64,7 @@ const deletePlayer = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(500)
-      .send({ msg: generateError("Error removing Player"), error: e });
+      .send({ msg: generateError('Error removing Player'), error: e });
   }
 };
 
@@ -74,17 +74,17 @@ const searchPlayers = async (req: Request, res: Response) => {
   try {
     const filteredPlayers = await Player.find({
       $or: [
-        { firstName: { $regex: query, $options: "i" } },
-        { lastName: { $regex: query, $options: "i" } },
-        { country: { $regex: query, $options: "i" } }
-      ]
+        { firstName: { $regex: query, $options: 'i' } },
+        { lastName: { $regex: query, $options: 'i' } },
+        { country: { $regex: query, $options: 'i' } },
+      ],
     });
 
     return res.send(filteredPlayers);
   } catch (e) {
     return res
       .status(404)
-      .send({ msg: generateError("Error searching Players"), error: e });
+      .send({ msg: generateError('Error searching Players'), error: e });
   }
 };
 
@@ -93,7 +93,7 @@ const PlayerController = {
   updatePlayer,
   addNewPlayer,
   getAllPlayers,
-  searchPlayers
+  searchPlayers,
 };
 
 export default PlayerController;

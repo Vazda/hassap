@@ -3,11 +3,15 @@ import express from "express";
 import helmet from "helmet";
 
 import passport = require("passport");
+import anlagenplanRoutes from "./src/routes/anlagenplan.routes";
 import authRoutes from "./src/routes/auth.routes";
 import contactRoutes from "./src/routes/contact.routes";
+import dailyRoutes from "./src/routes/daily.routes";
+import eventsRoutes from "./src/routes/events.routes";
+import magazinRoutes from "./src/routes/magazin.routes";
 import newsRoutes from "./src/routes/news.routes";
-import playerRoutes from "./src/routes/player.routes";
 import newsletterRoutes from "./src/routes/newsletter.routes";
+import playerRoutes from "./src/routes/player.routes";
 import ticketRoutes from "./src/routes/ticket.routes";
 import userRoutes from "./src/routes/user.routes";
 import { passportInit } from "./src/services/auth.service";
@@ -49,6 +53,10 @@ app.use("/api/v1/contact", contactRoutes);
 app.use("/api/v1/news", newsRoutes);
 app.use("/api/v1/player", playerRoutes);
 app.use("/api/v1/newsletter", newsletterRoutes);
+app.use("/api/v1/daily", dailyRoutes);
+app.use("/api/v1/magazin", magazinRoutes);
+app.use("/api/v1/anlagenplan", anlagenplanRoutes);
+app.use("/api/v1/events", eventsRoutes);
 app.use("/", (req, res) => {
   res.send();
 });

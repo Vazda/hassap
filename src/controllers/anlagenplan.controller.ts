@@ -1,7 +1,7 @@
-import { Request, Response } from "express";
-import _ from "lodash";
-import { generateError, generateResponse } from "../adapters/response";
-import Anlagenplan from "../models/anlagenplan.model";
+import { Request, Response } from 'express';
+import _ from 'lodash';
+import { generateError, generateResponse } from '../adapters/response';
+import Anlagenplan from '../models/anlagenplan.model';
 
 const getAnlagenplan = async (req: Request, res: Response) => {
   try {
@@ -10,12 +10,12 @@ const getAnlagenplan = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(404)
-      .send({ msg: generateError("Error fetching Anlagenplan"), error: e });
+      .send({ msg: generateError('Error fetching Anlagenplan'), error: e });
   }
 };
 
 const addNewAnlagenplan = async (req: Request, res: Response) => {
-  const newBody = _.pick(req.body, ["pdf"]);
+  const newBody = _.pick(req.body, ['pdf']);
   try {
     await Anlagenplan.findOneAndDelete();
 
@@ -25,7 +25,7 @@ const addNewAnlagenplan = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(404)
-      .send({ msg: generateError("Error saving Anlagenplan"), error: e });
+      .send({ msg: generateError('Error saving Anlagenplan'), error: e });
   }
 };
 
@@ -37,14 +37,14 @@ const deleteAnlagenplan = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(500)
-      .send({ msg: generateError("Error removing Anlagenplan"), error: e });
+      .send({ msg: generateError('Error removing Anlagenplan'), error: e });
   }
 };
 
 const AnlagenplanController = {
   getAnlagenplan,
   addNewAnlagenplan,
-  deleteAnlagenplan
+  deleteAnlagenplan,
 };
 
 export default AnlagenplanController;

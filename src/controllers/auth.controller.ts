@@ -1,42 +1,43 @@
-import { Request, Response } from '@feathersjs/express';
+import { Request, Response } from "@feathersjs/express";
 // @ts-ignore
-import * as dotenv from 'dotenv';
-import Joi from 'joi';
-import jwt from 'jsonwebtoken';
-import _ from 'lodash';
-import passport from 'passport';
-import { generateError } from '../adapters/response';
-import s from '../constants/strings';
-import User, { IUser, USER_SAFE_FIELDS } from '../models/user.model';
-import { JOISignup } from '../validators/auth';
+import * as dotenv from "dotenv";
+import Joi from "joi";
+import jwt from "jsonwebtoken";
+import _ from "lodash";
+import passport from "passport";
+import { generateError } from "../adapters/response";
+import s from "../constants/strings";
+import User, { IUser, USER_SAFE_FIELDS } from "../models/user.model";
+import { JOISignup } from "../validators/auth";
 
 dotenv.load();
 const generateJWT = (user: IUser): string => {
   return jwt.sign(
     {
       _id: user._id,
-      email: user.email,
+      email: user.email
     },
-    process.env.SECRET_OR_KEY || 'test',
+    process.env.SECRET_OR_KEY || "test",
     {
-      expiresIn: '7d',
-    },
+      expiresIn: "7d"
+    }
   );
 };
 
 const login = (req: Request, res: Response, next: (error?: any) => void) => {
-  passport.authenticate('local', (err, unsafeUser) => {
+  passport.authenticate("local", (err, unsafeUser) => {
     if (err) {
       return next(err);
     }
     if (!unsafeUser) {
       return res.status(403).send(generateError(s.AUTH.user_not_found));
     }
-    req.logIn(unsafeUser, (error) => {
+    req.logIn(unsafeUser, error => {
       if (error) {
         return next(error);
       }
       const user = _.pick(unsafeUser, USER_SAFE_FIELDS);
+      console.log(user);
       const generatedJWT = generateJWT(unsafeUser);
       return res.send({ ...user, token: `Bearer ${generatedJWT}` });
     });
@@ -50,7 +51,7 @@ const signup = async (req: Request, res: Response) => {
     if (existingUser) {
       return res
         .status(403)
-        .send(generateError('User already exists with that email!'));
+        .send(generateError("User already exists with that email!"));
     }
     const user = await User.create(req.body);
     const safeUser = _.pick(user, USER_SAFE_FIELDS);
@@ -66,5 +67,5 @@ const signup = async (req: Request, res: Response) => {
 
 export default {
   login,
-  signup,
+  signup
 };

@@ -1,4 +1,4 @@
-import mongoose, { Document, Model, Schema } from "mongoose";
+import mongoose, { Document, Model, Schema } from 'mongoose';
 
 export interface IMagazin extends Document {
   description: string;
@@ -12,26 +12,26 @@ export interface IMagazin extends Document {
 const MagazinSchema: Schema = new Schema(
   {
     title: {
-      type: String
+      type: String,
     },
     description: {
       // required: true,
-      type: String
+      type: String,
     },
     image: {
-      type: String
+      type: String,
     },
     pdf: {
       // required: true,
-      type: String
-    }
+      type: String,
+    },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const Magazin: Model<IMagazin> = mongoose.model<IMagazin, Model<IMagazin>>(
-  "Magazin",
-  MagazinSchema
+  'Magazin',
+  MagazinSchema,
 );
 
 export default Magazin;

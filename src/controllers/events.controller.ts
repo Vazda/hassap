@@ -1,7 +1,7 @@
-import { Request, Response } from "express";
-import _ from "lodash";
-import { generateError, generateResponse } from "../adapters/response";
-import Events from "../models/events.model";
+import { Request, Response } from 'express';
+import _ from 'lodash';
+import { generateError, generateResponse } from '../adapters/response';
+import Events from '../models/events.model';
 
 const getAllEvents = async (req: Request, res: Response) => {
   try {
@@ -10,17 +10,17 @@ const getAllEvents = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(404)
-      .send({ msg: generateError("Error fetching Events"), error: e });
+      .send({ msg: generateError('Error fetching Events'), error: e });
   }
 };
 
 const addNewEvent = async (req: Request, res: Response) => {
   const newBody = _.pick(req.body, [
-    "title",
-    "category",
-    "date",
-    "time",
-    "location"
+    'title',
+    'category',
+    'date',
+    'time',
+    'location',
   ]);
   try {
     const newEvents = new Events(newBody);
@@ -29,7 +29,7 @@ const addNewEvent = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(404)
-      .send({ msg: generateError("Error saving Events"), error: e });
+      .send({ msg: generateError('Error saving Events'), error: e });
   }
 };
 
@@ -42,31 +42,31 @@ const getEventById = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(404)
-      .send({ msg: generateError("Error fetching Events"), error: e });
+      .send({ msg: generateError('Error fetching Events'), error: e });
   }
 };
 
 const updateEvent = async (req: Request, res: Response) => {
   const { eventId } = req.params;
   const newBody = _.pick(req.body, [
-    "title",
-    "category",
-    "date",
-    "time",
-    "location"
+    'title',
+    'category',
+    'date',
+    'time',
+    'location',
   ]);
   try {
     const event = await Events.findOneAndUpdate(
       { _id: eventId },
       { $set: newBody },
-      { new: true }
+      { new: true },
     );
 
     return res.send(event);
   } catch (e) {
     return res
       .status(500)
-      .send({ msg: generateError("Error updating Events"), error: e });
+      .send({ msg: generateError('Error updating Events'), error: e });
   }
 };
 
@@ -80,7 +80,7 @@ const deleteEvent = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(500)
-      .send({ msg: generateError("Error removing Events"), error: e });
+      .send({ msg: generateError('Error removing Events'), error: e });
   }
 };
 
@@ -89,7 +89,7 @@ const EventController = {
   updateEvent,
   getEventById,
   addNewEvent,
-  getAllEvents
+  getAllEvents,
 };
 
 export default EventController;

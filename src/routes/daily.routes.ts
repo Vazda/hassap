@@ -1,18 +1,18 @@
-import { Router } from "express";
-import passport from "passport";
-import daily from "../controllers/daily.controller";
-import middleware from "../middleware/middleware";
+import { Router } from 'express';
+import passport from 'passport';
+import daily from '../controllers/daily.controller';
+import middleware from '../middleware/middleware';
 const router = Router();
 router
-  .route("/")
+  .route('/')
   .get(daily.getAllNews)
   .post(
-    passport.authenticate("jwt", { session: false }),
-    (req, res, next) => middleware(req, res, next, ["admin"]),
-    daily.addNewNews
+    passport.authenticate('jwt', { session: false }),
+    (req, res, next) => middleware(req, res, next, ['admin']),
+    daily.addNewNews,
   );
 router
-  .route("/:dailyId")
+  .route('/:dailyId')
   .get(daily.getNewsById)
   .put(daily.updateNews)
   .delete(daily.deleteNews);

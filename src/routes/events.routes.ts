@@ -1,16 +1,16 @@
-import { Router } from "express";
-import passport from "passport";
-import events from "../controllers/events.controller";
+import { Router } from 'express';
+import passport from 'passport';
+import events from '../controllers/events.controller';
 
 const router = Router();
 
 router
-  .route("/")
+  .route('/')
   .get(events.getAllEvents)
-  .post(passport.authenticate("jwt", { session: false }), events.addNewEvent);
+  .post(passport.authenticate('jwt', { session: false }), events.addNewEvent);
 
 router
-  .route("/:eventId")
+  .route('/:eventId')
   .get(events.getEventById)
   .put(events.updateEvent)
   .delete(events.deleteEvent);

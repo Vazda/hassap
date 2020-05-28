@@ -1,16 +1,16 @@
-import { Request, Response } from "express";
-import fs from "fs-extra";
-import _ from "lodash";
-import multer from "multer";
+import { Request, Response } from 'express';
+import fs from 'fs-extra';
+import _ from 'lodash';
+import multer from 'multer';
 
-import { request } from "http";
-import { generateError, generateResponse } from "../adapters/response";
-import Daily, { IDaily } from "../models/daily.model";
+import { request } from 'http';
+import { generateError, generateResponse } from '../adapters/response';
+import Daily, { IDaily } from '../models/daily.model';
 
 const storage = multer({
   storage: multer.diskStorage({
     destination: (req: any, file: any, callback: any) => {
-      const userId = req.user ? req.user.id : "userID";
+      const userId = req.user ? req.user.id : 'userID';
       const path = `./uploads/policy/${userId}`;
       fs.mkdirsSync(path);
       callback(null, path);
@@ -18,8 +18,8 @@ const storage = multer({
     filename: (req: any, file: any, callback: any) => {
       // originalname is the uploaded file's name with extn
       callback(null, file.originalname);
-    }
-  })
+    },
+  }),
 });
 
 const getAllNews = async (req: Request, res: Response) => {
@@ -29,31 +29,31 @@ const getAllNews = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(404)
-      .send({ msg: generateError("Error fetching Daily News"), error: e });
+      .send({ msg: generateError('Error fetching Daily News'), error: e });
   }
 };
 
 const addNewNews = async (req: Request, res: Response) => {
   try {
-    const dailyBody = _.pick(req.body, ["day", "image", "pdf"]);
+    const dailyBody = _.pick(req.body, ['day', 'image', 'pdf']);
     const exist: any = await Daily.findOne({ day: dailyBody.day });
     if (exist) {
       const updateDaily = await Daily.findOneAndUpdate(
         { _id: exist._id },
         { $set: dailyBody },
-        { new: true }
+        { new: true },
       );
       console.log(updateDaily);
-      return res.send({ message: "Updated", ..._.get(updateDaily, "_doc") });
+      return res.send({ message: 'Updated', ..._.get(updateDaily, '_doc') });
     } else {
       const createDaily = new Daily(dailyBody);
       await createDaily.save();
-      return res.send({ message: "Created", ..._.get(createDaily, "_doc") });
+      return res.send({ message: 'Created', ..._.get(createDaily, '_doc') });
     }
   } catch (e) {
     return res
       .status(404)
-      .send({ message: generateError("Error creating daily news"), error: e });
+      .send({ message: generateError('Error creating daily news'), error: e });
   }
 };
 
@@ -66,25 +66,25 @@ const getNewsById = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(404)
-      .send({ msg: generateError("Error fetching daily news"), error: e });
+      .send({ msg: generateError('Error fetching daily news'), error: e });
   }
 };
 
 const updateNews = async (req: Request, res: Response) => {
   const { dailyId } = req.params;
-  const newBody = _.pick(req.body, ["day", "image", "pdf"]);
+  const newBody = _.pick(req.body, ['day', 'image', 'pdf']);
   try {
     const news = await Daily.findOneAndUpdate(
       { _id: dailyId },
       { $set: req.body },
-      { new: true }
+      { new: true },
     );
 
     return res.send(news);
   } catch (e) {
     return res
       .status(500)
-      .send({ msg: generateError("Error updating Daily News"), error: e });
+      .send({ msg: generateError('Error updating Daily News'), error: e });
   }
 };
 
@@ -98,7 +98,7 @@ const deleteNews = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(500)
-      .send({ msg: generateError("Error removing Daily News"), error: e });
+      .send({ msg: generateError('Error removing Daily News'), error: e });
   }
 };
 
@@ -107,7 +107,7 @@ const DailyController = {
   getAllNews,
   getNewsById,
   deleteNews,
-  updateNews
+  updateNews,
 };
 
 export default DailyController;

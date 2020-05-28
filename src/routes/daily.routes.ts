@@ -14,7 +14,7 @@ router
 router
   .route("/:dailyId")
   .get(daily.getNewsById)
-  .put(passport.authenticate("jwt", { session: false }), daily.updateNews)
+  .put(daily.updateNews)
   .delete(daily.deleteNews);
 
 export default router;

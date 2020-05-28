@@ -33,27 +33,6 @@ const getAllNews = async (req: Request, res: Response) => {
   }
 };
 
-// const upload = multer(storage).any('pdf');
-
-// const addNewNews = async (req: Request, res: Response) => upload(req, res, async (err: any) => {
-
-//     const file_path = req.files[0] ? req.files[0].path : null;
-
-//     try {
-//         const newNews = await Daily.create({
-//             day: req.body.day,
-//             pdf: file_path
-//         })
-//         // const newNews = new Daily(newBody);
-//         // await newNews.save();
-//         return res.send(newNews);
-//     } catch (e) {
-//         return res
-//             .status(404)
-//             .send({ msg: generateError('Error saving Daily News'), error: e });
-//     }
-// });
-
 const addNewNews = async (req: Request, res: Response) => {
   try {
     const dailyBody = _.pick(req.body, ["day", "image", "pdf"]);
@@ -79,10 +58,10 @@ const addNewNews = async (req: Request, res: Response) => {
 };
 
 const getNewsById = async (req: Request, res: Response) => {
-  const { newsId } = req.params;
+  const { dailyId } = req.params;
 
   try {
-    const news = await Daily.findOne({ _id: newsId });
+    const news = await Daily.findOne({ _id: dailyId });
     return res.send(news);
   } catch (e) {
     return res
@@ -92,11 +71,11 @@ const getNewsById = async (req: Request, res: Response) => {
 };
 
 const updateNews = async (req: Request, res: Response) => {
-  const { newsId } = req.params;
+  const { dailyId } = req.params;
   const newBody = _.pick(req.body, ["day", "image", "pdf"]);
   try {
     const news = await Daily.findOneAndUpdate(
-      { _id: newsId },
+      { _id: dailyId },
       { $set: req.body },
       { new: true }
     );

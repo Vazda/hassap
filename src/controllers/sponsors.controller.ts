@@ -14,6 +14,20 @@ const getSponsors = async (req: Request, res: Response) => {
   }
 };
 
+const getBusinessCardAvailability = async (req: Request, res: Response) => {
+  try {
+    console.log("company", req.params.companyId);
+    const isBusinessCardUserExists = await Sponsor.exists({
+      businessCardUser: true,
+      company: req.params.companyId
+    });
+    return res.send(isBusinessCardUserExists);
+  } catch (e) {
+    return res
+      .status(404)
+      .send({ msg: generateError("Error fetching Sponsors"), error: e });
+  }
+};
 const addNewSponsor = async (req: Request, res: Response) => {
   const newBody = _.pick(req.body, [
     "firstName",
@@ -28,7 +42,8 @@ const addNewSponsor = async (req: Request, res: Response) => {
     "email",
     "homepage",
     "username",
-    "password"
+    "password",
+    "businessCardUser"
   ]);
   const existingSponsor = await Sponsor.findOne({ email: req.body.email });
   if (existingSponsor) {
@@ -62,6 +77,8 @@ const getSponsorById = async (req: Request, res: Response) => {
 
 const updateSponsor = async (req: Request, res: Response) => {
   const { sponsorId } = req.params;
+  // tslint:disable-next-line: no-console
+  console.log(sponsorId, "SPONSOR ID");
   const newBody = _.pick(req.body, [
     "firstName",
     "lastName",
@@ -75,12 +92,14 @@ const updateSponsor = async (req: Request, res: Response) => {
     "email",
     "homepage",
     "username",
-    "password"
+    "password",
+    "businessCardUser"
   ]);
   try {
+    console.log(sponsorId, " SPONSOR IDDD");
     const event = await Sponsor.findOneAndUpdate(
       { _id: sponsorId },
-      { $set: newBody },
+      { $set: req.body },
       { new: true }
     );
 
@@ -111,7 +130,8 @@ const SponsorController = {
   updateSponsor,
   getSponsorById,
   addNewSponsor,
-  getSponsors
+  getSponsors,
+  getBusinessCardAvailability
 };
 
 export default SponsorController;

@@ -1,13 +1,18 @@
 import { Router } from "express";
 import passport from "passport";
-import sponsors from "../controllers/sponsors.controller";
+import sponsors from "../controllers/sponsormngmnt.controller";
 
 const router = Router();
 
 router
   .route("/")
   .get(sponsors.getSponsors)
-  .post(passport.authenticate("jwt", { session: false }), sponsors.addSponsor);
+  .post(
+    passport.authenticate("jwt", { session: false }),
+    sponsors.addNewSponsor
+  );
+
+router.route("/business/:companyId").get(sponsors.getBusinessCardAvailability);
 
 router
   .route("/:sponsorId")

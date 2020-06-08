@@ -12,8 +12,12 @@ router
     sponsors.addNewSponsor
   );
 
-router.route("/business/:companyId").get(sponsors.getBusinessCardAvailability);
-
+router
+  .route("/business/:companyId")
+  .get(
+    passport.authenticate("jwt", { session: false }),
+    sponsors.getBusinessCardAvailability
+  );
 router
   .route("/:sponsorId")
   .get(sponsors.getSponsorById)

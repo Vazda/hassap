@@ -1,11 +1,12 @@
 import { Request, Response } from "express";
 import _ from "lodash";
 import { generateError } from "../adapters/response";
-import SponsorMngmnt from "../models/sponsormngmnt.model";
+// import SponsorMngmnt from "../models/sponsormngmnt.model";
+import User from "../models/user.model";
 
 const getSponsors = async (req: Request, res: Response) => {
   try {
-    const sponsors = await SponsorMngmnt.find();
+    const sponsors = await User.find();
     return res.send(sponsors);
   } catch (e) {
     return res
@@ -16,7 +17,7 @@ const getSponsors = async (req: Request, res: Response) => {
 
 const getBusinessCardAvailability = async (req: Request, res: Response) => {
   try {
-    const isBusinessCardUserExists = await SponsorMngmnt.exists({
+    const isBusinessCardUserExists = await User.exists({
       businessCardUser: true,
       company: req.params.companyId
     });
@@ -44,7 +45,7 @@ const addNewSponsor = async (req: Request, res: Response) => {
     "password",
     "businessCardUser"
   ]);
-  const existingSponsor = await SponsorMngmnt.findOne({
+  const existingSponsor = await User.findOne({
     email: req.body.email
   });
   if (existingSponsor) {
@@ -53,7 +54,7 @@ const addNewSponsor = async (req: Request, res: Response) => {
       .send(generateError("Sponsor already exists with that email!"));
   }
   try {
-    const newSponsor = new SponsorMngmnt(newBody);
+    const newSponsor = new User({ ...newBody, role: "sponsor" });
     await newSponsor.save();
     return res.send(newSponsor);
   } catch (e) {
@@ -67,7 +68,7 @@ const getSponsorById = async (req: Request, res: Response) => {
   const { sponsorId } = req.params;
 
   try {
-    const sponsor = await SponsorMngmnt.findOne({ _id: sponsorId });
+    const sponsor = await User.findOne({ _id: sponsorId });
     return res.send(sponsor);
   } catch (e) {
     return res
@@ -78,24 +79,9 @@ const getSponsorById = async (req: Request, res: Response) => {
 
 const updateSponsor = async (req: Request, res: Response) => {
   const { sponsorId } = req.params;
-  const newBody = _.pick(req.body, [
-    "firstName",
-    "lastName",
-    "company",
-    "jobTitle",
-    "street",
-    "plz",
-    "city",
-    "branche",
-    "tel",
-    "email",
-    "homepage",
-    "username",
-    "password",
-    "businessCardUser"
-  ]);
+
   try {
-    const event = await SponsorMngmnt.findOneAndUpdate(
+    const event = await User.findOneAndUpdate(
       { _id: sponsorId },
       { $set: req.body },
       { new: true }
@@ -113,7 +99,7 @@ const deleteSponsor = async (req: Request, res: Response) => {
   const { sponsorId } = req.params;
 
   try {
-    const news = await SponsorMngmnt.findOneAndDelete({ _id: sponsorId });
+    const news = await User.findOneAndDelete({ _id: sponsorId });
 
     return res.send(news);
   } catch (e) {

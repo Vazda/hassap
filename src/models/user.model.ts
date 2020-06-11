@@ -16,7 +16,7 @@ export interface IUser extends Document {
   phone?: string;
   firstName: string;
   lastName: string;
-  dateOfBirth: string;
+  dateOfBirth?: string;
   password: string;
   salt: string;
   company: string;
@@ -31,7 +31,7 @@ export interface IUser extends Document {
   businessCardUser: boolean;
   validatePassword: (password: string) => boolean;
   removeSensitiveData: () => any;
-  address: string;
+  address?: string;
   role: "user" | "admin" | "sponsor";
 }
 
@@ -71,7 +71,7 @@ const userSchema: Schema = new Schema(
       type: String
     },
     dateOfBirth: {
-      required: true,
+      required: false,
       type: Date
     },
     phone: {
@@ -79,7 +79,7 @@ const userSchema: Schema = new Schema(
       type: String
     },
     address: {
-      required: true,
+      required: false,
       type: String
     },
     salt: {

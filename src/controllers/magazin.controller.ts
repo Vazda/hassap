@@ -1,7 +1,7 @@
-import { Request, Response } from 'express';
-import _ from 'lodash';
-import { generateError, generateResponse } from '../adapters/response';
-import Magazin from '../models/magazin.model';
+import { Request, Response } from "express";
+import _ from "lodash";
+import { generateError, generateResponse } from "../adapters/response";
+import Magazin from "../models/magazin.model";
 
 const getMagazine = async (req: Request, res: Response) => {
   try {
@@ -10,22 +10,21 @@ const getMagazine = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(404)
-      .send({ msg: generateError('Error fetching Turniermagazin'), error: e });
+      .send({ msg: generateError("Error fetching Turniermagazin"), error: e });
   }
 };
 
 const addNewMagazin = async (req: Request, res: Response) => {
-  const newBody = _.pick(req.body, ['title', 'description', 'pdf']);
+  const newBody = _.pick(req.body, ["title", "description", "pdf"]);
   try {
     await Magazin.findOneAndDelete();
-    console.log(newBody);
     const newMagazine = new Magazin(newBody);
     await newMagazine.save();
     return res.send(newMagazine);
   } catch (e) {
     return res
       .status(404)
-      .send({ msg: generateError('Error saving Turniermagazin'), error: e });
+      .send({ msg: generateError("Error saving Turniermagazin"), error: e });
   }
 };
 
@@ -38,25 +37,25 @@ const getMagazineById = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(404)
-      .send({ msg: generateError('Error fetching Magazin'), error: e });
+      .send({ msg: generateError("Error fetching Magazin"), error: e });
   }
 };
 
 const updateMagazin = async (req: Request, res: Response) => {
   const { magazinId } = req.params;
-  const newBody = _.pick(req.body, ['title', 'description', 'pdf']);
+  const newBody = _.pick(req.body, ["title", "description", "pdf"]);
   try {
     const event = await Magazin.findOneAndUpdate(
       { _id: magazinId },
       { $set: newBody },
-      { new: true },
+      { new: true }
     );
 
     return res.send(event);
   } catch (e) {
     return res
       .status(500)
-      .send({ msg: generateError('Error updating Magazin'), error: e });
+      .send({ msg: generateError("Error updating Magazin"), error: e });
   }
 };
 
@@ -64,11 +63,11 @@ const deleteMagazin = async (req: Request, res: Response) => {
   try {
     const magazin = await Magazin.findOneAndDelete();
 
-    return res.send({ message: 'Deleted', magazin });
+    return res.send({ message: "Deleted", magazin });
   } catch (e) {
     return res
       .status(500)
-      .send({ msg: generateError('Error removing Turniermagazin'), error: e });
+      .send({ msg: generateError("Error removing Turniermagazin"), error: e });
   }
 };
 
@@ -77,7 +76,7 @@ const MagazinController = {
   addNewMagazin,
   deleteMagazin,
   getMagazineById,
-  updateMagazin,
+  updateMagazin
 };
 
 export default MagazinController;

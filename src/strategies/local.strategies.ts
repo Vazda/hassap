@@ -16,7 +16,6 @@ const localStrategy = () => {
       localOpts,
       async (email: string, password: string, done: ICallback) => {
         try {
-          console.log("MAIL ====>", email);
           const user = await User.findOne({ email });
           if (!user) {
             return done(null, false, { message: s.AUTH.user_not_found });

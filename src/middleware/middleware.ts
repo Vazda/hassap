@@ -12,7 +12,6 @@ const middleware = (
   roles.forEach((role) => {
     if ((req.user as IUser).role === role) {
       hasAccess = true;
-      console.log(role);
     }
   });
   if (!hasAccess) {

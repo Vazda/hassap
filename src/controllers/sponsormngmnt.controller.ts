@@ -35,12 +35,10 @@ const getBusinessSponsors = async (req: Request, res: Response) => {
   try {
     const { sponsorId } = req.params;
     const sponsor = await Sponsor.findOne({ _id: sponsorId });
-    console.log("COMPANY", sponsor.name)
     const bussinessPerson = await User.findOne({
       company: sponsor.name,
       businessCardUser: true,
     });
-    console.log("bussinessPerson", bussinessPerson)
 
     return res.send(bussinessPerson);
   } catch (e) {

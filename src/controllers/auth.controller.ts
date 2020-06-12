@@ -26,7 +26,6 @@ const generateJWT = (user: IUser): string => {
 
 const login = (req: Request, res: Response, next: (error?: any) => void) => {
   passport.authenticate("local", (err, unsafeUser) => {
-    console.log("JUZER", unsafeUser);
     if (err) {
       return next(err);
     }

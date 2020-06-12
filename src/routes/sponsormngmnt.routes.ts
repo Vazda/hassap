@@ -18,6 +18,8 @@ router
     passport.authenticate("jwt", { session: false }),
     sponsors.getBusinessCardAvailability
   );
+
+router.route("/businessperson/:sponsorId").get(sponsors.getBusinessSponsors);
 router
   .route("/:sponsorId")
   .get(sponsors.getSponsorById)

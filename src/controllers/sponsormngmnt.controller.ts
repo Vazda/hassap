@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import _ from "lodash";
 import { generateError } from "../adapters/response";
+import Sponsor from "../models/sponsor.model";
 // import SponsorMngmnt from "../models/sponsormngmnt.model";
 import User from "../models/user.model";
 
@@ -28,6 +29,24 @@ const getBusinessCardAvailability = async (req: Request, res: Response) => {
       .send({ msg: generateError("Error fetching Sponsors"), error: e });
   }
 };
+
+const getBusinessSponsors = async (req: Request, res: Response) => {
+  try {
+    const { sponsorId } = req.params;
+    const sponsor = await Sponsor.findOne({ _id: sponsorId });
+    const bussinessPerson = await User.findOne({
+      company: sponsor.name,
+      businessCardUser: true
+    });
+
+    return res.send(bussinessPerson);
+  } catch (e) {
+    return res
+      .status(404)
+      .send({ msg: generateError("Error fetching Sponsors"), error: e });
+  }
+};
+
 const addNewSponsor = async (req: Request, res: Response) => {
   const newBody = _.pick(req.body, [
     "firstName",
@@ -115,7 +134,8 @@ const SponsorMngmntController = {
   getSponsorById,
   addNewSponsor,
   getSponsors,
-  getBusinessCardAvailability
+  getBusinessCardAvailability,
+  getBusinessSponsors
 };
 
 export default SponsorMngmntController;

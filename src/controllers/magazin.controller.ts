@@ -18,7 +18,6 @@ const addNewMagazin = async (req: Request, res: Response) => {
   const newBody = _.pick(req.body, ['title', 'description', 'pdf']);
   try {
     await Magazin.findOneAndDelete();
-    console.log(newBody);
     const newMagazine = new Magazin(newBody);
     await newMagazine.save();
     return res.send(newMagazine);

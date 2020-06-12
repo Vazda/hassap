@@ -1,4 +1,4 @@
-import mongoose, { Document, Model, Schema } from "mongoose";
+import mongoose, { Document, Model, Schema } from 'mongoose';
 
 export interface ISponsor extends Document {
   _id: string;
@@ -11,25 +11,25 @@ export interface ISponsor extends Document {
 const sponsorSchema: Schema = new Schema({
   category: {
     required: true,
-    type: String
+    type: String,
   },
   logo: {
     required: true,
-    type: String
+    type: String,
   },
   homepage: {
     required: true,
-    type: String
+    type: String,
   },
   name: {
     required: true,
-    type: String
-  }
+    type: String,
+  },
 });
 
 const Sponsor: Model<ISponsor> = mongoose.model<ISponsor, Model<ISponsor>>(
-  "Sponsor",
-  sponsorSchema
+  'Sponsor',
+  sponsorSchema,
 );
 
 export default Sponsor;

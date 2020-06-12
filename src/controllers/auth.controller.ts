@@ -38,7 +38,6 @@ const login = (req: Request, res: Response, next: (error?: any) => void) => {
         return next(error);
       }
       const user = _.pick(unsafeUser, USER_SAFE_FIELDS);
-      console.log(user);
       const generatedJWT = generateJWT(unsafeUser);
       return res.send({ ...user, token: `Bearer ${generatedJWT}` });
     });

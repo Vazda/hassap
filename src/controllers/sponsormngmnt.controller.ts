@@ -1,8 +1,9 @@
-import { Request, Response } from "express";
-import _ from "lodash";
-import { generateError } from "../adapters/response";
+import { Request, Response } from 'express';
+import _ from 'lodash';
+import { generateError } from '../adapters/response';
+import Sponsor from '../models/sponsor.model';
 // import SponsorMngmnt from "../models/sponsormngmnt.model";
-import User from "../models/user.model";
+import User from '../models/user.model';
 
 const getSponsors = async (req: Request, res: Response) => {
   try {
@@ -11,7 +12,7 @@ const getSponsors = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(404)
-      .send({ msg: generateError("Error fetching Sponsors"), error: e });
+      .send({ msg: generateError('Error fetching Sponsors'), error: e });
   }
 };
 
@@ -26,25 +27,45 @@ const getBusinessCardAvailability = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(404)
-      .send({ msg: generateError("Error fetching Sponsors"), error: e });
+      .send({ msg: generateError('Error fetching Sponsors'), error: e });
   }
 };
+
+const getBusinessSponsors = async (req: Request, res: Response) => {
+  try {
+    const { sponsorId } = req.params;
+    const sponsor = await Sponsor.findOne({ _id: sponsorId });
+    console.log("COMPANY", sponsor.name)
+    const bussinessPerson = await User.findOne({
+      company: sponsor.name,
+      businessCardUser: true,
+    });
+    console.log("bussinessPerson", bussinessPerson)
+
+    return res.send(bussinessPerson);
+  } catch (e) {
+    return res
+      .status(404)
+      .send({ msg: generateError('Error fetching Sponsors'), error: e });
+  }
+};
+
 const addNewSponsor = async (req: Request, res: Response) => {
   const newBody = _.pick(req.body, [
-    "firstName",
-    "lastName",
-    "company",
-    "jobTitle",
-    "street",
-    "plz",
-    "city",
-    "branche",
-    "tel",
-    "email",
-    "homepage",
-    "username",
-    "password",
-    "businessCardUser"
+    'firstName',
+    'lastName',
+    'company',
+    'jobTitle',
+    'street',
+    'plz',
+    'city',
+    'branche',
+    'tel',
+    'email',
+    'homepage',
+    'username',
+    'password',
+    'businessCardUser',
   ]);
   const existingSponsor = await User.findOne({
     email: req.body.email,
@@ -53,16 +74,16 @@ const addNewSponsor = async (req: Request, res: Response) => {
   if (existingSponsor) {
     return res
       .status(403)
-      .send(generateError("Sponsor already exists with that email!"));
+      .send(generateError('Sponsor already exists with that email!'));
   }
   try {
-    const newSponsor = new User({ ...newBody, role: "sponsor" });
+    const newSponsor = new User({ ...newBody, role: 'sponsor' });
     await newSponsor.save();
     return res.send(newSponsor);
   } catch (e) {
     return res
       .status(404)
-      .send({ msg: generateError("Error saving Sponsor"), error: e });
+      .send({ msg: generateError('Error saving Sponsor'), error: e });
   }
 };
 
@@ -75,7 +96,7 @@ const getSponsorById = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(404)
-      .send({ msg: generateError("Error fetching Sponsor"), error: e });
+      .send({ msg: generateError('Error fetching Sponsor'), error: e });
   }
 };
 
@@ -86,14 +107,14 @@ const updateSponsor = async (req: Request, res: Response) => {
     const event = await User.findOneAndUpdate(
       { _id: sponsorId },
       { $set: req.body },
-      { new: true }
+      { new: true },
     );
 
     return res.send(event);
   } catch (e) {
     return res
       .status(500)
-      .send({ msg: generateError("Error updating Sponsor"), error: e });
+      .send({ msg: generateError('Error updating Sponsor'), error: e });
   }
 };
 
@@ -107,7 +128,7 @@ const deleteSponsor = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(500)
-      .send({ msg: generateError("Error removing Sponsor"), error: e });
+      .send({ msg: generateError('Error removing Sponsor'), error: e });
   }
 };
 
@@ -117,7 +138,8 @@ const SponsorMngmntController = {
   getSponsorById,
   addNewSponsor,
   getSponsors,
-  getBusinessCardAvailability
+  getBusinessCardAvailability,
+  getBusinessSponsors,
 };
 
 export default SponsorMngmntController;

@@ -1,5 +1,5 @@
-import bcrypt from "bcrypt";
-import mongoose, { Document, Model, Schema } from "mongoose";
+import bcrypt from 'bcrypt';
+import mongoose, { Document, Model, Schema } from 'mongoose';
 
 export interface IOAuthProfile {
   foo?: string;
@@ -7,7 +7,7 @@ export interface IOAuthProfile {
 
 export interface IProvider {
   id: string;
-  name: "local" | "google" | "facebook";
+  name: 'local' | 'google' | 'facebook';
 }
 export interface IUser extends Document {
   email?: string;
@@ -32,24 +32,24 @@ export interface IUser extends Document {
   validatePassword: (password: string) => boolean;
   removeSensitiveData: () => any;
   address?: string;
-  role: "user" | "admin" | "sponsor";
+  role: 'user' | 'admin' | 'sponsor';
 }
 
 export const USER_SAFE_FIELDS = [
-  "_id",
-  "email",
-  "firstName",
-  "lastName",
-  "role",
-  "company",
-  "jobTitle",
-  "street",
-  "plz",
-  "city",
-  "branche",
-  "tel",
-  "homepage",
-  "username"
+  '_id',
+  'email',
+  'firstName',
+  'lastName',
+  'role',
+  'company',
+  'jobTitle',
+  'street',
+  'plz',
+  'city',
+  'branche',
+  'tel',
+  'homepage',
+  'username',
 ];
 
 const userSchema: Schema = new Schema(
@@ -57,96 +57,96 @@ const userSchema: Schema = new Schema(
     email: {
       required: true,
       unique: true,
-      type: String
+      type: String,
     },
     emailToken: {
-      type: String
+      type: String,
     },
     firstName: {
       required: true,
-      type: String
+      type: String,
     },
     lastName: {
       required: true,
-      type: String
+      type: String,
     },
     dateOfBirth: {
       required: false,
-      type: Date
+      type: Date,
     },
     phone: {
       required: false,
-      type: String
+      type: String,
     },
     address: {
       required: false,
-      type: String
+      type: String,
     },
     salt: {
-      type: String
+      type: String,
     },
     password: {
-      type: String
+      type: String,
     },
     emailConfirmed: {
-      type: Boolean
+      type: Boolean,
     },
     passwordToken: {
-      type: String
+      type: String,
     },
     role: {
       type: String,
-      enum: ["admin", "user", "sponsor"],
-      default: "user"
+      enum: ['admin', 'user', 'sponsor'],
+      default: 'user',
     },
     company: {
-      required: false,
-      type: String
+      required: true,
+      type: String,
     },
     jobTitle: {
-      required: false,
-      type: String
+      required: true,
+      type: String,
     },
     street: {
-      required: false,
-      type: String
+      required: true,
+      type: String,
     },
     plz: {
-      required: false,
-      type: String
+      required: true,
+      type: String,
     },
     city: {
-      required: false,
-      type: String
+      required: true,
+      type: String,
     },
     branche: {
-      required: false,
-      type: String
+      required: true,
+      type: String,
     },
     tel: {
-      required: false,
-      type: String
+      required: true,
+      type: String,
     },
     homepage: {
-      required: false,
-      type: String
+      required: true,
+      type: String,
     },
     username: {
-      required: false,
-      type: String
+      required: true,
+      type: String,
     },
     businessCardUser: {
-      required: false,
-      type: Boolean
-    }
+      required: true,
+      type: Boolean,
+    },
   },
 
-  { timestamps: true }
+  { timestamps: true },
 );
 
-userSchema.pre<IUser>("save", async function preSave(next: () => void) {
+userSchema.pre<IUser>('save', async function preSave(next: () => void) {
   const saltRounds = 10;
-  if (this.password && this.isModified("password")) {
+  if (this.password && this.isModified('password')) {
     const salt = await bcrypt.genSalt(saltRounds);
     const hash = await bcrypt.hash(this.password, salt);
     this.password = hash;
@@ -172,13 +172,13 @@ userSchema.methods.removeSensitiveData = function(): {
   return this;
 };
 
-userSchema.set("toJSON", {
-  transform: (doc, { password, ...rest }) => rest
+userSchema.set('toJSON', {
+  transform: (doc, { password, ...rest }) => rest,
 });
 
 const User: Model<IUser> = mongoose.model<IUser, Model<IUser>>(
-  "user",
-  userSchema
+  'user',
+  userSchema,
 );
 
 export default User;

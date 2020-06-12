@@ -1,5 +1,5 @@
-import bcrypt from "bcrypt";
-import mongoose, { Document, Model, Schema } from "mongoose";
+import bcrypt from 'bcrypt';
+import mongoose, { Document, Model, Schema } from 'mongoose';
 
 export interface ISponsorMngmt extends Document {
   _id: string;
@@ -23,95 +23,95 @@ export interface ISponsorMngmt extends Document {
 }
 
 export const SPONSOR_SAFE_FIELDS = [
-  "_id",
-  "firstName",
-  "lastName",
-  "company",
-  "jobTitle",
-  "street",
-  "plz",
-  "city",
-  "branche",
-  "tel",
-  "email",
-  "homepage",
-  "username"
+  '_id',
+  'firstName',
+  'lastName',
+  'company',
+  'jobTitle',
+  'street',
+  'plz',
+  'city',
+  'branche',
+  'tel',
+  'email',
+  'homepage',
+  'username',
 ];
 
 const sponsorSchema: Schema = new Schema(
   {
     firstName: {
       required: true,
-      type: String
+      type: String,
     },
     lastName: {
       required: true,
-      type: String
+      type: String,
     },
     company: {
       required: true,
-      type: String
+      type: String,
     },
     jobTitle: {
       required: true,
-      type: String
+      type: String,
     },
     street: {
       required: true,
-      type: String
+      type: String,
     },
     plz: {
       required: true,
-      type: String
+      type: String,
     },
     city: {
       required: true,
-      type: String
+      type: String,
     },
     branche: {
       required: true,
-      type: String
+      type: String,
     },
     tel: {
       required: true,
-      type: String
+      type: String,
     },
     email: {
       required: true,
-      type: String
+      type: String,
     },
     homepage: {
       required: true,
-      type: String
+      type: String,
     },
     username: {
       required: true,
-      type: String
+      type: String,
     },
     password: {
       required: true,
-      type: String
+      type: String,
     },
     businessCardUser: {
       required: true,
-      type: Boolean
+      type: Boolean,
     },
     passwordToken: {
-      type: String
+      type: String,
     },
     salt: {
-      type: String
-    }
+      type: String,
+    },
   },
 
-  { timestamps: true }
+  { timestamps: true },
 );
 
-sponsorSchema.pre<ISponsorMngmt>("save", async function preSave(
-  next: () => void
+sponsorSchema.pre<ISponsorMngmt>('save', async function preSave(
+  next: () => void,
 ) {
   const saltRounds = 10;
-  if (this.password && this.isModified("password")) {
+  if (this.password && this.isModified('password')) {
     const salt = await bcrypt.genSalt(saltRounds);
     const hash = await bcrypt.hash(this.password, salt);
     this.password = hash;
@@ -137,13 +137,13 @@ sponsorSchema.methods.removeSensitiveData = function(): {
   return this;
 };
 
-sponsorSchema.set("toJSON", {
-  transform: (doc, { password, ...rest }) => rest
+sponsorSchema.set('toJSON', {
+  transform: (doc, { password, ...rest }) => rest,
 });
 
 const SponsorMngmnt: Model<ISponsorMngmt> = mongoose.model<
   ISponsorMngmt,
   Model<ISponsorMngmt>
->("SponsorMngmnt", sponsorSchema);
+>('SponsorMngmnt', sponsorSchema);
 
 export default SponsorMngmnt;

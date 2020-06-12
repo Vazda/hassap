@@ -1,16 +1,16 @@
-import { Router } from "express";
-import passport from "passport";
-import sponsors from "../controllers/sponsors.controller";
+import { Router } from 'express';
+import passport from 'passport';
+import sponsors from '../controllers/sponsors.controller';
 
 const router = Router();
 
 router
-  .route("/")
+  .route('/')
   .get(sponsors.getSponsors)
-  .post(passport.authenticate("jwt", { session: false }), sponsors.addSponsor);
+  .post(passport.authenticate('jwt', { session: false }), sponsors.addSponsor);
 
 router
-  .route("/:sponsorId")
+  .route('/:sponsorId')
   .get(sponsors.getSponsorById)
   .put(sponsors.updateSponsor)
   .delete(sponsors.deleteSponsor);

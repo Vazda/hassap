@@ -100,43 +100,43 @@ const userSchema: Schema = new Schema(
       default: "user"
     },
     company: {
-      required: true,
+      required: false,
       type: String
     },
     jobTitle: {
-      required: true,
+      required: false,
       type: String
     },
     street: {
-      required: true,
+      required: false,
       type: String
     },
     plz: {
-      required: true,
+      required: false,
       type: String
     },
     city: {
-      required: true,
+      required: false,
       type: String
     },
     branche: {
-      required: true,
+      required: false,
       type: String
     },
     tel: {
-      required: true,
+      required: false,
       type: String
     },
     homepage: {
-      required: true,
+      required: false,
       type: String
     },
     username: {
-      required: true,
+      required: false,
       type: String
     },
     businessCardUser: {
-      required: true,
+      required: false,
       type: Boolean
     }
   },

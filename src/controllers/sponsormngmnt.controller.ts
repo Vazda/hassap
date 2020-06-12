@@ -6,7 +6,7 @@ import User from "../models/user.model";
 
 const getSponsors = async (req: Request, res: Response) => {
   try {
-    const sponsors = await User.find();
+    const sponsors = await User.find({ role: "sponsor" });
     return res.send(sponsors);
   } catch (e) {
     return res
@@ -19,7 +19,8 @@ const getBusinessCardAvailability = async (req: Request, res: Response) => {
   try {
     const isBusinessCardUserExists = await User.exists({
       businessCardUser: true,
-      company: req.params.companyId
+      company: req.params.companyId,
+      role: "sponsor"
     });
     return res.send(isBusinessCardUserExists);
   } catch (e) {
@@ -46,7 +47,8 @@ const addNewSponsor = async (req: Request, res: Response) => {
     "businessCardUser"
   ]);
   const existingSponsor = await User.findOne({
-    email: req.body.email
+    email: req.body.email,
+    role: "sponsor"
   });
   if (existingSponsor) {
     return res

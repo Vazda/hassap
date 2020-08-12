@@ -1,7 +1,7 @@
-import { Request, Response } from 'express';
-import _ from 'lodash';
-import { generateError } from '../adapters/response';
-import Sponsor from '../models/sponsor.model';
+import { Request, Response } from "express";
+import _ from "lodash";
+import { generateError } from "../adapters/response";
+import Sponsor from "../models/sponsor.model";
 
 const getSponsors = async (req: Request, res: Response) => {
   try {
@@ -10,12 +10,12 @@ const getSponsors = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(404)
-      .send({ msg: generateError('Error fetching Sponsors'), error: e });
+      .send({ msg: generateError("Error fetching Sponsors"), error: e });
   }
 };
 
 const addSponsor = async (req: Request, res: Response) => {
-  const newBody = _.pick(req.body, ['category', 'logo', 'homepage', 'name']);
+  const newBody = _.pick(req.body, ["category", "logo", "homepage", "name"]);
 
   try {
     const sponsor = new Sponsor(newBody);
@@ -24,7 +24,7 @@ const addSponsor = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(404)
-      .send({ msg: generateError('Error saving Sponsor'), error: e });
+      .send({ msg: generateError("Error saving Sponsor"), error: e });
   }
 };
 
@@ -37,7 +37,7 @@ const getSponsorById = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(404)
-      .send({ msg: generateError('Error fetching Sponsor'), error: e });
+      .send({ msg: generateError("Error fetching Sponsor"), error: e });
   }
 };
 
@@ -48,14 +48,14 @@ const updateSponsor = async (req: Request, res: Response) => {
     const sponsor = await Sponsor.findOneAndUpdate(
       { _id: sponsorId },
       { $set: req.body },
-      { new: true },
+      { new: true }
     );
 
     return res.send(sponsor);
   } catch (e) {
     return res
       .status(500)
-      .send({ msg: generateError('Error updating Sponsor'), error: e });
+      .send({ msg: generateError("Error updating Sponsor"), error: e });
   }
 };
 
@@ -69,7 +69,7 @@ const deleteSponsor = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(500)
-      .send({ msg: generateError('Error deleting Sponsor'), error: e });
+      .send({ msg: generateError("Error deleting Sponsor"), error: e });
   }
 };
 
@@ -78,7 +78,7 @@ const SponsorController = {
   updateSponsor,
   getSponsorById,
   deleteSponsor,
-  addSponsor,
+  addSponsor
 };
 
 export default SponsorController;

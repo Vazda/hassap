@@ -1,10 +1,10 @@
+import { EWOULDBLOCK } from "constants";
 import { Request, Response } from "express";
 import _ from "lodash";
 import { generateError } from "../adapters/response";
 import Sponsor from "../models/sponsor.model";
 // import SponsorMngmnt from "../models/sponsormngmnt.model";
 import User from "../models/user.model";
-import { EWOULDBLOCK } from "constants";
 
 const getSponsors = async (req: Request, res: Response) => {
   try {

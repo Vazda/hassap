@@ -125,7 +125,6 @@ const addNewTicket = async (req: Request, res: Response) => {
       });
     }
     // tslint:disable-next-line:no-console
-    console.log('Mail sent to new ticket');
     return res.send(newTicket);
   } catch (e) {
     return res

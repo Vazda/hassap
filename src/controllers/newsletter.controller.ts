@@ -28,6 +28,12 @@ const addNewNewsletter = async (req: Request, res: Response) => {
   ]);
   try {
     const newNewsletter = new Newsletter(newBody);
+    const existingNewsletter = await Newsletter.findOne({ email: newBody.email });
+    if (existingNewsletter) {
+      return res
+        .status(403)
+        .send(generateError('Newsletter already exists for that email!'));
+    }
     if ( req.body.email !== req.body.confirmEmail) {
       throw Error('Email and Confirm Email are not same');
     }

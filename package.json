@@ -1,7 +1,7 @@
 {
-  "name": "cgn-mail-service",
+  "name": "hassap",
   "version": "1.0.0",
-  "description": "Backend mail serveice for CGN app",
+  "description": "Backend for hassap app",
   "main": "server.ts",
   "scripts": {
     "start": "./node_modules/.bin/ts-node ./server.ts",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/ankoraClients/cgn-mail-service.git"
+    "url": "https://github.com/Vazda/hassap.git"
   },
-  "author": "NerminDelic@AnkoraINC",
+  "author": "NerminDelic",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/ankoraClients/cgn-mail-service/issues"
+    "url": "https://github.com/Vazda/hassap/issues"
   },
-  "homepage": "https://gitlab.com/ankoraClients/cgn-mail-service#readme",
+  "homepage": "https://github.com/Vazda/hassap/#readme",
   "dependencies": {
     "@babel/core": "^7.4.5",
     "@babel/polyfill": "^7.4.4",

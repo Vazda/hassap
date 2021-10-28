@@ -1,4 +1,4 @@
-import Joi from "joi";
+import Joi from 'joi';
 
 export const JOIAddNewUser = Joi.object().keys({
   firstName: Joi.string().required(),
@@ -13,5 +13,5 @@ export const JOIAddNewUser = Joi.object().keys({
   // jmbg: Joi.string().required(),
   // sanitarBooklet: Joi.string().required(),
   // sanitarMinimum: Joi.string().required(),
-  role: Joi.string().required()
+  role: Joi.string().required(),
 });

@@ -1,4 +1,4 @@
-import mongoose, { Document, Model, Schema } from "mongoose";
+import mongoose, { Document, Model, Schema } from 'mongoose';
 
 export interface ITasks extends Document {
   category: string;
@@ -16,38 +16,38 @@ const TasksSchema: Schema = new Schema(
   {
     category: {
       required: true,
-      type: String
+      type: String,
     },
     title: {
       required: true,
-      type: String
+      type: String,
     },
     description: {
       required: false,
-      type: String
+      type: String,
     },
     // date: {
     //   type: String,
     // },
     time: {
       // required: true,
-      type: String
+      type: String,
     },
     status: {
       // required: true,
-      type: Boolean
-    }
+      type: Boolean,
+    },
     // location: {
     //   // required: true,
     //   type: String,
     // },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const Tasks: Model<ITasks> = mongoose.model<ITasks, Model<ITasks>>(
-  "Tasks",
-  TasksSchema
+  'Tasks',
+  TasksSchema,
 );
 
 export default Tasks;

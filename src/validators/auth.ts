@@ -1,4 +1,4 @@
-import Joi from 'joi';
+import Joi from "joi";
 
 export const JOISignup = Joi.object().keys({
   firstName: Joi.string().required(),
@@ -10,5 +10,8 @@ export const JOISignup = Joi.object().keys({
   phone: Joi.string().required(),
   address: Joi.string().required(),
   dateOfBirth: Joi.string().required(),
-  // role: Joi.string().required(),
+  // jmbg: Joi.string().required(),
+  // sanitarBooklet: Joi.string().required(),
+  // sanitarMinimum: Joi.string().required(),
+  role: Joi.string().required()
 });

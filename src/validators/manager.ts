@@ -1,6 +1,6 @@
 import Joi from "joi";
 
-export const JOIAddNewUser = Joi.object().keys({
+export const JOIAddNewManager = Joi.object().keys({
   firstName: Joi.string().required(),
   lastName: Joi.string().required(),
   email: Joi.string()

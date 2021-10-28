@@ -1,16 +1,18 @@
-import { Request, Response } from 'express';
-import Joi from 'joi';
-import _ from 'lodash';
-import { generateError } from '../adapters/response';
-import User, { USER_SAFE_FIELDS } from '../models/user.model';
-import { JOIAddNewUser } from './../validators/user';
+import { Request, Response } from "express";
+import Joi from "joi";
+import _ from "lodash";
+import { generateError } from "../adapters/response";
+import User, { USER_SAFE_FIELDS } from "../models/user.model";
+import { JOIAddNewManager } from "../validators/manager";
+import { JOIAddNewWorker } from "../validators/worker";
+import { JOIAddNewUser } from "./../validators/user";
 
 const getAllUsers = async (req: Request, res: Response) => {
   try {
     const allUsers = await User.find();
     return res.send(allUsers);
   } catch (e) {
-    return res.status(500).send('Error fetching Users');
+    return res.status(500).send("Error fetching Users");
   }
 };
 
@@ -21,15 +23,56 @@ const addNewUser = async (req: Request, res: Response) => {
     if (existingUser) {
       return res
         .status(403)
-        .send(generateError('User already exists with that email!'));
+        .send(generateError("User already exists with that email!"));
     }
     const newUser = await User.create(req.body);
     await newUser.save();
     return res.send(newUser);
   } catch (e) {
+    console.log(e);
     return res
       .status(401)
-      .send({ msg: generateError('Error saving User'), error: e });
+      .send({ msg: generateError("Error saving User"), error: e });
+  }
+};
+
+const addNewManager = async (req: Request, res: Response) => {
+  try {
+    await Joi.validate(req.body, JOIAddNewManager);
+    const existingUser = await User.findOne({ email: req.body.email });
+    if (existingUser) {
+      return res
+        .status(403)
+        .send(generateError("Manager already exists with that email!"));
+    }
+    const newUser = await User.create(req.body);
+    await newUser.save();
+    return res.send(newUser);
+  } catch (e) {
+    console.log(e);
+    return res
+      .status(401)
+      .send({ msg: generateError("Error saving Manager"), error: e });
+  }
+};
+
+const addNewWorker = async (req: Request, res: Response) => {
+  try {
+    await Joi.validate(req.body, JOIAddNewWorker);
+    const existingUser = await User.findOne({ email: req.body.email });
+    if (existingUser) {
+      return res
+        .status(403)
+        .send(generateError("Worker already exists with that email!"));
+    }
+    const newUser = await User.create(req.body);
+    await newUser.save();
+    return res.send(newUser);
+  } catch (e) {
+    console.log(e);
+    return res
+      .status(401)
+      .send({ msg: generateError("Error saving Worker"), error: e });
   }
 };
 
@@ -42,7 +85,7 @@ const getUserById = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(403)
-      .send({ msg: generateError('Error fetching User'), error: e });
+      .send({ msg: generateError("Error fetching User"), error: e });
   }
 };
 
@@ -53,13 +96,13 @@ const updateUser = async (req: Request, res: Response) => {
     const user = await User.findOneAndUpdate(
       { _id: userId },
       { $set: req.body },
-      { new: true },
+      { new: true }
     );
     return res.send(user);
   } catch (e) {
     return res
       .status(403)
-      .send({ msg: generateError('Error updating User'), error: e });
+      .send({ msg: generateError("Error updating User"), error: e });
   }
 };
 
@@ -72,7 +115,7 @@ const deleteUser = async (req: Request, res: Response) => {
   } catch (e) {
     return res
       .status(403)
-      .send({ msg: generateError('Error deleting User'), error: e });
+      .send({ msg: generateError("Error deleting User"), error: e });
   }
 };
 
@@ -89,11 +132,12 @@ const getMe = async (req: Request, res: Response): Promise<Response> => {
 
 const userController = {
   addNewUser,
+  addNewWorker,
   getAllUsers,
   getUserById,
   updateUser,
   deleteUser,
-  getMe,
+  getMe
 };
 
 export default userController;

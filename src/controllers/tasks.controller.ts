@@ -14,6 +14,28 @@ const getAllTasks = async (req: Request, res: Response) => {
   }
 };
 
+const getAllDoneTasks = async (req: Request, res: Response) => {
+  try {
+    const allTasks = await Tasks.find({ status: true });
+    return res.send(allTasks);
+  } catch (e) {
+    return res
+      .status(404)
+      .send({ msg: generateError('Error fetching Completed Tasks'), error: e });
+  }
+};
+
+const getAllNotDoneTasks = async (req: Request, res: Response) => {
+  try {
+    const allTasks = await Tasks.find({ status: false });
+    return res.send(allTasks);
+  } catch (e) {
+    return res
+      .status(404)
+      .send({ msg: generateError('Error fetching Not completed Tasks'), error: e });
+  }
+};
+
 const addNewTask = async (req: Request, res: Response) => {
   const newBody = _.pick(req.body, [
     'title',
@@ -24,7 +46,7 @@ const addNewTask = async (req: Request, res: Response) => {
     // 'location',
   ]);
   try {
-    const newTasks = new Tasks(newBody);
+    const newTasks = new Tasks({ ...newBody, status: false });
     await newTasks.save();
     return res.send(newTasks);
   } catch (e) {
@@ -93,6 +115,8 @@ const TaskController = {
   getTaskById,
   addNewTask,
   getAllTasks,
+  getAllDoneTasks,
+  getAllNotDoneTasks
 };
 
 export default TaskController;

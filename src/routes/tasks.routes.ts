@@ -10,6 +10,14 @@ router
   .post(passport.authenticate('jwt', { session: false }), tasks.addNewTask);
 
 router
+  .route('/done')
+  .get(tasks.getAllDoneTasks);
+
+router
+  .route('/not-done')
+  .get(tasks.getAllNotDoneTasks);
+
+router
   .route('/:taskId')
   .get(tasks.getTaskById)
   .put(tasks.updateTask)

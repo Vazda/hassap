@@ -34,6 +34,8 @@ const testSSMProfile2 = new aws.iam.InstanceProfile("testSSMProfile2", {
   role: testSSMRole,
 })
 
+// jedan comment za commit
+
 const size = "t2.micro";
 const ami = pulumi.output(aws.ec2.getAmi({
   filters: [{

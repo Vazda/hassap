@@ -18,7 +18,7 @@ const addNewAnlagenplan = async (req: Request, res: Response) => {
   const newBody = _.pick(req.body, ['pdf']);
   try {
     await Anlagenplan.findOneAndDelete();
-
+    console.log('something')
     const newAnlagenplan = new Anlagenplan(newBody);
     await newAnlagenplan.save();
     return res.send(newAnlagenplan);

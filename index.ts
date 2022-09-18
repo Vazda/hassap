@@ -45,6 +45,7 @@ const ami = pulumi.output(aws.ec2.getAmi({
   owners: ["amazon"],
   mostRecent: true,
 }));
+console.log('svile kralj')
 
 const group = new aws.ec2.SecurityGroup("webserver-secgrp", {
   ingress: [{ protocol: "tcp", fromPort: 22, toPort: 22, cidrBlocks: ["0.0.0.0/0"] }],

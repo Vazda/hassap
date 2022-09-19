@@ -6,7 +6,7 @@ import { getStack } from "@pulumi/pulumi";
 // Create an AWS resource (S3 Bucket)
 const bucket = new aws.s3.Bucket("my-bucket", {
     // bucket: `bucket-${getStack()}`
-    bucket: 'bucket-vale'
+    bucket: `bucket-vale-${getStack()}`
 });
 
 // Export the name of the bucket
@@ -29,8 +29,8 @@ new aws.iam.RolePolicyAttachment("testSSMAttach", {
   role: testSSMRole.name,
 });
 
-const testSSMProfile2 = new aws.iam.InstanceProfile("testSSMProfile2", {
-  name: "testSSMProfile2",
+const testSSMProfile3 = new aws.iam.InstanceProfile("testSSMProfile3", {
+  name: "testSSMProfile3",
   role: testSSMRole,
 })
 
@@ -69,7 +69,7 @@ const server = new aws.ec2.Instance("webserver-www", {
     instanceType: size,
     securityGroups: [group.name],
     ami: ami.id,
-    iamInstanceProfile: testSSMProfile2,
+    iamInstanceProfile: testSSMProfile3,
     userData: `#!/bin/bash
     set -ex
     

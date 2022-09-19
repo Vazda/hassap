@@ -19,6 +19,7 @@ const addNewMagazin = async (req: Request, res: Response) => {
   try {
     await Magazin.findOneAndDelete();
     const newMagazine = new Magazin(newBody);
+    console.log('newMagzin', newMagazine);
     await newMagazine.save();
     return res.send(newMagazine);
   } catch (e) {

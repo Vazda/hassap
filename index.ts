@@ -34,7 +34,6 @@ const testSSMProfile2 = new aws.iam.InstanceProfile("testSSMProfile2", {
   role: testSSMRole,
 })
 
-// jedan comment za commit
 
 const size = "t2.micro";
 const ami = pulumi.output(aws.ec2.getAmi({
@@ -45,7 +44,6 @@ const ami = pulumi.output(aws.ec2.getAmi({
   owners: ["amazon"],
   mostRecent: true,
 }));
-console.log('svile kralj')
 
 const group = new aws.ec2.SecurityGroup("webserver-secgrp", {
   ingress: [{ protocol: "tcp", fromPort: 22, toPort: 22, cidrBlocks: ["0.0.0.0/0"] }],

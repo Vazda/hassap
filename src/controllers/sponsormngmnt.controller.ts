@@ -1,4 +1,3 @@
-import { EWOULDBLOCK } from 'constants';
 import { Request, Response } from 'express';
 import _ from 'lodash';
 import { generateError } from '../adapters/response';
@@ -37,7 +36,7 @@ const getBusinessSponsors = async (req: Request, res: Response) => {
     const { sponsorId } = req.params;
     const sponsor = await Sponsor.findOne({ _id: sponsorId });
     const bussinessPerson = await User.findOne({
-      company: sponsor.name,
+      company: sponsor?.name,
       businessCardUser: true,
     });
 
@@ -100,8 +99,9 @@ const getSponsorById = async (req: Request, res: Response) => {
 };
 const getSponsor = async (req: Request, res: Response) => {
   //
-  return res.send(req?.user);
+  return res.send(req);
 };
+
 const updateSponsor = async (req: Request, res: Response) => {
   const { sponsorId } = req.params;
 

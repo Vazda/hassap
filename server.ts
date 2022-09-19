@@ -2,7 +2,7 @@ import bodyParser from 'body-parser';
 import express from 'express';
 import helmet from 'helmet';
 
-import passport = require('passport');
+import passport from 'passport';
 import anlagenplanRoutes from './src/routes/anlagenplan.routes';
 import authRoutes from './src/routes/auth.routes';
 import contactRoutes from './src/routes/contact.routes';

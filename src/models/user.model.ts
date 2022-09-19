@@ -35,7 +35,7 @@ export interface IUser extends Document {
   validatePassword: (password: string) => boolean;
   removeSensitiveData: () => any;
   address?: string;
-  role: 'user' | 'manager' | 'superadmin';
+  role: 'user' | 'manager' | 'superadmin' | 'sponsor';
 }
 
 export const USER_SAFE_FIELDS = [
@@ -112,7 +112,7 @@ const userSchema: Schema = new Schema(
     },
     role: {
       type: String,
-      enum: ['manager', 'user', 'superadmin'],
+      enum: ['manager', 'user', 'superadmin', 'sponsor'],
       default: 'user',
     },
     company: {

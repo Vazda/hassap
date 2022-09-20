@@ -12,8 +12,6 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 14.x
-      - name: Install Pulumi CLI
-        uses: pulumi/action-install-pulumi-cli@v1.0.1
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -21,6 +19,7 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - run: npm install
+        working-directory: hassap
       - uses: pulumi/actions@v3
         with:
           command: up

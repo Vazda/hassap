@@ -1,2 +1,7 @@
 config:
   aws:region: us-east-1
+  hassap:apiPort: "8080"
+  hassap:appEnvironment: dev
+  hassap:appName: hassap
+  hassap:dbInstanceClass: db.t2.micro
+  hassap:domain: hassap-api.com

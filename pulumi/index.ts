@@ -3,16 +3,30 @@ import * as aws from "@pulumi/aws";
 import * as awsx from "@pulumi/awsx";
 import { getStack } from "@pulumi/pulumi";
 
+const config = new pulumi.Config();
+/**
+ * CONFIGURE
+ */
+const appName = config.require('appName');
+const appEnvironment = config.require('appEnvironment');
+const DOMAIN = config.require('domain');
+const PORT_RAW = parseInt(config.require('apiPort'), 10);
+
+const PORT = isNaN(PORT_RAW) ? 8080 : PORT_RAW;
+// const dbPassword = config.requireSecret('dbPassword');
+// const dbUser = config.require('dbUser');
+// const dbName = `${appEnvironment}_${appName}_db`;
+
 // Create an AWS resource (S3 Bucket)
 const bucket = new aws.s3.Bucket("my-bucket", {
     // bucket: `bucket-${getStack()}`
-    bucket: `bucket-vale-${getStack()}`
+    bucket: `${appName}-${getStack()}`
 });
 
 // Export the name of the bucket
 export const bucketName = bucket.id;
 
-const testSSMRole = new aws.iam.Role("pulumi-vale-role", {
+const testSSMRole = new aws.iam.Role(`${appName}-${getStack()}-role`, {
   assumeRolePolicy: `{
   "Version": "2012-10-17",
   "Statement": {
@@ -50,7 +64,9 @@ const group = new aws.ec2.SecurityGroup("webserver-secgrp", {
   egress: [{ protocol: "-1", fromPort: 0, toPort: 0, cidrBlocks: ["0.0.0.0/0"] }],
 });
 
-const myCluster = new awsx.ecs.Cluster("Pulumi-cluster")
+const cluster = new awsx.ecs.Cluster(`${appName}-cluster`);
+
+// const myCluster = new awsx.ecs.Cluster("Pulumi-cluster")
 
 const listener = new awsx.lb.ApplicationListener("pulumi-ecs-primary", {
     external: true,

@@ -3,7 +3,7 @@ import User from '../models/user.model';
 
 const controller = async (_: Request, res: Response) => {
   const user = await User.findOne({ email: 'test@gmail.com' });
-  console.log('Idemo li majstore sad')
+  console.log('Idemo li majstore sad pls')
   return res.send(user);
 };
 

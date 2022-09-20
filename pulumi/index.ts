@@ -59,29 +59,28 @@ const ami = pulumi.output(aws.ec2.getAmi({
   mostRecent: true,
 }));
 
-const group = new aws.ec2.SecurityGroup("webserver-secgrp", {
+const group = new aws.ec2.SecurityGroup(`${appName}-${appEnvironment}-sec-group`, {
   ingress: [{ protocol: "tcp", fromPort: 22, toPort: 22, cidrBlocks: ["0.0.0.0/0"] }],
   egress: [{ protocol: "-1", fromPort: 0, toPort: 0, cidrBlocks: ["0.0.0.0/0"] }],
 });
 
 const cluster = new awsx.ecs.Cluster(`${appName}-cluster`);
 
-// const myCluster = new awsx.ecs.Cluster("Pulumi-cluster")
-
-const listener = new awsx.lb.ApplicationListener("pulumi-ecs-primary", {
+const listener = new awsx.lb.ApplicationListener(`${appName}-${appEnvironment}-listener`, {
     external: true,
     port: 80
 });
 
-// const fargateService = new awsx.ecs.FargateService("pulumi-ecs",
+// const fargateService = new awsx.ecs.FargateService(`${appName}-${appEnvironment}-fargate-service`,
 //     {
-//     cluster: myCluster,
-//     desiredCount: 1,
+//     cluster: cluster,
 //     healthCheckGracePeriodSeconds: 10,
+//     desiredCount: 1,
+//     // taskDefinitionArgs: {}
 // });
 
 
-const server = new aws.ec2.Instance("webserver-www", {
+const server = new aws.ec2.Instance(`${appName}-${appEnvironment}-ec2-instance`, {
     instanceType: size,
     securityGroups: [group.name],
     ami: ami.id,

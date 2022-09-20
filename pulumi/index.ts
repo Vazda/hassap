@@ -29,8 +29,8 @@ new aws.iam.RolePolicyAttachment("testSSMAttach", {
   role: testSSMRole.name,
 });
 
-const testSSMProfile3 = new aws.iam.InstanceProfile("testSSMProfile3", {
-  name: "testSSMProfile3",
+const testSSMProfile = new aws.iam.InstanceProfile(`testSSMProfile${getStack()}`, {
+  name: `testSSMProfile${getStack()}`,
   role: testSSMRole,
 })
 
@@ -69,7 +69,7 @@ const server = new aws.ec2.Instance("webserver-www", {
     instanceType: size,
     securityGroups: [group.name],
     ami: ami.id,
-    iamInstanceProfile: testSSMProfile3,
+    iamInstanceProfile: testSSMProfile,
     userData: `#!/bin/bash
     set -ex
     

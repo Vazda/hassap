@@ -12,8 +12,6 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 14.x
-      - name: After setting up the Pulumi project specific language environment, we need to install the dependencies also
-        run: npm install
       - name: Install Pulumi CLI
         uses: pulumi/action-install-pulumi-cli@v1.0.1
       - name: Configure AWS Credentials

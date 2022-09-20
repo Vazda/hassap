@@ -1,6 +1,5 @@
 {
     "name": "hassap",
-    "main": "index.ts",
     "devDependencies": {
         "@types/node": "^14"
     },

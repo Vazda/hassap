@@ -13,18 +13,54 @@ const DOMAIN = config.require('domain');
 const PORT_RAW = parseInt(config.require('apiPort'), 10);
 
 const PORT = isNaN(PORT_RAW) ? 8080 : PORT_RAW;
-// const dbPassword = config.requireSecret('dbPassword');
-// const dbUser = config.require('dbUser');
-// const dbName = `${appEnvironment}_${appName}_db`;
+
+const dbPassword = config.requireSecret('dbPassword');
+const dbUser = config.require('dbUser');
+const dbName = `${appEnvironment}_${appName}_db`;
+
+// fargate cluster
+const cluster = new awsx.ecs.Cluster(`${appName}-cluster`);
+
+// const img = awsx.ecs.Image.fromDockerBuild(`${appName}-app-img`, {
+//   context: '../../',
+//   dockerfile: '../../Dockerfile',
+//   args: {
+//     ENV_NAME: appEnvironment,
+//   },
+//   env: {
+//     DOCKER_DEFAULT_PLATFORM: 'linux/amd64',
+//   },
+//   extraOptions: ['--platform', 'linux/amd64'],
+// });
+
+// RDS database creation
+const defaultInstance = new aws.rds.Instance(`${appName}-${appEnvironment}-db}`, {
+  engine: "mariadb",
+  instanceClass: "db.t3.micro",
+  allocatedStorage: 10,
+  name: dbName,
+  username: dbUser,
+  password: dbPassword,
+  // parameterGroupName: "default.mysql5.7",
+  skipFinalSnapshot: true,
+});
 
 // Create an AWS resource (S3 Bucket)
 const bucket = new aws.s3.Bucket("my-bucket", {
-    // bucket: `bucket-${getStack()}`
     bucket: `${appName}-${getStack()}`
 });
 
 // Export the name of the bucket
 export const bucketName = bucket.id;
+
+/**
+ * Define the Networking for our service.
+ */
+ const alb = new awsx.lb.ApplicationLoadBalancer('net-lb', {
+  external: true,
+  securityGroups: cluster.securityGroups,
+  name: `lb-${appEnvironment}-${appName}`,
+});
 
 const testSSMRole = new aws.iam.Role(`${appName}-${getStack()}-role`, {
   assumeRolePolicy: `{
@@ -64,7 +100,6 @@ const group = new aws.ec2.SecurityGroup(`${appName}-${appEnvironment}-sec-group`
   egress: [{ protocol: "-1", fromPort: 0, toPort: 0, cidrBlocks: ["0.0.0.0/0"] }],
 });
 
-const cluster = new awsx.ecs.Cluster(`${appName}-cluster`);
 
 const listener = new awsx.lb.ApplicationListener(`${appName}-${appEnvironment}-listener`, {
     external: true,

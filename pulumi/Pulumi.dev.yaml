@@ -3,5 +3,8 @@ config:
   hassap:apiPort: "8080"
   hassap:appEnvironment: dev
   hassap:appName: hassap
-  hassap:dbInstanceClass: db.t2.micro
+  hassap:dbInstanceClass: db.t3.micro
   hassap:domain: hassap-api.com
+  hassap:dbPassword:
+    secure: AAABAGgrc1yiznrrOjDbhhsOSnWmAkfpdbXKw4RDtSDZQXQ4dCWm12QvsP8=
+  hassap:dbUser: hassap

@@ -9,10 +9,9 @@ const config = new pulumi.Config();
  */
 const appName = config.require('appName');
 const appEnvironment = config.require('appEnvironment');
-const DOMAIN = config.require('domain');
 const PORT_RAW = parseInt(config.require('apiPort'), 10);
 
-const PORT = isNaN(PORT_RAW) ? 8080 : PORT_RAW;
+const PORT = isNaN(PORT_RAW) ? 5000 : PORT_RAW;
 
 const dbPassword = config.requireSecret('dbPassword');
 const dbUser = config.require('dbUser');
@@ -21,16 +20,29 @@ const dbName = `${appEnvironment}${appName}db`;
 // fargate cluster
 const cluster = new awsx.ecs.Cluster(`${appName}-cluster`);
 
+// // RDS database creation
+// const defaultInstance = new aws.rds.Instance(`${dbName}`, {
+//   engine: "mariadb",
+//   instanceClass: "db.t3.micro",
+//   allocatedStorage: 10,
+//   name: dbName,
+//   username: dbUser,
+//   password: dbPassword,
+//   port: 3306,
+//   publiclyAccessible: true,
+//   skipFinalSnapshot: true,
+// });
+
 // RDS database creation
 const defaultInstance = new aws.rds.Instance(`${dbName}`, {
-  engine: "mariadb",
+  engine: "postgres",
   instanceClass: "db.t3.micro",
   allocatedStorage: 10,
   name: dbName,
   username: dbUser,
   password: dbPassword,
+  // vpcSecurityGroupIds: cluster.securityGroups.map((g) => g.securityGroup.id),
   publiclyAccessible: true,
-  // parameterGroupName: "default.mysql5.7",
   skipFinalSnapshot: true,
 });
 

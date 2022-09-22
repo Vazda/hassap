@@ -9,10 +9,6 @@ const config = new pulumi.Config();
  */
 const appName = config.require('appName');
 const appEnvironment = config.require('appEnvironment');
-const PORT_RAW = parseInt(config.require('apiPort'), 10);
-
-const PORT = isNaN(PORT_RAW) ? 5000 : PORT_RAW;
-
 const dbPassword = config.requireSecret('dbPassword');
 const dbUser = config.require('dbUser');
 const dbName = `${appEnvironment}${appName}db`;
@@ -20,18 +16,6 @@ const dbName = `${appEnvironment}${appName}db`;
 // fargate cluster
 const cluster = new awsx.ecs.Cluster(`${appName}-cluster`);
 
-// // RDS database creation
-// const defaultInstance = new aws.rds.Instance(`${dbName}`, {
-//   engine: "mariadb",
-//   instanceClass: "db.t3.micro",
-//   allocatedStorage: 10,
-//   name: dbName,
-//   username: dbUser,
-//   password: dbPassword,
-//   port: 3306,
-//   publiclyAccessible: true,
-//   skipFinalSnapshot: true,
-// });
 
 // RDS database creation
 const defaultInstance = new aws.rds.Instance(`${dbName}`, {
@@ -41,7 +25,6 @@ const defaultInstance = new aws.rds.Instance(`${dbName}`, {
   name: dbName,
   username: dbUser,
   password: dbPassword,
-  // vpcSecurityGroupIds: cluster.securityGroups.map((g) => g.securityGroup.id),
   publiclyAccessible: true,
   skipFinalSnapshot: true,
 });
@@ -114,6 +97,8 @@ const listener = new awsx.lb.ApplicationListener(`${appName}-${appEnvironment}-l
 //     desiredCount: 1,
 //     // taskDefinitionArgs: {}
 // });
+
+console.log('nesto')
 
 
 const server = new aws.ec2.Instance(`${appName}-${appEnvironment}-ec2-instance`, {

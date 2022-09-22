@@ -4,7 +4,7 @@ config:
   hassap:appEnvironment: dev
   hassap:appName: hassap
   hassap:dbInstanceClass: db.t3.micro
-  hassap:domain: hassap-api.com
   hassap:dbPassword:
-    secure: AAABAGgrc1yiznrrOjDbhhsOSnWmAkfpdbXKw4RDtSDZQXQ4dCWm12QvsP8=
+    secure: AAABAGkv/i4pMEdp5J+RfRdh2VOX3HtawmLqwT98GeehA03lzEFV2eg=
   hassap:dbUser: hassap
+  hassap:domain: hassap-api.com

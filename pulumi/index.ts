@@ -16,7 +16,7 @@ const PORT = isNaN(PORT_RAW) ? 8080 : PORT_RAW;
 
 const dbPassword = config.requireSecret('dbPassword');
 const dbUser = config.require('dbUser');
-const dbName = `${appEnvironment}_${appName}_db`;
+const dbName = `${appEnvironment}${appName}db`;
 
 // fargate cluster
 const cluster = new awsx.ecs.Cluster(`${appName}-cluster`);
@@ -34,7 +34,7 @@ const cluster = new awsx.ecs.Cluster(`${appName}-cluster`);
 // });
 
 // RDS database creation
-const defaultInstance = new aws.rds.Instance(`${appName}-${appEnvironment}-db}`, {
+const defaultInstance = new aws.rds.Instance(`${dbName}`, {
   engine: "mariadb",
   instanceClass: "db.t3.micro",
   allocatedStorage: 10,

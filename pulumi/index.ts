@@ -41,6 +41,8 @@ const defaultInstance = new aws.rds.Instance(`${dbName}`, {
   name: dbName,
   username: dbUser,
   password: dbPassword,
+  publiclyAccessible: true,
+  port: 27017,
   // parameterGroupName: "default.mysql5.7",
   skipFinalSnapshot: true,
 });

@@ -21,18 +21,6 @@ const dbName = `${appEnvironment}${appName}db`;
 // fargate cluster
 const cluster = new awsx.ecs.Cluster(`${appName}-cluster`);
 
-// const img = awsx.ecs.Image.fromDockerBuild(`${appName}-app-img`, {
-//   context: '../../',
-//   dockerfile: '../../Dockerfile',
-//   args: {
-//     ENV_NAME: appEnvironment,
-//   },
-//   env: {
-//     DOCKER_DEFAULT_PLATFORM: 'linux/amd64',
-//   },
-//   extraOptions: ['--platform', 'linux/amd64'],
-// });
-
 // RDS database creation
 const defaultInstance = new aws.rds.Instance(`${dbName}`, {
   engine: "mariadb",
@@ -42,7 +30,6 @@ const defaultInstance = new aws.rds.Instance(`${dbName}`, {
   username: dbUser,
   password: dbPassword,
   publiclyAccessible: true,
-  port: 27017,
   // parameterGroupName: "default.mysql5.7",
   skipFinalSnapshot: true,
 });

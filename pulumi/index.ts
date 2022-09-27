@@ -12,13 +12,71 @@ const appEnvironment = config.require('appEnvironment');
 const dbPassword = config.requireSecret('dbPassword');
 const dbUser = config.require('dbUser');
 const dbName = `${appEnvironment}${appName}db`;
+const DOMAIN = config.require('domain');
+const PORT_RAW = parseInt(config.require('apiPort'), 10);
+const PORT = isNaN(PORT_RAW) ? 8080 : PORT_RAW;
+const backendUrl = `https://${appEnvironment}-hassap.${config.require('domain')}/api`;
 
 // fargate cluster
 const cluster = new awsx.ecs.Cluster(`${appName}-cluster`);
 
+const img = awsx.ecs.Image.fromDockerBuild(`${appName}-app-img`, {
+  context: '../../',
+  dockerfile: '../../Dockerfile',
+  args: {
+    ENV_NAME: appEnvironment,
+  },
+  env: {
+    DOCKER_DEFAULT_PLATFORM: 'linux/amd64',
+  },
+  extraOptions: ['--platform', 'linux/amd64'],
+});
+
+const alb = new awsx.lb.ApplicationLoadBalancer('net-lb', {
+  external: true,
+  securityGroups: cluster.securityGroups,
+  name: `lb-${appEnvironment}-${appName}`,
+});
+
+/**
+ * SSL Certificate
+ */
+ const sslCertificate = new aws.acm.Certificate('cert', {
+  domainName: `${appEnvironment}-elevate.${DOMAIN}`,
+  tags: {
+    Environment: appEnvironment,
+  },
+  validationMethod: 'DNS',
+});
+
+const hostedZoneId = aws.route53
+  .getZone({ name: DOMAIN }, { async: true })
+  .then((zone) => zone.zoneId);
+
+// DNS records to verify SSL Certificate
+const certificateValidationDomain = new aws.route53.Record(
+  `${appEnvironment}-elevate.${DOMAIN}-validation`,
+  {
+    name: sslCertificate.domainValidationOptions[0].resourceRecordName,
+    zoneId: hostedZoneId,
+    type: sslCertificate.domainValidationOptions[0].resourceRecordType,
+    records: [sslCertificate.domainValidationOptions[0].resourceRecordValue],
+    ttl: 600,
+  },
+);
+const certificateValidation = new aws.acm.CertificateValidation('certificateValidation', {
+  certificateArn: sslCertificate.arn,
+  validationRecordFqdns: [certificateValidationDomain.fqdn],
+});
+
+// Target group with the port of the Docker image
+const target = alb.createTargetGroup(`${appName}-${appEnvironment}-web-target`, {
+  vpc: cluster.vpc,
+  port: PORT,
+});
 
 // RDS database creation
-const defaultInstance = new aws.rds.Instance(`${dbName}`, {
+const db = new aws.rds.Instance(`${dbName}`, {
   engine: "postgres",
   instanceClass: "db.t3.micro",
   allocatedStorage: 10,
@@ -36,15 +94,6 @@ const bucket = new aws.s3.Bucket("my-bucket", {
 
 // Export the name of the bucket
 export const bucketName = bucket.id;
-
-/**
- * Define the Networking for our service.
- */
- const alb = new awsx.lb.ApplicationLoadBalancer('net-lb', {
-  external: true,
-  securityGroups: cluster.securityGroups,
-  name: `lb-${appEnvironment}-${appName}`,
-});
 
 const testSSMRole = new aws.iam.Role(`${appName}-${getStack()}-role`, {
   assumeRolePolicy: `{
@@ -101,6 +150,75 @@ const listener = new awsx.lb.ApplicationListener(`${appName}-${appEnvironment}-l
 
 
 console.log('nesto');
+// Listen to traffic on port 443 & route it through the target group
+const httpsListener = target.createListener(`${appName}-${appEnvironment}-web-listener`, {
+  port: 443,
+  certificateArn: certificateValidation.certificateArn,
+});
+
+/**
+ * Create a Fargate service task that can scale out.
+ */
+
+console.log(db.address, 'DB ADDRESS', dbPassword, 'password');
+const appService = new awsx.ecs.FargateService(`${appName}-${appEnvironment}-app-svc`, {
+  cluster,
+  taskDefinitionArgs: {
+    container: {
+      image: img,
+      cpu: 1024 /*100% of 1024*/,
+      memory: 3072 /*MB*/,
+      portMappings: [httpsListener],
+      environment: [
+        {
+          name: 'ENV_NAME',
+          value: appEnvironment,
+        },
+        {
+          name: 'PORT',
+          value: '5000',
+        },
+        {
+          name: 'S3_BUCKET_NAME',
+          value: bucketName,
+        },
+        {
+          name: 'DATABASE_HOST',
+          value: db.address,
+        },
+        {
+          name: 'DATABASE_PORT',
+          value: '5432',
+        },
+        {
+          name: 'DATABASE_USER',
+          value: dbUser,
+        },
+        {
+          name: 'DATABASE_PASSWORD',
+          value: dbPassword,
+        },
+        {
+          name: 'DATABASE_DB',
+          value: dbName,
+        },
+        {
+          name: 'BACKEND_URL',
+          value: backendUrl,
+        },
+        {
+          name: 'AWS_ACCESS_KEY_ID',
+          value: 'AKIAWEXFF4ZIEE44INNX',
+        },
+        {
+          name: 'AWS_SECRET_ACCESS_KEY',
+          value: '8MDvPol3P9/P+DOGvPQbwZ+mm0nuaij/GRkXHHvx',
+        },
+      ],
+    },
+  },
+  desiredCount: 1,
+});
 
 
 const server = new aws.ec2.Instance(`${appName}-${appEnvironment}-ec2-instance`, {

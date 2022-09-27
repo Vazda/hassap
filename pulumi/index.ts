@@ -66,7 +66,7 @@ new aws.iam.RolePolicyAttachment("testSSMAttach", {
 const testSSMProfile = new aws.iam.InstanceProfile(`testSSMProfile${getStack()}`, {
   name: `testSSMProfile${getStack()}`,
   role: testSSMRole,
-})
+});
 
 
 const size = "t2.micro";
@@ -98,7 +98,9 @@ const listener = new awsx.lb.ApplicationListener(`${appName}-${appEnvironment}-l
 //     // taskDefinitionArgs: {}
 // });
 
-console.log('nesto')
+
+
+console.log('nesto');
 
 
 const server = new aws.ec2.Instance(`${appName}-${appEnvironment}-ec2-instance`, {
